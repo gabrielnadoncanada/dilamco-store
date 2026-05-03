@@ -1,0 +1,52 @@
+export type ColorName = "Blanc Pur" | "Chêne blanc" | "Bleu marin";
+export type Molding = "1 po" | "3 po";
+export type Ceiling = "8 pi" | "9 pi" | string;
+export type Corner = "Non" | "Coin 45 degres" | "Coin 90 degres" | string;
+
+export type Family =
+  | "Armoire murale"
+  | "Armoire de bas"
+  | "Garde-manger"
+  | "Armoire au-dessus du réfrigérateur"
+  | "Armoire murale de coin"
+  | "Armoire de bas de coin"
+  | "Garde-manger de coin"
+  | string;
+
+export interface Product {
+  id: string;
+  name: string;
+  family: Family;
+  cat: string;
+  w: number;
+  d: number;
+  h: number;
+  ceiling?: Ceiling;
+  corner?: Corner;
+  doors: number;
+  colors: ColorName[];
+  moldings: Molding[];
+  price: number;
+}
+
+export interface CartItem {
+  key: string;
+  productId: string;
+  name: string;
+  family: Family;
+  price: number;
+  w: number;
+  h: number;
+  d: number;
+  color: ColorName;
+  molding: Molding;
+  qty: number;
+}
+
+export interface Tweaks {
+  theme: "default" | "warm" | "ink";
+  density: "comfy" | "dense";
+  showPrices: boolean;
+  serif: string;
+  sans: string;
+}
