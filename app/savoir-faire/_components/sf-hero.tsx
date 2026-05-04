@@ -11,13 +11,16 @@ export function SfHero() {
           variant="serif"
           className="mt-4 text-[clamp(48px,6.5vw,92px)] leading-[0.98] tracking-[-0.025em] text-foreground [&_em]:italic [&_em]:text-primary"
         >
-          Une chaîne courte,<br />
-          contrôlée,<br />
+          Une chaîne courte,
+          <br />
+          contrôlée,
+          <br />
           <em>depuis vingt ans</em>.
         </Heading>
         <p className="mt-7 max-w-[480px] text-[17px] leading-[1.6] text-soft-foreground">
-          Le marketing ne précède pas la réalité opérationnelle. Voici ce qui sépare nos
-          modules de ce que vous trouverez ailleurs — concrètement, structurellement.
+          Le marketing ne précède pas la réalité opérationnelle. Voici ce qui
+          sépare nos modules de ce que vous trouverez ailleurs — concrètement,
+          structurellement.
         </p>
       </div>
       <div

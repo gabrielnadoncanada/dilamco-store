@@ -8,45 +8,80 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr] gap-14 border-b border-background/15 pb-14 max-[900px]:grid-cols-2 max-[700px]:grid-cols-1 max-[700px]:gap-8 max-[700px]:pb-8">
           <div>
-            <Logo className="mb-6 h-[26px] text-background" />
+            <Logo className="mb-6 h-[26px] text-background fill-background text-white" />
             <p className="max-w-xs text-sm leading-[1.6] opacity-70">
-              Distribution premium d&apos;armoires sur mesure depuis Montréal. Une chaîne
-              d&apos;approvisionnement maîtrisée, du dessin à l&apos;installation.
+              Distribution premium d&apos;armoires sur mesure depuis Montréal.
+              Une chaîne d&apos;approvisionnement maîtrisée, du dessin à
+              l&apos;installation.
             </p>
           </div>
           <div>
-            <Heading as="h4" className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60">
+            <Heading
+              as="h4"
+              className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60"
+            >
               Catalogue
             </Heading>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
-              <li><Link href="/catalogue?famille=Armoire+murale">Armoires murales</Link></li>
-              <li><Link href="/catalogue?famille=Armoire+de+bas">Armoires de bas</Link></li>
-              <li><Link href="/catalogue?famille=Garde-manger">Garde-manger</Link></li>
-              <li><Link href="/catalogue?coin=oui">Modules de coin</Link></li>
+              <li>
+                <Link href="/catalogue?famille=Armoire+murale">
+                  Armoires murales
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalogue?famille=Armoire+de+bas">
+                  Armoires de bas
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalogue?famille=Garde-manger">Garde-manger</Link>
+              </li>
+              <li>
+                <Link href="/catalogue?coin=oui">Modules de coin</Link>
+              </li>
             </ul>
           </div>
           <div>
-            <Heading as="h4" className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60">
+            <Heading
+              as="h4"
+              className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60"
+            >
               Maison
             </Heading>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
-              <li><Link href="/savoir-faire">Notre supply chain</Link></li>
-              <li><Link href="/projets">Projets réalisés</Link></li>
-              <li><Link href="/collections">Collections</Link></li>
-              <li><Link href="/soumission">Demander une soumission</Link></li>
+              <li>
+                <Link href="/savoir-faire">Notre supply chain</Link>
+              </li>
+              <li>
+                <Link href="/projets">Projets réalisés</Link>
+              </li>
+              <li>
+                <Link href="/collections">Collections</Link>
+              </li>
+              <li>
+                <Link href="/soumission">Demander une soumission</Link>
+              </li>
             </ul>
           </div>
           <div>
-            <Heading as="h4" className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60">
+            <Heading
+              as="h4"
+              className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60"
+            >
               Contact
             </Heading>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
-                9876 Boul. Industriel<br />
+                9876 Boul. Industriel
+                <br />
                 Montréal, QC H1Z 2X4
               </li>
-              <li><a href="mailto:projets@dilamco.ca">projets@dilamco.ca</a></li>
-              <li><a href="tel:5142225300">514 222 5300</a></li>
+              <li>
+                <a href="mailto:projets@dilamco.ca">projets@dilamco.ca</a>
+              </li>
+              <li>
+                <a href="tel:5142225300">514 222 5300</a>
+              </li>
             </ul>
           </div>
         </div>

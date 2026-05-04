@@ -38,7 +38,43 @@ export function Topbar() {
       <div className="bg-primary text-primary-foreground text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium py-1.5 md:py-2 px-[clamp(16px,4vw,56px)] max-[380px]:text-[9px]">
         Entrepôt à Montréal · 20+ ans d'expérience · Soumission en ligne
       </div>
-      <div className="grid items-center gap-3 md:gap-6 px-[18px] md:px-[clamp(20px,4vw,56px)] py-3.5 md:py-[22px] grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr]">
+      <div className="flex justify-between items-center gap-3 md:gap-6 px-[18px] px-6 py-3.5 md:py-[22px] ">
+        <Link
+          href="/"
+          aria-label="Dilamco accueil"
+          className="inline-flex items-center justify-center"
+        >
+          <Logo className="h-[18px] md:h-[22px]" />
+        </Link>
+        <nav className="ml-auto hidden md:flex gap-8 items-center text-[13px] tracking-[0.04em]">
+          {LINKS.map(([href, label]) => (
+            <Link
+              key={href}
+              href={href}
+              className={`relative py-1 hover:text-primary ${
+                isActive(href)
+                  ? "text-primary after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-primary"
+                  : "text-soft-foreground"
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex gap-3 md:gap-6 justify-end items-center text-[13px] tracking-[0.04em] ml-auto">
+          <button
+            className="inline-flex items-center gap-2 whitespace-nowrap shrink-0 bg-primary text-primary-foreground px-3 md:px-4 py-2 md:py-[9px] rounded-full text-[11px] md:text-xs tracking-[0.06em] cursor-pointer border-0"
+            onClick={() => cart.setDrawerOpen(true)}
+          >
+            <span className="hidden md:inline">Mon projet</span>
+            <span className="inline md:hidden max-[380px]:hidden">Projet</span>
+            <span className="bg-background text-primary rounded-full px-[7px] py-px text-[11px] font-semibold min-w-[18px] text-center">
+              {cart.totalQty}
+            </span>
+          </button>
+        </div>
+
         <Drawer direction="left" open={menuOpen} onOpenChange={setMenuOpen}>
           <DrawerTrigger asChild>
             <button
@@ -95,47 +131,6 @@ export function Topbar() {
             </div>
           </DrawerContent>
         </Drawer>
-
-        <nav className="hidden md:flex gap-8 items-center text-[13px] tracking-[0.04em]">
-          {LINKS.map(([href, label]) => (
-            <Link
-              key={href}
-              href={href}
-              className={`relative py-1 hover:text-primary ${
-                isActive(href)
-                  ? "text-primary after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-primary"
-                  : "text-soft-foreground"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <Link
-          href="/"
-          aria-label="Dilamco accueil"
-          className="inline-flex items-center justify-center"
-        >
-          <Logo className="h-[18px] md:h-[22px]" />
-        </Link>
-        <div className="flex gap-3 md:gap-6 justify-end items-center text-[13px] tracking-[0.04em]">
-          <Link
-            href="/savoir-faire"
-            className="hidden md:inline-flex items-center gap-2 text-soft-foreground hover:text-primary"
-          >
-            Showroom Montréal
-          </Link>
-          <button
-            className="inline-flex items-center gap-2 whitespace-nowrap shrink-0 bg-primary text-primary-foreground px-3 md:px-4 py-2 md:py-[9px] rounded-full text-[11px] md:text-xs tracking-[0.06em] cursor-pointer border-0"
-            onClick={() => cart.setDrawerOpen(true)}
-          >
-            <span className="hidden md:inline">Mon projet</span>
-            <span className="inline md:hidden max-[380px]:hidden">Projet</span>
-            <span className="bg-background text-primary rounded-full px-[7px] py-px text-[11px] font-semibold min-w-[18px] text-center">
-              {cart.totalQty}
-            </span>
-          </button>
-        </div>
       </div>
     </header>
   );

@@ -36,7 +36,7 @@ export function Pillars() {
         {PILLARS.map((p) => (
           <div
             key={p.num}
-            className="bg-background p-10 max-[700px]:p-[22px] flex flex-col min-h-[320px]"
+            className="bg-background p-10 max-[700px]:p-[22px] flex flex-col"
           >
             <div className="font-mono text-[11px] text-primary tracking-[0.08em] mb-7">
               ÉTAPE {p.num}

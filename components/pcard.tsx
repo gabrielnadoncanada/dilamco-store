@@ -28,24 +28,6 @@ export function PCard({ product }: { product: Product }) {
             style={{ backgroundImage: `url(${photo})` }}
           />
         )}
-        <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-background/0 to-background/95 p-[18%] opacity-0 transition-opacity duration-300 group-hover:opacity-100 [&>*]:max-h-full [&>*]:max-w-full">
-          <ModuleRender product={product} color={defaultColor} molding={defaultMolding} />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 z-[2] flex justify-center bg-gradient-to-t from-foreground/90 to-transparent p-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <button
-            className="cursor-pointer rounded-[1px] bg-background px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.08em] text-primary hover:bg-highlight hover:text-foreground"
-            onClick={(e) => {
-              e.preventDefault();
-              cart.addItem(product, {
-                color: defaultColor,
-                molding: defaultMolding,
-                qty: 1,
-              });
-            }}
-          >
-            Ajouter au projet
-          </button>
-        </div>
       </div>
       <div className="flex flex-col gap-1.5 px-[18px] pb-5 pt-[18px] max-[700px]:text-[11px]">
         <span className="font-mono text-[10px] tracking-[0.08em] text-muted-foreground">

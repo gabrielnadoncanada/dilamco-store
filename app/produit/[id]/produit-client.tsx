@@ -10,7 +10,10 @@ import { findProduct, products as ALL_PRODUCTS } from "@/lib/products";
 import { inSituFor, photoForProduct } from "@/lib/photos";
 import type { ColorName, Molding } from "@/lib/types";
 import { ProductBreadcrumb } from "./_components/product-breadcrumb";
-import { ProductGallery, type GalleryView } from "./_components/product-gallery";
+import {
+  ProductGallery,
+  type GalleryView,
+} from "./_components/product-gallery";
 import { ProductInfo } from "./_components/product-info";
 import { ProductInSitu } from "./_components/product-insitu";
 import { ProductRelated } from "./_components/product-related";
@@ -76,7 +79,6 @@ export default function ProduitClient({ id }: { id: string }) {
           onAdd={() => cart.addItem(product, { color, molding, qty })}
         />
       </div>
-      <ProductInSitu photos={inSitu} />
       <ProductRelated products={related} />
     </div>
   );

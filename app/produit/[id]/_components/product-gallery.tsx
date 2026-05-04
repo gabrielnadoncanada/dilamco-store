@@ -19,11 +19,18 @@ interface Props {
   onSelectView: (i: number) => void;
 }
 
-export function ProductGallery({ product, color, molding, views, view, onSelectView }: Props) {
+export function ProductGallery({
+  product,
+  color,
+  molding,
+  views,
+  view,
+  onSelectView,
+}: Props) {
   const current = views[view] || views[0];
 
   return (
-    <div className="sticky top-[120px] flex flex-col gap-4 max-[700px]:static max-[700px]:top-auto">
+    <div className="sticky top-[120px] flex flex-col gap-4 max-[1000px]:static max-[1000px]:top-auto">
       <div className="relative aspect-square overflow-hidden border border-border bg-secondary max-[700px]:aspect-[4/3]">
         {current.type === "photo" && current.src ? (
           <div
