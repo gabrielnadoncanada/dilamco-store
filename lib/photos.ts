@@ -1,49 +1,46 @@
 import type { Product, ColorName } from "./types";
 
-const PH = (id: string, w = 1200) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-
 export const PHOTOS = {
-  hero: PH("1556909114-f6e7ad7d3136", 1800),
-  hero_dark: PH("1583847268964-b28dc8f51f92", 1800),
-  hero_warm: PH("1600585154340-be6161a56a0c", 1800),
+  hero: "/screenshots/01-v2.jpg",
+  hero_dark: "/screenshots/03-v2.jpg",
+  hero_warm: "/screenshots/05-v2.jpg",
 
-  wall_blanc: PH("1600210492486-724fe5c67fb0"),
-  wall_chene: PH("1565538810643-b5bdb714032a"),
-  wall_bleu: PH("1583847268964-b28dc8f51f92"),
+  wall_blanc: "/screenshots/01-v2.jpg",
+  wall_chene: "/screenshots/03-v2.jpg",
+  wall_bleu: "/screenshots/07-v2.jpg",
 
-  base_blanc: PH("1556909114-f6e7ad7d3136"),
-  base_chene: PH("1556912167-f556f1f39fdf"),
-  base_bleu: PH("1600585154340-be6161a56a0c"),
+  base_blanc: "/screenshots/02-v2.jpg",
+  base_chene: "/screenshots/04-v2.jpg",
+  base_bleu: "/screenshots/06-v2.jpg",
 
-  pantry_blanc: PH("1600585154340-be6161a56a0c"),
-  pantry_chene: PH("1556912167-f556f1f39fdf"),
-  pantry_bleu: PH("1556912173-46c336c7fd55"),
+  pantry_blanc: "/screenshots/01-edito.jpg",
+  pantry_chene: "/screenshots/02-edito.jpg",
+  pantry_bleu: "/screenshots/03-edito.jpg",
 
-  fridge_blanc: PH("1574180566232-aaad1b5b8450"),
-  fridge_chene: PH("1556910103-1c02745aae4d"),
-  fridge_bleu: PH("1556912173-46c336c7fd55"),
+  fridge_blanc: "/screenshots/04-edito.jpg",
+  fridge_chene: "/screenshots/05-edito.jpg",
+  fridge_bleu: "/screenshots/03-01-current-home.jpg",
 
-  corner_blanc: PH("1565538810643-b5bdb714032a"),
-  corner_chene: PH("1556912167-f556f1f39fdf"),
-  corner_bleu: PH("1556912173-46c336c7fd55"),
+  corner_blanc: "/screenshots/01-01-current-home.jpg",
+  corner_chene: "/screenshots/02-01-current-home.jpg",
+  corner_bleu: "/screenshots/04-01-current-home.jpg",
 
-  detail_handle: PH("1600121848594-d8644e57abab"),
-  detail_grain: PH("1600573472556-e636c2acda88"),
-  detail_joint: PH("1600585154526-990dced4db0d"),
-  detail_shaker: PH("1565183997392-2f6f122e5912"),
+  detail_handle: "/screenshots/01-check.jpg",
+  detail_grain: "/screenshots/02-check.jpg",
+  detail_joint: "/screenshots/03-check.jpg",
+  detail_shaker: "/screenshots/cat-fixed.jpg",
 
-  atelier_1: PH("1581094288338-2314dddb7ece"),
-  atelier_2: PH("1504148455328-c376907d081c"),
-  atelier_3: PH("1530124566582-a618bc2615dc"),
-  atelier_4: PH("1568495248636-6432b97bd949"),
+  atelier_1: "/screenshots/01-cat-broken.jpg",
+  atelier_2: "/screenshots/02-cat-broken.jpg",
+  atelier_3: "/screenshots/03-cat-broken.jpg",
+  atelier_4: "/screenshots/cat-fixed.jpg",
 
-  project_1: PH("1600210492486-724fe5c67fb0"),
-  project_2: PH("1600585154340-be6161a56a0c"),
-  project_3: PH("1556912167-f556f1f39fdf"),
-  project_4: PH("1556912173-46c336c7fd55"),
-  project_5: PH("1565538810643-b5bdb714032a"),
-  project_6: PH("1574180566232-aaad1b5b8450"),
+  project_1: "/screenshots/01-v2.jpg",
+  project_2: "/screenshots/02-v2.jpg",
+  project_3: "/screenshots/03-v2.jpg",
+  project_4: "/screenshots/04-v2.jpg",
+  project_5: "/screenshots/05-v2.jpg",
+  project_6: "/screenshots/06-v2.jpg",
 } as const;
 
 export function photoForProduct(product: Product, color?: ColorName): string {
