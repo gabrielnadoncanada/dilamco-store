@@ -2,14 +2,11 @@ import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { CatCard } from "./cat-card";
 
-const CAT_IMG_MURALE =
-  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80";
-const CAT_IMG_BAS =
-  "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=900&q=80";
-const CAT_IMG_PANTRY =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80";
-const CAT_IMG_COIN =
-  "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=80";
+const CAT_IMG_MURALE = "/assets/cat_wall.png";
+const CAT_IMG_BAS = "/assets/cat_base.png";
+const CAT_IMG_PANTRY = "/assets/cat_kitchen.png";
+const CAT_IMG_COIN = "/assets/cat_base_corner.png";
+const CAT_IMG_FRIDGE = "/assets/cat_above_fridge.png";
 
 export function Categories() {
   return (
@@ -56,7 +53,7 @@ export function Categories() {
           href="/catalogue?coin=oui"
         />
         <CatCard
-          img={CAT_IMG_MURALE}
+          img={CAT_IMG_FRIDGE}
           count={36}
           title="Au-dessus du frigo"
           href="/catalogue?famille=Armoire+au-dessus+du+r%C3%A9frig%C3%A9rateur"

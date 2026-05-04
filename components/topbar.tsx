@@ -15,9 +15,8 @@ import {
 
 const LINKS: Array<[string, string]> = [
   ["/catalogue", "Catalogue"],
-  ["/collections", "Collections"],
-  ["/savoir-faire", "Savoir-faire"],
-  ["/projets", "Projets"],
+  ["/finitions", "Finitions"],
+  ["/soumission", "Demander une soumission"],
 ];
 
 export function Topbar() {
@@ -38,7 +37,7 @@ export function Topbar() {
       <div className="bg-primary text-primary-foreground text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium py-1.5 md:py-2 px-[clamp(16px,4vw,56px)] max-[380px]:text-[9px]">
         Entrepôt à Montréal · 20+ ans d'expérience · Soumission en ligne
       </div>
-      <div className="flex justify-between items-center gap-3 md:gap-6 px-[18px] px-6 py-3.5 md:py-[22px] ">
+      <div className="flex items-center gap-3 md:gap-6 px-[18px] px-6 py-3.5 md:py-[22px] ">
         <Link
           href="/"
           aria-label="Dilamco accueil"
@@ -62,7 +61,7 @@ export function Topbar() {
           ))}
         </nav>
 
-        <div className="flex gap-3 md:gap-6 justify-end items-center text-[13px] tracking-[0.04em] ml-auto">
+        <div className="flex gap-3 md:gap-6 justify-end items-center text-[13px] tracking-[0.04em] max-md:ml-auto">
           <button
             className="inline-flex items-center gap-2 whitespace-nowrap shrink-0 bg-primary text-primary-foreground px-3 md:px-4 py-2 md:py-[9px] rounded-full text-[11px] md:text-xs tracking-[0.06em] cursor-pointer border-0"
             onClick={() => cart.setDrawerOpen(true)}
@@ -113,13 +112,6 @@ export function Topbar() {
                   <span className="font-mono text-sm opacity-40">→</span>
                 </Link>
               ))}
-              <Link
-                href="/soumission"
-                className="mx-6 mt-4 bg-primary text-background px-5 py-[18px] text-[13px] tracking-[0.08em] uppercase flex justify-between items-center"
-              >
-                Demander une soumission
-                <span className="font-mono text-sm">→</span>
-              </Link>
             </nav>
             <div className="p-6 border-t border-border flex flex-col gap-2.5 text-[11px] tracking-[0.06em] uppercase text-muted-foreground">
               <span className="font-mono">

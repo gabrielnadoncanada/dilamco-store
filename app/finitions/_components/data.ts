@@ -2,11 +2,14 @@ export interface Collection {
   id: string;
   code: string;
   nom: string;
-  sous: string;
+  /** Accroches sous le titre (une ligne = une puce) */
+  taglines: string[];
   desc: string;
   matiere: string;
   rgb: string;
   veinage: string;
+  /** Si définit, remplace la grille Matière / Référence / Veinage */
+  specs?: Array<{ label: string; value: string }>;
   usage: string;
   ambient: string;
   detail: string;
@@ -14,6 +17,10 @@ export interface Collection {
   swColor: string;
   pourcentage: string;
   pourcentage_lbl: string;
+  /** Texte du bouton catalogue (défaut : « Voir les {nom} ») */
+  primaryCta?: string;
+  /** Bouton secondaire (défaut : échantillon / soumission) */
+  secondaryCta?: { label: string; href: string };
 }
 
 export const COLLECTIONS: Collection[] = [
@@ -21,16 +28,25 @@ export const COLLECTIONS: Collection[] = [
     id: "blanc-pur",
     code: "C.01",
     nom: "Blanc Pur",
-    sous: "La référence neutre",
+    taglines: ["Classique et lumineux"],
     desc:
       "Plus de la moitié des projets Dilamco partent du Blanc Pur. Il s'efface au profit de la lumière, du comptoir, de la pièce. Un blanc neutre légèrement chaud, catalysé deux couches.",
     matiere: "Blanc opaque catalysé · Sheen 25%",
     rgb: "NCS S 0500-N",
     veinage: "Aucun",
-    usage:
-      "Idéal en cuisine complète, ouverte sur séjour. Compatible avec tous les comptoirs (marbre, quartz, bois, acier).",
+    specs: [
+      { label: "Caisson", value: "Contreplaqué" },
+      { label: "Porte", value: "HDF laqué + Bouleau" },
+      { label: "Moulure", value: "1 et 3 pouces disponible" },
+    ],
+    usage: "",
+    primaryCta: "Voir les Blanc Pur",
+    secondaryCta: {
+      label: "Voir la salle de montre",
+      href: "/savoir-faire",
+    },
     ambient:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=2000&q=80",
+      "/assets/finitions_blanc.png",
     detail:
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
     bgColor: "#f5f1e8",
@@ -42,16 +58,28 @@ export const COLLECTIONS: Collection[] = [
     id: "chene-blanc",
     code: "C.02",
     nom: "Chêne blanc",
-    sous: "L'élégance scandinave",
+    taglines: ["Plus chaleureux, style bois"],
     desc:
       "Placage bouleau teinté chêne. Le veinage horizontal, l'élégance qu'on demande sans pouvoir la nommer. Idéal en îlot ou mur d'accent.",
     matiere: "Placage bouleau · Teinture aqueuse · Vernis mat 10%",
     rgb: "Pantone 7503 C (référence)",
     veinage: "Horizontal continu",
-    usage:
-      "Parfait sur îlot central, mur de garde-mangers, ou en bicolore avec Blanc Pur sur les hauts.",
+    specs: [
+      { label: "Caisson", value: "Contreplaqué" },
+      {
+        label: "Porte",
+        value: "Placage bouleau teinté chêne · Vernis mat · Veinage horizontal",
+      },
+      { label: "Moulure", value: "1 et 3 pouces disponible" },
+    ],
+    usage: "",
+    primaryCta: "Voir le Chêne blanc",
+    secondaryCta: {
+      label: "Voir la salle de montre",
+      href: "/savoir-faire",
+    },
     ambient:
-      "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=2000&q=80",
+      "/assets/finitions_chene.png",
     detail:
       "https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=1200&q=80",
     bgColor: "#c9a56e",
@@ -63,16 +91,25 @@ export const COLLECTIONS: Collection[] = [
     id: "bleu-marin",
     code: "C.03",
     nom: "Bleu marin",
-    sous: "L'affirmation chromatique",
+    taglines: ["Plus audacieux, accent moderne"],
     desc:
       "Un bleu profond catalysé. Pour les projets qui assument une couleur — souvent en bas, jumelé avec un haut Blanc Pur. Tient son ton sous lumière chaude comme froide.",
     matiere: "Opaque catalysé · Sheen 25% · 4 couches",
     rgb: "Farrow & Ball · Hague Blue (référence)",
     veinage: "Aucun",
-    usage:
-      "Tient le mieux en bas (armoires de bas + îlot). Évitez la cuisine entièrement bleue : la pièce devient lourde.",
+    specs: [
+      { label: "Caisson", value: "Contreplaqué" },
+      { label: "Porte", value: "HDF laqué catalysé · Sheen 25% · 4 couches" },
+      { label: "Moulure", value: "1 et 3 pouces disponible" },
+    ],
+    usage: "",
+    primaryCta: "Voir le Bleu marin",
+    secondaryCta: {
+      label: "Voir la salle de montre",
+      href: "/savoir-faire",
+    },
     ambient:
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=80",
+      "/assets/finitions_bleu.png",
     detail:
       "https://images.unsplash.com/photo-1556910589-129022a4b1c4?auto=format&fit=crop&w=1200&q=80",
     bgColor: "#1f3245",

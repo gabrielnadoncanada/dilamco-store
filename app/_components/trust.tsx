@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 
 const STATS: Array<[string, string]> = [
-  ["20+", "Années d'opération continue à Montréal"],
-  ["217", "Modules standards au catalogue, sur mesure réel"],
+  ["20+", "Années d'expérience"],
+  ["217", "Modules pour votre projet, sur mesure disponible"],
   ["48h", "Délai garanti pour une soumission ferme"],
-  ["10 ans", "Garantie complète sur les caissons et la quincaillerie"],
+  ["10 ans", "Garantie complète sur les modules"],
 ];
 
 export function Trust() {
@@ -14,16 +14,16 @@ export function Trust() {
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-20">
         <div>
           <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary-foreground/70">
-            La structure derrière le produit
+            L&apos;offre derrière le produit
           </span>
           <h2 className="font-serif text-[clamp(38px,5vw,64px)] max-[700px]:!text-[36px] tracking-[-0.02em] leading-[1.04] mt-3">
-            Le marketing reflète la réalité opérationnelle. Pas l&apos;inverse.
+            Une offre simple, basée sur du concret.
           </h2>
           <p className="mt-6 text-base leading-[1.65] opacity-85 max-w-[480px]">
-            Si la qualité n&apos;est pas réelle, le positionnement premium s&apos;effondre. Notre modèle repose sur quatre actifs concrets — pas sur une promesse.
+            Nous misons sur des standards simples : qualité des matériaux, disponibilité des modules et rapidité d&apos;exécution.
           </p>
-          <Button asChild variant="paper" className="mt-8">
-            <Link href="/savoir-faire">Visiter l&apos;entrepôt <ButtonArrow /></Link>
+          <Button asChild variant="paper" className="mt-8 uppercase tracking-wider">
+            <Link href="/catalogue">Créer ma cuisine <ButtonArrow /></Link>
           </Button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/15 border border-white/15">

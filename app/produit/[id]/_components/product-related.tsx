@@ -1,5 +1,14 @@
+"use client";
+
 import { PCard } from "@/components/pcard";
 import { Heading } from "@/components/legacy/heading";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import type { Product } from "@/lib/types";
 
 export function ProductRelated({ products }: { products: Product[] }) {
@@ -14,11 +23,26 @@ export function ProductRelated({ products }: { products: Product[] }) {
       >
         De la même famille
       </Heading>
-      <div className="grid grid-cols-4 gap-x-6 gap-y-8 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-2 max-[700px]:gap-x-3 max-[700px]:gap-y-[18px] max-[380px]:grid-cols-1">
-        {products.map((p) => (
-          <PCard key={p.id} product={p} />
-        ))}
-      </div>
+
+      <Carousel
+        opts={{ align: "start", slidesToScroll: "auto", containScroll: "trimSnaps" }}
+        className="group/related relative"
+      >
+        <CarouselContent className="-ml-6 max-[700px]:-ml-3">
+          {products.map((p) => (
+            <CarouselItem
+              key={p.id}
+              className="pl-6 basis-1/4 max-[1100px]:basis-1/2 max-[700px]:basis-1/2 max-[700px]:pl-3 max-[380px]:basis-full"
+            >
+              <PCard product={p} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="hidden opacity-0 transition-opacity group-hover/related:opacity-100 md:block">
+          <CarouselPrevious className="left-2" />
+          <CarouselNext className="right-2" />
+        </div>
+      </Carousel>
     </div>
   );
 }

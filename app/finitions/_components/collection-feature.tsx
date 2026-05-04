@@ -13,24 +13,26 @@ interface Props {
 export function CollectionFeature({ collection: c, reverse }: Props) {
   return (
     <Section className="grid grid-cols-[1.15fr_1fr] items-center gap-20 border-b border-border py-20 max-[1000px]:grid-cols-1 max-[1000px]:gap-12 max-[700px]:gap-7 max-[700px]:py-10">
-      <div className={cn("relative aspect-[4/5]", reverse && "order-2 max-[1000px]:order-1")}>
+      <div
+        className={cn(
+          "relative aspect-[4/5]",
+          reverse && "order-2 max-[1000px]:order-1",
+        )}
+      >
         <div
           className="absolute inset-0 border border-border bg-cover bg-center"
           style={{ backgroundImage: `url(${c.ambient})` }}
         />
-        <div
-          className="absolute -bottom-7 -right-7 flex size-40 items-end border-4 border-background p-4 shadow-[0_8px_32px_rgba(0,0,0,0.12)] max-[1000px]:-bottom-4 max-[1000px]:-right-4 max-[1000px]:size-[110px] max-[700px]:static max-[700px]:mt-3 max-[700px]:h-auto max-[700px]:w-full max-[700px]:aspect-[4/1]"
-          style={{ background: c.swColor }}
-        >
-          <span className="bg-card/85 px-2 py-1 font-mono text-[11px] tracking-[0.08em] text-foreground">
-            {c.code}
-          </span>
-        </div>
       </div>
 
-      <div className={cn("flex flex-col gap-5", reverse && "order-1 max-[1000px]:order-2")}>
+      <div
+        className={cn(
+          "flex flex-col gap-5",
+          reverse && "order-1 max-[1000px]:order-2",
+        )}
+      >
         <span className="font-mono text-[11px] tracking-[0.1em] text-primary">
-          {c.code} · COLLECTION
+          {c.code} · FINITION
         </span>
         <Heading
           as="h2"
@@ -39,27 +41,40 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
         >
           {c.nom}
         </Heading>
-        <p className="-mt-2 font-serif text-[22px] italic tracking-[-0.01em] text-primary">
-          {c.sous}
+        <ul className="-mt-2 list-none space-y-1 font-serif text-[22px] italic tracking-[-0.01em] text-primary">
+          {c.taglines.map((line) => (
+            <li key={line} className="flex gap-2.5">
+              <span className="shrink-0" aria-hidden>
+                •
+              </span>
+              <span>{line}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-base leading-[1.65] text-soft-foreground">
+          {c.desc}
         </p>
-        <p className="text-base leading-[1.65] text-soft-foreground">{c.desc}</p>
 
         <div className="grid grid-cols-3 gap-4 border-y border-border py-5 max-[700px]:gap-2 [&_span]:mb-1 [&_span]:block [&_span]:font-mono [&_span]:text-[10px] [&_span]:uppercase [&_span]:tracking-[0.1em] [&_span]:text-muted-foreground [&_strong]:text-[13px] [&_strong]:font-medium [&_strong]:leading-[1.3] [&_strong]:text-foreground">
-          <div>
-            <span>Matière</span>
-            <strong>{c.matiere}</strong>
-          </div>
-          <div>
-            <span>Référence</span>
-            <strong>{c.rgb}</strong>
-          </div>
-          <div>
-            <span>Veinage</span>
-            <strong>{c.veinage}</strong>
-          </div>
+          {(
+            c.specs ?? [
+              { label: "Matière", value: c.matiere },
+              { label: "Référence", value: c.rgb },
+              { label: "Veinage", value: c.veinage },
+            ]
+          ).map((row) => (
+            <div key={row.label}>
+              <span>{row.label}</span>
+              <strong>{row.value}</strong>
+            </div>
+          ))}
         </div>
 
-        <p className="text-sm italic leading-[1.6] text-soft-foreground">{c.usage}</p>
+        {c.usage ? (
+          <p className="text-sm italic leading-[1.6] text-soft-foreground">
+            {c.usage}
+          </p>
+        ) : null}
 
         <div className="flex items-baseline gap-4">
           <span className="font-serif text-[64px] leading-none tracking-[-0.03em] text-primary">
@@ -73,11 +88,14 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
         <div className="mt-3 flex flex-wrap gap-3">
           <Button asChild>
             <Link href={`/catalogue?couleur=${encodeURIComponent(c.nom)}`}>
-              Voir les {c.nom.toLowerCase()} <ButtonArrow />
+              {c.primaryCta ?? `Voir les ${c.nom.toLowerCase()}`}{" "}
+              <ButtonArrow />
             </Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/soumission">Demander un échantillon</Link>
+            <Link href={c.secondaryCta?.href ?? "/soumission"}>
+              {c.secondaryCta?.label ?? "Demander un échantillon"}
+            </Link>
           </Button>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80";
+const HERO_IMG = "/assets/hero_image.png";
 
 export function Hero() {
   return (

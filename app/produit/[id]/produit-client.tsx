@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/legacy/container";
 import { Heading } from "@/components/legacy/heading";
 import { findProduct, products as ALL_PRODUCTS } from "@/lib/products";
-import { inSituFor, photoForProduct } from "@/lib/photos";
+import { productGalleryViews } from "@/lib/photos";
 import type { ColorName, Molding } from "@/lib/types";
 import { ProductBreadcrumb } from "./_components/product-breadcrumb";
 import {
@@ -15,7 +15,6 @@ import {
   type GalleryView,
 } from "./_components/product-gallery";
 import { ProductInfo } from "./_components/product-info";
-import { ProductInSitu } from "./_components/product-insitu";
 import { ProductRelated } from "./_components/product-related";
 
 export default function ProduitClient({ id }: { id: string }) {
@@ -45,16 +44,9 @@ export default function ProduitClient({ id }: { id: string }) {
 
   const related = ALL_PRODUCTS.filter(
     (p) => p.family === product.family && p.id !== product.id,
-  ).slice(0, 4);
+  );
 
-  const ambiancePhoto = photoForProduct(product, color);
-  const inSitu = inSituFor(product);
-  const views: GalleryView[] = [
-    { type: "photo", src: ambiancePhoto, label: "Ambiance" },
-    { type: "svg", src: undefined, label: "Vue technique" },
-    { type: "photo", src: inSitu[1], label: "Détail · Moulure" },
-    { type: "photo", src: inSitu[2], label: "Atelier" },
-  ];
+  const views: GalleryView[] = productGalleryViews(product);
 
   return (
     <div className="mx-auto max-w-[1440px] px-[clamp(20px,4vw,56px)] pb-[100px] pt-8 max-[700px]:px-[18px] max-[700px]:pb-14 max-[700px]:pt-4">

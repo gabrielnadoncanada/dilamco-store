@@ -32,12 +32,28 @@ export default function CatalogueClient() {
 
   const filtered = useMemo<Product[]>(() => {
     return ALL_PRODUCTS.filter((p) => {
-      if (filters.families.length && !filters.families.includes(p.family)) return false;
-      if (filters.colors.length && !p.colors.some((c) => filters.colors.includes(c))) return false;
-      if (filters.moldings.length && !p.moldings.some((m) => filters.moldings.includes(m))) return false;
-      if (filters.ceilings.length && p.ceiling && !filters.ceilings.includes(p.ceiling)) return false;
-      if (filters.corner === "corner" && (p.corner === "Non" || !p.corner)) return false;
-      if (filters.corner === "straight" && p.corner && p.corner !== "Non") return false;
+      if (filters.families.length && !filters.families.includes(p.family))
+        return false;
+      if (
+        filters.colors.length &&
+        !p.colors.some((c) => filters.colors.includes(c))
+      )
+        return false;
+      if (
+        filters.moldings.length &&
+        !p.moldings.some((m) => filters.moldings.includes(m))
+      )
+        return false;
+      if (
+        filters.ceilings.length &&
+        p.ceiling &&
+        !filters.ceilings.includes(p.ceiling)
+      )
+        return false;
+      if (filters.corner === "corner" && (p.corner === "Non" || !p.corner))
+        return false;
+      if (filters.corner === "straight" && p.corner && p.corner !== "Non")
+        return false;
       return true;
     }).sort((a, b) => {
       if (filters.sort === "price-asc") return a.price - b.price;

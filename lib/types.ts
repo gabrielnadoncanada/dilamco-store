@@ -13,6 +13,9 @@ export type Family =
   | "Garde-manger de coin"
   | string;
 
+/** Une entrée galerie : chemin uniquement ou objet avec libellé optionnel. */
+export type ProductGalleryEntry = string | { src: string; label?: string };
+
 export interface Product {
   id: string;
   name: string;
@@ -27,6 +30,8 @@ export interface Product {
   colors: ColorName[];
   moldings: Molding[];
   price: number;
+  /** Si défini et non vide, chemins pour la galerie produit ; sinon les placeholders locaux du catalogue (`wall_cabinet_*.png`). */
+  gallery?: ProductGalleryEntry[];
 }
 
 export interface CartItem {
