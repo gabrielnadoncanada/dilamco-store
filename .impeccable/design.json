@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-14T00:00:00.000Z",
+  "title": "Design System: Dilamco",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Crème Atelier",
+        "canonical": "oklch(0.97 0.008 85)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 85)",
+          "oklch(0.25 0.008 85)",
+          "oklch(0.40 0.008 85)",
+          "oklch(0.55 0.008 85)",
+          "oklch(0.70 0.008 85)",
+          "oklch(0.82 0.008 85)",
+          "oklch(0.90 0.008 85)",
+          "oklch(0.97 0.008 85)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Encre Forêt",
+        "canonical": "oklch(0.21 0.012 150)",
+        "tonalRamp": [
+          "oklch(0.12 0.012 150)",
+          "oklch(0.21 0.012 150)",
+          "oklch(0.30 0.012 150)",
+          "oklch(0.42 0.012 150)",
+          "oklch(0.55 0.012 150)",
+          "oklch(0.68 0.010 150)",
+          "oklch(0.82 0.008 150)",
+          "oklch(0.94 0.006 150)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Vert Forêt Profond",
+        "canonical": "oklch(0.32 0.030 150)",
+        "tonalRamp": [
+          "oklch(0.15 0.030 150)",
+          "oklch(0.22 0.030 150)",
+          "oklch(0.32 0.030 150)",
+          "oklch(0.42 0.035 150)",
+          "oklch(0.54 0.040 150)",
+          "oklch(0.66 0.035 150)",
+          "oklch(0.80 0.025 150)",
+          "oklch(0.92 0.012 150)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Crème Sable",
+        "canonical": "oklch(0.94 0.015 80)",
+        "tonalRamp": [
+          "oklch(0.18 0.015 80)",
+          "oklch(0.30 0.015 80)",
+          "oklch(0.45 0.015 80)",
+          "oklch(0.60 0.018 80)",
+          "oklch(0.74 0.018 80)",
+          "oklch(0.85 0.018 80)",
+          "oklch(0.90 0.018 80)",
+          "oklch(0.94 0.015 80)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cendre Sable",
+        "canonical": "oklch(0.91 0.018 80)",
+        "tonalRamp": [
+          "oklch(0.20 0.018 80)",
+          "oklch(0.32 0.018 80)",
+          "oklch(0.46 0.020 80)",
+          "oklch(0.60 0.022 80)",
+          "oklch(0.74 0.020 80)",
+          "oklch(0.83 0.020 80)",
+          "oklch(0.88 0.020 80)",
+          "oklch(0.91 0.018 80)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Gris Pierre",
+        "canonical": "oklch(0.51 0.005 130)"
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Bordure Lin",
+        "canonical": "oklch(0.86 0.022 80)"
+      },
+      "border-strong": {
+        "role": "neutral",
+        "displayName": "Bordure Foin",
+        "canonical": "oklch(0.72 0.035 80)"
+      },
+      "highlight": {
+        "role": "tertiary",
+        "displayName": "Sable Doré",
+        "canonical": "oklch(0.78 0.060 85)",
+        "tonalRamp": [
+          "oklch(0.20 0.060 85)",
+          "oklch(0.32 0.060 85)",
+          "oklch(0.45 0.070 85)",
+          "oklch(0.58 0.075 85)",
+          "oklch(0.68 0.072 85)",
+          "oklch(0.78 0.060 85)",
+          "oklch(0.86 0.045 85)",
+          "oklch(0.93 0.025 85)"
+        ]
+      },
+      "destructive": {
+        "role": "secondary",
+        "displayName": "Argile Cuite",
+        "canonical": "oklch(0.46 0.110 35)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Hero)",
+        "purpose": "H1 du Hero uniquement. Italic primary autorisé pour la mise en valeur d'un fragment."
+      },
+      "headline": {
+        "displayName": "Headline (Section)",
+        "purpose": "H2 d'ouverture de section, toujours précédé d'un eyebrow label."
+      },
+      "title": {
+        "displayName": "Title (Cellule)",
+        "purpose": "H3 dans les cellules de grid (Pillars, Process, cards)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texte courant. Max 65 à 75ch de largeur."
+      },
+      "label": {
+        "displayName": "Eyebrow Label",
+        "purpose": "Annonce le sujet de la section au-dessus de chaque H2. Signature visuelle récurrente."
+      },
+      "mono-label": {
+        "displayName": "Mono Label",
+        "purpose": "Numérotation d'étape (ÉTAPE 01), libellés techniques, cotes."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-card",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Ease-out-quart pour les hover de cartes (CatCard translateY -3px sur 400ms)."
+      },
+      {
+        "name": "ease-image",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Ease-out-quint pour le scale 1.04 de l'image inner (600ms)."
+      },
+      {
+        "name": "ease-button",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Ease standard pour les transitions d'état de bouton (180ms) et de ButtonArrow (200ms)."
+      },
+      {
+        "name": "duration-button",
+        "value": "180ms",
+        "purpose": "Durée de transition par défaut sur les boutons."
+      },
+      {
+        "name": "duration-card",
+        "value": "400ms",
+        "purpose": "Durée du translate-Y sur les cartes interactives."
+      },
+      {
+        "name": "duration-image",
+        "value": "600ms",
+        "purpose": "Durée du scale lent sur l'image inner des cartes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "700px"
+      },
+      {
+        "name": "tablet-max",
+        "value": "900px"
+      },
+      {
+        "name": "desktop-min",
+        "value": "901px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1101px"
+      },
+      {
+        "name": "container-max",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA principal. Fond vert forêt, texte crème, uppercase tracking 0.08em. Flèche translate +3px au hover.",
+      "html": "<button class=\"ds-btn-primary\">Créer ma cuisine <span class=\"ds-btn-arrow\" aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #253b2f; color: #faf8f4; border: 1px solid transparent; border-radius: 0; padding: 14px 28px; font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: rgba(37, 59, 47, 0.9); } .ds-btn-primary:focus-visible { outline: 2px solid #253b2f; outline-offset: 3px; } .ds-btn-primary .ds-btn-arrow { display: inline-block; transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover .ds-btn-arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "CTA secondaire. Bordure foreground, fond transparent. Inversion complète au hover.",
+      "html": "<button class=\"ds-btn-ghost\">Demander une soumission</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: #1a1f1c; border: 1px solid #1a1f1c; border-radius: 0; padding: 14px 28px; font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1), color 180ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-ghost:hover { background: #1a1f1c; color: #faf8f4; } .ds-btn-ghost:focus-visible { outline: 2px solid #253b2f; outline-offset: 3px; }"
+    },
+    {
+      "name": "Paper Button",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "CTA pour fonds sombres (section Trust). Fond crème, texte primary.",
+      "html": "<button class=\"ds-btn-paper\">Créer ma cuisine <span class=\"ds-btn-arrow\" aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn-paper { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #faf8f4; color: #253b2f; border: 1px solid transparent; border-radius: 0; padding: 14px 28px; font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 180ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-paper:hover { background: #f3eee5; } .ds-btn-paper:focus-visible { outline: 2px solid #faf8f4; outline-offset: 3px; } .ds-btn-paper .ds-btn-arrow { display: inline-block; transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-paper:hover .ds-btn-arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "custom",
+      "refersTo": "eyebrow-label",
+      "description": "Label uppercase qui annonce le sujet de chaque section. Toujours au-dessus d'un H2.",
+      "html": "<span class=\"ds-eyebrow\">Le catalogue</span>",
+      "css": ".ds-eyebrow { display: inline-block; font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 500; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; color: #253b2f; }"
+    },
+    {
+      "name": "Category Card",
+      "kind": "card",
+      "refersTo": "cat-card",
+      "description": "Carte catégorie image-cover avec gradient bottom et titre serif. translate-Y -3px au hover, image inner scale 1.04.",
+      "html": "<a class=\"ds-cat-card\" href=\"#\"><div class=\"ds-cat-card__img\" style=\"background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800')\"></div><div class=\"ds-cat-card__overlay\"></div><div class=\"ds-cat-card__content\"><h3 class=\"ds-cat-card__title\">Armoires murales</h3><span class=\"ds-cat-card__cta\">Voir les prix <span aria-hidden=\"true\">→</span></span></div></a>",
+      "css": ".ds-cat-card { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #ebe5d8; cursor: pointer; transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; } .ds-cat-card:hover { transform: translateY(-3px); } .ds-cat-card:focus-visible { outline: 2px solid #253b2f; outline-offset: 3px; } .ds-cat-card__img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-cat-card:hover .ds-cat-card__img { transform: scale(1.04); } .ds-cat-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26, 31, 28, 0.85), rgba(26, 31, 28, 0.15) 50%, transparent); } .ds-cat-card__content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; color: #faf8f4; } .ds-cat-card__title { font-family: 'GT Sectra', Georgia, serif; font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.02em; margin: 0 0 8px 0; } .ds-cat-card__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist', sans-serif; font-size: 12px; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }"
+    },
+    {
+      "name": "Hairline Cell (Pillar)",
+      "kind": "card",
+      "refersTo": "hairline-cell",
+      "description": "Cellule de grid hairline. À utiliser dans un parent grid gap-px bg-border. Mono label en haut, H3 serif title, body muted.",
+      "html": "<div class=\"ds-pillar-cell\"><div class=\"ds-pillar-cell__step\">ÉTAPE 01</div><h3 class=\"ds-pillar-cell__title\">Parcourez notre catalogue.</h3><p class=\"ds-pillar-cell__body\">Découvrez nos modules, dimensions et prix en quelques clics.</p></div>",
+      "css": ".ds-pillar-cell { display: flex; flex-direction: column; background: #faf8f4; padding: 40px; } .ds-pillar-cell__step { font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1; letter-spacing: 0.08em; color: #253b2f; margin-bottom: 28px; } .ds-pillar-cell__title { font-family: 'GT Sectra', Georgia, serif; font-size: 28px; font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: #1a1f1c; margin: 0 0 16px 0; } .ds-pillar-cell__body { font-family: 'Geist', sans-serif; font-size: 14px; line-height: 1.6; color: #6c7068; flex: 1; margin: 0; }"
+    },
+    {
+      "name": "Section Heading (Eyebrow + H2)",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Pattern signature : eyebrow uppercase au-dessus d'un H2 serif. Forme l'ouverture de chaque section.",
+      "html": "<header class=\"ds-section-heading\"><span class=\"ds-eyebrow\">Le processus</span><h2 class=\"ds-section-heading__h2\">Obtenez votre cuisine en 4 étapes.</h2></header>",
+      "css": ".ds-section-heading { display: block; max-width: 1440px; } .ds-section-heading .ds-eyebrow { font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 500; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; color: #253b2f; } .ds-section-heading__h2 { font-family: 'GT Sectra', Georgia, serif; font-size: clamp(34px, 4.5vw, 62px); font-weight: 400; line-height: 1.02; letter-spacing: -0.02em; color: #1a1f1c; margin: 12px 0 0 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "L'Atelier honnête",
+    "overview": "Dilamco vend des armoires de cuisine en stock à prix affichés. Le design system reflète ce contrat : direct, transparent, fier de son matériel. On parle comme un menuisier de quartier qui te montre ses caissons, pas comme un cuisiniste qui te vend une expérience. Le serif éditorial GT Sectra porte la voix (sérieuse, posée), le sans Geist porte les faits (15px, lisible, propre), la mono JetBrains numérote les étapes comme des cotes sur un plan. Les surfaces sont planes. Les coins sont vifs (radius 0). Les bordures sont fines (1px) et omniprésentes. Le vert forêt profond tient le rôle d'accent, jamais de fond. La crème chaude est la matière par défaut. Ce système rejette explicitement les codes du luxe, le sur-mesure, le savoir-faire d'exception, le branding signature. Il rejette aussi les tics SaaS contemporains : gradients texte, glassmorphism, cards molletonnées, big-number hero, hero-metrics neon.",
+    "keyCharacteristics": [
+      "Crème chaude par défaut, vert forêt en accent (≤10% de l'écran)",
+      "Serif éditorial GT Sectra pour la voix, Geist pour les faits, mono pour les cotes",
+      "Coins vifs partout (radius 0px), bordures fines (1px), aucune ombre par défaut",
+      "Eyebrow labels uppercase 11px tracking 0.18em : signature visuelle récurrente",
+      "Grid hairline (gap-px sur fond bordure) pour les séries de cellules"
+    ],
+    "rules": [
+      {
+        "name": "La Règle du 10%",
+        "body": "Le vert forêt primaire couvre au maximum 10% de la surface visible d'un écran : CTA, eyebrows, liens, italics dans les headlines. Au-delà, il devient envahissant et trahit la promesse sans flafla.",
+        "section": "colors"
+      },
+      {
+        "name": "La Règle du Crème Tinté",
+        "body": "Aucun blanc pur en surface de page. Le système est tiré vers le sable. #ffffff existe pour les cards stricts, pas pour les fonds de section.",
+        "section": "colors"
+      },
+      {
+        "name": "La Règle de l'Italic Citation",
+        "body": "L'italic dans une headline est porté par le primary, pas par une variante de neutre. C'est l'effet passage clé du paragraphe, pas une décoration.",
+        "section": "colors"
+      },
+      {
+        "name": "La Règle de l'Eyebrow",
+        "body": "Toute headline de section est précédée d'un eyebrow label. Un H2 nu, sans contexte au-dessus, est interdit : il manque la promesse.",
+        "section": "typography"
+      },
+      {
+        "name": "La Règle 65ch",
+        "body": "Les paragraphes de corps ne dépassent jamais 65 à 75 caractères de largeur. Au-delà, on passe en deux colonnes ou on resserre le max-width (max-w-480px est le standard du projet).",
+        "section": "typography"
+      },
+      {
+        "name": "La Règle du Mono Numérique",
+        "body": "Tout chiffre qui sert de cote, d'étape, de référence (et non de montant) passe en JetBrains Mono. Les prix restent en Geist : ils sont des faits commerciaux, pas des cotes techniques.",
+        "section": "typography"
+      },
+      {
+        "name": "La Règle du Plat par Défaut",
+        "body": "Aucun box-shadow par défaut. Les ombres apparaissent uniquement comme réponse à un état (hover, focus visible, dropdown ouvert), et restent diffuses (radius >16px, opacity <12%).",
+        "section": "elevation"
+      },
+      {
+        "name": "La Règle du Hairline Grid",
+        "body": "Pour toute grille de cellules égales (étapes, stats, features), utiliser grid gap-px bg-border plutôt que border individuel. Ça produit une vraie hairline continue, alignée parfaitement, sans doublons aux jonctions.",
+        "section": "elevation"
+      },
+      {
+        "name": "La Règle du Translate Hover",
+        "body": "L'élévation interactive se fait par translateY -3px sur les liens-cartes et par translateX +3px sur les flèches de bouton. Pas de scale, pas de shadow drop. Le mouvement remplace la profondeur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do garder le vert forêt primary à ≤10% de la surface visible (CTA, eyebrows, liens, italics dans les headlines).",
+      "Do précéder chaque H2 d'eyebrow d'un label uppercase 11px tracking 0.18em couleur primary.",
+      "Do utiliser grid gap-px bg-border pour toute série de cellules, jamais des border individuels.",
+      "Do alterner les fonds de section (background → secondary → background → primary) pour créer du rythme vertical.",
+      "Do mettre les chiffres techniques (étapes, cotes, références) en JetBrains Mono. Les montants restent en Geist.",
+      "Do garder les boutons en uppercase tracking 0.08em weight 500. C'est la signature des CTA.",
+      "Do utiliser translateY -3px sur les cartes interactives, translateX +3px sur les ButtonArrow. Pas de scale, pas de shadow drop.",
+      "Do capper les paragraphes de corps à 65 à 75 caractères de largeur (le standard projet est max-w-480px).",
+      "Do parler comme un menuisier de quartier : phrases courtes, langage d'action (monte ta cuisine, vois ton prix), québécois sans en faire trop."
+    ],
+    "donts": [
+      "Don't utiliser un blanc pur (#ffffff) en fond de page. La crème (#faf8f4) est la matière par défaut.",
+      "Don't ajouter de border-radius. Le système est radius 0 partout. Une carte arrondie casse l'identité d'atelier.",
+      "Don't ajouter de box-shadow décoratif. Le système est plat. La profondeur vient des bordures et du tonal layering.",
+      "Don't utiliser le vocabulaire luxe : haut de gamme, sur-mesure, signature, bespoke, exclusif, savoir-faire d'exception, expérience client, design d'auteur, partenaire de confiance. Ces mots sont prohibés dans la copy ET dans les noms de tokens.",
+      "Don't utiliser de gradient texte (background-clip: text). Jamais. L'emphase passe par le poids ou par l'italic primary.",
+      "Don't utiliser de glassmorphism, de blur, de cards translucides. Le système est mat et opaque.",
+      "Don't utiliser de side-stripe border (border-left: 4px solid color). Pour un accent, utiliser un fond tinté ou un eyebrow label.",
+      "Don't empiler des cards (card dans une card). Si une grille suffit, c'est qu'une grille suffit.",
+      "Don't utiliser le pattern hero-metric (gros chiffre + petit label + accent gradient). C'est un cliché SaaS. Si on doit afficher des chiffres, utiliser le pattern Trust : grid hairline sur fond primary, chiffres serif highlight.",
+      "Don't utiliser d'em dash dans la copy. Préférer la virgule, le deux-points, les parenthèses.",
+      "Don't utiliser de modal sauf si toutes les alternatives inline et progressives ont été épuisées. La soumission n'est pas un modal, c'est une page.",
+      "Don't sortir une H2 nue sans eyebrow au-dessus. Il manque la promesse."
+    ]
+  }
+}
