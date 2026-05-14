@@ -24,11 +24,7 @@ export function CatalogueHead({
     <div className="col-span-full flex flex-wrap items-end justify-between gap-8 border-b border-border pb-7 max-[700px]:flex-col max-[700px]:items-start max-[700px]:gap-3">
       <div className="max-[700px]:w-full">
         <Eyebrow>Catalogue technique</Eyebrow>
-        <Headline
-          level="display"
-          as="h1"
-          className="mt-2 text-[clamp(40px,5vw,68px)] leading-none max-[700px]:text-[28px]"
-        >
+        <Headline level="headline" as="h1" className="mt-2">
           Armoires de cuisine
         </Headline>
       </div>

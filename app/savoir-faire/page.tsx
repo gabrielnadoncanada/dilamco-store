@@ -2,7 +2,7 @@ import { Container } from "@/components/ds";
 import { SfHero } from "./_components/sf-hero";
 import { SfPillars } from "./_components/sf-pillars";
 import { SfQuoteBlock } from "./_components/sf-quote-block";
-import { SfVisitBlock } from "./_components/sf-visit-block";
+import { ShowroomCta } from "@/components/showroom-cta";
 
 export const metadata = { title: "Savoir-faire · Dilamco" };
 
@@ -12,7 +12,7 @@ export default function SavoirFairePage() {
       <SfHero />
       <SfPillars />
       <SfQuoteBlock />
-      <SfVisitBlock />
+      <ShowroomCta />
     </Container>
   );
 }

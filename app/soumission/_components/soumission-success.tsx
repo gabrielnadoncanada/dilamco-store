@@ -10,11 +10,7 @@ export function SoumissionSuccess({ tel }: { tel: string }) {
   return (
     <div className="mx-auto my-20 max-w-[720px] px-6 text-center">
       <Eyebrow>Demande reçue</Eyebrow>
-      <Headline
-        level="display"
-        as="h1"
-        className="mt-4 text-[56px] leading-[1.05]"
-      >
+      <Headline level="headline" as="h1" className="mt-4">
         Votre soumission est en préparation.
       </Headline>
       <Body size="lead" tone="muted" className="mt-6">

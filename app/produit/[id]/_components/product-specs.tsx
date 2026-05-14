@@ -4,7 +4,7 @@ import type { Product } from "@/lib/types";
 export function ProductSpecs({ product }: { product: Product }) {
   return (
     <div className="mt-6 border-t border-border pt-7">
-      <Eyebrow as="h4" tone="muted" className="tracking-[0.14em]">
+      <Eyebrow as="h4" tone="muted">
         Spécifications techniques
       </Eyebrow>
       <dl className="mt-4 grid grid-cols-[1fr_1.3fr] gap-y-2 max-[700px]:grid-cols-1 max-[700px]:gap-y-2 [&_dd]:m-0 [&_dd]:font-mono [&_dd]:text-xs [&_dd]:text-foreground [&_dt]:border-b [&_dt]:border-border [&_dt]:py-2.5 [&_dt]:text-xs [&_dt]:text-muted-foreground [&_dd]:border-b [&_dd]:border-border [&_dd]:py-2.5">

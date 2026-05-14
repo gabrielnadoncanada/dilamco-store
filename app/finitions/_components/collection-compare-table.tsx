@@ -5,11 +5,7 @@ export function CollectionCompareTable() {
   return (
     <section className="mt-[100px] border-t border-foreground pt-20">
       <Eyebrow>Comparer</Eyebrow>
-      <Headline
-        level="subhead"
-        as="h2"
-        className="mb-12 mt-4 text-[clamp(36px,4.5vw,56px)]"
-      >
+      <Headline level="headline" as="h2" className="mb-12 mt-4">
         Lequel pour votre projet ?
       </Headline>
       <div className="border border-border">

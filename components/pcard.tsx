@@ -19,9 +19,6 @@ export function PCard({ product }: { product: Product }) {
       href={`/produit/${product.id}`}
     >
       <div className="relative aspect-square overflow-hidden border-b border-border bg-secondary">
-        <span className="absolute left-3 top-3 z-[2] border border-border bg-card px-2 py-1 font-mono text-[10px] tracking-[0.06em] text-soft-foreground">
-          {product.id}
-        </span>
         {photo && (
           <div
             className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-[600ms] ease group-hover:scale-[1.04]"
@@ -31,7 +28,10 @@ export function PCard({ product }: { product: Product }) {
       </div>
       <div className="flex flex-col gap-1.5 px-[18px] pb-5 pt-[18px] max-[700px]:text-[11px]">
         <span className="font-mono text-[10px] tracking-[0.08em] text-muted-foreground">
-          {product.family.toUpperCase()} · {product.ceiling || ""}
+          #{product.id}
+          {product.ceiling ? (
+            <span> · Pour plafond de {product.ceiling}</span>
+          ) : null}
         </span>
         <span className="font-serif text-lg leading-[1.2] tracking-[-0.01em] text-foreground max-[700px]:!text-[13px]">
           {product.name}

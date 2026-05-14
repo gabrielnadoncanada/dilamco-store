@@ -8,13 +8,15 @@ const headlineVariants = cva(
   {
     variants: {
       level: {
+        hero: "text-[clamp(48px,7vw,110px)] max-[700px]:!text-[clamp(36px,9vw,52px)] leading-[0.98] tracking-[-0.025em]",
         display:
-          "text-[clamp(48px,7vw,96px)] max-[700px]:!text-[clamp(36px,9vw,52px)] leading-[0.98] tracking-[-0.025em]",
+          "text-[clamp(40px,5.5vw,88px)] max-[700px]:!text-[36px] leading-[1] tracking-[-0.025em]",
         headline:
           "text-[clamp(34px,4.5vw,62px)] leading-[1.02] tracking-[-0.02em]",
         subhead:
-          "text-[clamp(28px,3.5vw,40px)] leading-[1.1] tracking-[-0.015em]",
+          "text-[clamp(28px,3.5vw,48px)] leading-[1.1] tracking-[-0.02em]",
         title: "text-[28px] leading-[1.05] tracking-[-0.02em]",
+        subtitle: "text-[22px] leading-[1.15] tracking-[-0.01em]",
       },
     },
     defaultVariants: {
@@ -32,10 +34,12 @@ interface Props
 }
 
 const DEFAULT_TAG: Record<NonNullable<Props["level"]>, Tag> = {
+  hero: "h1",
   display: "h1",
   headline: "h2",
   subhead: "h2",
   title: "h3",
+  subtitle: "h3",
 };
 
 export function Headline({ as, level, className, ...props }: Props) {

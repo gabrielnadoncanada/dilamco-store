@@ -15,6 +15,7 @@ import {
 } from "./_components/product-gallery";
 import { ProductInfo } from "./_components/product-info";
 import { ProductRelated } from "./_components/product-related";
+import { ShowroomCta } from "@/components/showroom-cta";
 
 export default function ProduitClient({ id }: { id: string }) {
   const product = findProduct(id);
@@ -74,6 +75,9 @@ export default function ProduitClient({ id }: { id: string }) {
         />
       </div>
       <ProductRelated products={related} />
+      <div className="mt-[100px] max-[700px]:mt-14">
+        <ShowroomCta />
+      </div>
     </Container>
   );
 }

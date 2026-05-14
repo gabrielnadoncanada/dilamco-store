@@ -7,17 +7,12 @@ import {
   DrawerContent,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import {
-  CEILINGS_ALL,
-  COLORS_ALL,
-  FAMILY_ORDER,
-  MOLDINGS_ALL,
-} from "./types";
+import { CEILINGS_ALL, COLORS_ALL, FAMILY_ORDER, MOLDINGS_ALL } from "./types";
 import type { CornerFilter, Filters, ToggleArr } from "./types";
 import { cn } from "@/lib/utils";
 
 const filterLabel =
-  "mb-3.5 border-b border-border pb-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground";
+  "mb-3.5 border-b border-border pb-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground";
 const filterList = "flex flex-col gap-2";
 const filterItem =
   "flex cursor-pointer items-center gap-2.5 py-1 text-[13px] text-soft-foreground transition-colors hover:text-primary";
@@ -118,31 +113,6 @@ function FiltersBody({
               onClick={() => toggleArr("ceilings", c)}
             >
               {c}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <div className={filterLabel}>Configuration</div>
-        <div className="flex flex-wrap gap-1.5">
-          {(
-            [
-              ["all", "Toutes"],
-              ["straight", "Droites"],
-              ["corner", "Coin"],
-            ] as const
-          ).map(([v, l]) => (
-            <button
-              key={v}
-              className={cn(
-                chipBase,
-                filters.corner === v &&
-                  "border-primary bg-primary text-primary-foreground",
-              )}
-              onClick={() => setCorner(v)}
-            >
-              {l}
             </button>
           ))}
         </div>

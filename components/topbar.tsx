@@ -34,9 +34,12 @@ export function Topbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border backdrop-blur-md">
-      <div className="bg-primary text-primary-foreground text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium py-1.5 md:py-2 px-[clamp(16px,4vw,56px)] max-[380px]:text-[9px]">
+      <Link
+        href="/soumission"
+        className="block bg-primary text-primary-foreground text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium py-1.5 md:py-2 px-[clamp(16px,4vw,56px)] max-[380px]:text-[9px] hover:underline underline-offset-[3px]"
+      >
         Entrepôt à Montréal · 20+ ans d'expérience · Soumission en ligne
-      </div>
+      </Link>
       <div className="flex items-center gap-3 md:gap-6 px-[18px] px-6 py-3.5 md:py-[22px] ">
         <Link
           href="/"

@@ -19,11 +19,7 @@ export default function SoumissionPage() {
     <div className="mx-auto grid max-w-[1440px] grid-cols-[1fr_380px] gap-y-10 px-[clamp(20px,4vw,56px)] pb-[120px] pt-14 [column-gap:64px] max-[1000px]:grid-cols-1 max-[700px]:gap-y-6 max-[700px]:px-[18px] max-[700px]:pb-[60px] max-[700px]:pt-7">
       <div className="col-span-full border-b border-border pb-8">
         <Eyebrow>Demande de soumission</Eyebrow>
-        <Headline
-          level="display"
-          as="h1"
-          className="mt-3 text-[clamp(40px,5.5vw,72px)] max-[700px]:text-[32px] leading-none"
-        >
+        <Headline level="headline" as="h1" className="mt-3">
           Votre projet, chiffré sous 48h.
         </Headline>
         <Body size="default" tone="soft" className="mt-5 max-w-[720px]">

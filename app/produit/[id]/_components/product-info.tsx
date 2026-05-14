@@ -1,14 +1,11 @@
 "use client";
 
 import { Button, ButtonArrow } from "@/components/ui/button";
-import { Headline, Body } from "@/components/ds";
+import { Headline, Body, Eyebrow } from "@/components/ds";
 import { Swatch } from "@/components/swatch";
 import { ProductSpecs } from "./product-specs";
 import type { ColorName, Molding, Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
-
-const COLORS_ALL: ColorName[] = ["Blanc Pur", "Chêne blanc", "Bleu marin"];
-const MOLDINGS_ALL: Molding[] = ["1 po", "3 po"];
 
 const COLOR_DESC: Record<ColorName, string> = {
   "Blanc Pur": "Blanc opaque, finition mate. La référence neutre du catalogue.",
@@ -42,11 +39,7 @@ export function ProductInfo({
       <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-primary">
         {product.family} · {product.ceiling || "Plafond standard"}
       </span>
-      <Headline
-        level="subhead"
-        as="h1"
-        className="text-[clamp(36px,4.5vw,56px)] leading-[1.02] tracking-[-0.02em] max-[700px]:text-[28px] max-[700px]:leading-[1.1]"
-      >
+      <Headline level="headline" as="h1">
         {product.name}
       </Headline>
       <div className="font-mono text-[11px] tracking-[0.04em] text-muted-foreground">
@@ -77,13 +70,11 @@ export function ProductInfo({
 
       <div className="flex flex-col gap-3">
         <div className="flex items-baseline justify-between">
-          <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Couleur
-          </span>
+          <Eyebrow tone="muted">Couleur</Eyebrow>
           <span className="font-serif text-[13px] italic text-foreground">{color}</span>
         </div>
-        <div className="grid grid-cols-3 gap-2">
-          {COLORS_ALL.map((c) => (
+        <div className={cn("grid gap-2", product.colors.length === 1 ? "grid-cols-1" : product.colors.length === 2 ? "grid-cols-2" : "grid-cols-3")}>
+          {product.colors.map((c) => (
             <div
               key={c}
               className={cn(
@@ -104,15 +95,13 @@ export function ProductInfo({
 
       <div className="flex flex-col gap-3">
         <div className="flex items-baseline justify-between">
-          <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Moulure de porte
-          </span>
+          <Eyebrow tone="muted">Moulure de porte</Eyebrow>
           <span className="font-serif text-[13px] italic text-foreground">
             Shaker {molding}
           </span>
         </div>
-        <div className="grid grid-cols-2 gap-2">
-          {MOLDINGS_ALL.map((m) => (
+        <div className={cn("grid gap-2", product.moldings.length === 1 ? "grid-cols-1" : "grid-cols-2")}>
+          {product.moldings.map((m) => (
             <button
               key={m}
               className={cn(

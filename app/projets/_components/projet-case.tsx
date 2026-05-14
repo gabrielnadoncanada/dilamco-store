@@ -19,11 +19,7 @@ export function ProjetCase({ project }: { project: Project }) {
       <div className="mb-14 grid grid-cols-[1fr_1.3fr] items-start gap-16 border-b border-border pb-14 max-[900px]:grid-cols-1 max-[900px]:gap-6 max-[900px]:pb-8">
         <div>
           <Eyebrow>{project.ville}</Eyebrow>
-          <Headline
-            level="subhead"
-            as="h2"
-            className="mt-3 text-[clamp(36px,4.5vw,56px)] leading-[1.02] tracking-[-0.025em]"
-          >
+          <Headline level="headline" as="h2" className="mt-3">
             {project.titre}
           </Headline>
         </div>

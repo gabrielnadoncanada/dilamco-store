@@ -16,7 +16,7 @@ export function ProductRelated({ products }: { products: Product[] }) {
 
   return (
     <div className="mt-[100px] border-t border-border pt-14">
-      <Headline level="title" as="h2" className="mb-8 text-[32px]">
+      <Headline level="title" as="h2" className="mb-8">
         De la même famille
       </Headline>
 

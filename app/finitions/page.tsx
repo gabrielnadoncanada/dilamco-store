@@ -9,7 +9,7 @@ export default function CollectionsPage() {
     <Container padded className="max-[700px]:pb-[60px]">
       <header className="border-b border-border py-[60px] pb-20 max-[700px]:py-8">
         <Eyebrow>Finitions 2026</Eyebrow>
-        <Headline level="display" as="h1" className="my-4 ">
+        <Headline level="hero" as="h1" className="my-4">
           Choisissez votre <br />
           <em>finition.</em>
         </Headline>

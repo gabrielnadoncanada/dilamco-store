@@ -33,7 +33,7 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
         <span className="font-mono text-[11px] tracking-[0.1em] text-primary">
           {c.code} · FINITION
         </span>
-        <Headline level="headline" as="h2">
+        <Headline level="display" as="h2">
           {c.nom}
         </Headline>
         <ul className="-mt-2 list-none space-y-1 font-serif text-[22px] italic tracking-[-0.01em] text-primary">

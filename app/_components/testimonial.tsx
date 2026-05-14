@@ -10,10 +10,7 @@ export function Testimonial() {
           tout est parfaitement en place. Honnêtement, la qualité est
           au-dessus de la compétition. »
         </p>
-        <Eyebrow
-          tone="muted"
-          className="mt-8 tracking-[0.14em] text-xs"
-        >
+        <Eyebrow tone="muted" className="mt-8">
           Annie · Estrie · Cuisine, salle de bain et walkin
         </Eyebrow>
       </Container>

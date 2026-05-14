@@ -37,7 +37,7 @@ export function Process() {
         <SectionHeading
           eyebrow="Le processus"
           title="Quatre étapes. Aucun intermédiaire. Un seul chef de projet pour vous accompagner."
-          titleClassName="max-w-[700px] text-[clamp(36px,4.5vw,56px)] leading-[1.05]"
+          titleClassName="max-w-[700px]"
           className="mb-14 max-[700px]:mb-8"
         />
         <div className="grid grid-cols-1 min-[700px]:grid-cols-2 min-[900px]:grid-cols-4">
@@ -49,11 +49,7 @@ export function Process() {
               <StepLabel className="text-xs tracking-[0.06em]">
                 ÉTAPE {s.num}
               </StepLabel>
-              <Headline
-                level="title"
-                as="h3"
-                className="text-[22px] leading-[1.15] tracking-[-0.01em] mt-3"
-              >
+              <Headline level="subtitle" as="h3" className="mt-3">
                 {s.title}
               </Headline>
               <Body size="compact" tone="muted" className="mt-2.5">

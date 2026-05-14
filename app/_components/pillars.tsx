@@ -33,10 +33,7 @@ const PILLARS = [
 
 export function Pillars() {
   return (
-    <Section
-      surface="background"
-      className="py-[clamp(80px,10vw,140px)] max-[700px]:py-14"
-    >
+    <Section surface="background">
       <Container>
         <SectionHeading
           eyebrow="Soumission d'armoires en ligne"

@@ -11,11 +11,7 @@ export function ProductInSitu({ photos }: { photos: string[] }) {
     <section className="mt-[90px] border-t border-border pt-14">
       <div className="mb-8">
         <Eyebrow>En situation</Eyebrow>
-        <Headline
-          level="subhead"
-          as="h2"
-          className="mt-3 text-[clamp(28px,3.5vw,44px)]"
-        >
+        <Headline level="subhead" as="h2" className="mt-3">
           Le module, hors-catalogue.
         </Headline>
       </div>

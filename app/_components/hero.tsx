@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section className="relative min-[901px]:min-h-[78vh] grid grid-cols-1 min-[901px]:grid-cols-[1fr_1.1fr] bg-secondary border-b border-border overflow-hidden">
       <div className="px-[clamp(28px,5vw,80px)] py-[clamp(48px,7vw,110px)] max-[700px]:p-[40px_22px] flex flex-col justify-center gap-8 relative z-[2]">
-        <Headline level="display" as="h1" className="max-w-[900px]">
+        <Headline level="hero" as="h1" className="max-w-[900px]">
           Armoires de cuisine en stock, <em>abordables et durables.</em>
         </Headline>
         <div>

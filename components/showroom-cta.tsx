@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Eyebrow, Headline, Body } from "@/components/ds";
 
-export function SfVisitBlock() {
+export function ShowroomCta() {
   return (
     <section>
       <div className="grid grid-cols-[1.1fr_0.9fr] border border-border max-[900px]:grid-cols-1">
@@ -15,11 +15,7 @@ export function SfVisitBlock() {
         />
         <div className="flex flex-col justify-center bg-card p-14 max-[700px]:p-7">
           <Eyebrow>Showroom Montréal</Eyebrow>
-          <Headline
-            level="subhead"
-            as="h2"
-            className="mt-4 text-[clamp(40px,5vw,64px)] leading-[1] tracking-[-0.02em]"
-          >
+          <Headline level="headline" as="h2" className="mt-4">
             Voir, toucher,
             <br />
             ouvrir, fermer.

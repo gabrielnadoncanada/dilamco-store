@@ -15,11 +15,7 @@ export default function ProjetsPage() {
     <Container padded className="pb-[120px] max-[700px]:pb-[60px]">
       <header className="border-b border-border py-[60px] max-[700px]:py-8">
         <Eyebrow>Projets réalisés</Eyebrow>
-        <Headline
-          level="display"
-          as="h1"
-          className="mt-4 text-[clamp(56px,7vw,110px)]"
-        >
+        <Headline level="hero" as="h1" className="mt-4">
           Du dessin
           <br />
           <em>à la livraison.</em>

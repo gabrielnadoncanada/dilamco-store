@@ -11,7 +11,7 @@ export function SoumissionSummary() {
   return (
     <aside className="sticky top-[120px] self-start border border-border bg-secondary p-8 max-[1000px]:static">
       <Eyebrow>Votre projet</Eyebrow>
-      <Headline level="title" as="h3" className="mt-2 text-2xl tracking-[-0.01em]">
+      <Headline level="title" as="h3" className="mt-2">
         {cart.totalQty} module{cart.totalQty !== 1 ? "s" : ""} sélectionné
         {cart.totalQty !== 1 ? "s" : ""}
       </Headline>

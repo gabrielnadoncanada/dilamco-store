@@ -17,7 +17,8 @@ export function Footer() {
           <div>
             <Eyebrow
               as="h4"
-              className="mb-[18px] tracking-[0.14em] text-background opacity-60"
+              tone="on-primary"
+              className="mb-[18px]"
             >
               Catalogue
             </Eyebrow>
@@ -43,7 +44,8 @@ export function Footer() {
           <div>
             <Eyebrow
               as="h4"
-              className="mb-[18px] tracking-[0.14em] text-background opacity-60"
+              tone="on-primary"
+              className="mb-[18px]"
             >
               Maison
             </Eyebrow>
@@ -59,7 +61,8 @@ export function Footer() {
           <div>
             <Eyebrow
               as="h4"
-              className="mb-[18px] tracking-[0.14em] text-background opacity-60"
+              tone="on-primary"
+              className="mb-[18px]"
             >
               Contact
             </Eyebrow>

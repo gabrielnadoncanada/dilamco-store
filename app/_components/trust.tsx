@@ -26,7 +26,7 @@ export function Trust() {
               eyebrow="L'offre derrière le produit"
               title="Une offre simple, basée sur du concret."
               tone="on-primary"
-              titleClassName="text-[clamp(38px,5vw,64px)] max-[700px]:text-[36px] leading-[1.04] text-background"
+              titleClassName="text-background"
             />
             <Body
               size="default"
