@@ -1,3 +1,12 @@
+import {
+  Section,
+  Container,
+  SectionHeading,
+  StepLabel,
+  Headline,
+  Body,
+} from "@/components/ds";
+
 const STEPS = [
   {
     num: "01",
@@ -23,34 +32,37 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section className="px-[clamp(20px,4vw,56px)] py-[clamp(70px,9vw,110px)] max-[700px]:py-14 border-b border-border bg-background">
-      <div className="mx-auto mb-14 max-w-[1440px] max-[700px]:mb-8">
-        <span className="text-[11px] tracking-[0.18em] uppercase font-medium text-primary">
-          Le processus
-        </span>
-        <h2 className="font-serif text-[clamp(36px,4.5vw,56px)] tracking-[-0.02em] leading-[1.05] max-w-[700px] mt-3">
-          Quatre étapes. Aucun intermédiaire. Un seul chef de projet pour vous
-          accompagner.
-        </h2>
-      </div>
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 min-[700px]:grid-cols-2 min-[900px]:grid-cols-4">
-        {STEPS.map((s) => (
-          <div
-            key={s.num}
-            className="pr-6 py-8 max-[700px]:py-[22px] max-[700px]:pr-0 border-t border-foreground relative"
-          >
-            <div className="font-mono text-xs text-primary tracking-[0.06em]">
-              ÉTAPE {s.num}
+    <Section surface="background" density="compact">
+      <Container>
+        <SectionHeading
+          eyebrow="Le processus"
+          title="Quatre étapes. Aucun intermédiaire. Un seul chef de projet pour vous accompagner."
+          titleClassName="max-w-[700px] text-[clamp(36px,4.5vw,56px)] leading-[1.05]"
+          className="mb-14 max-[700px]:mb-8"
+        />
+        <div className="grid grid-cols-1 min-[700px]:grid-cols-2 min-[900px]:grid-cols-4">
+          {STEPS.map((s) => (
+            <div
+              key={s.num}
+              className="pr-6 py-8 max-[700px]:py-[22px] max-[700px]:pr-0 border-t border-foreground relative"
+            >
+              <StepLabel className="text-xs tracking-[0.06em]">
+                ÉTAPE {s.num}
+              </StepLabel>
+              <Headline
+                level="title"
+                as="h3"
+                className="text-[22px] leading-[1.15] tracking-[-0.01em] mt-3"
+              >
+                {s.title}
+              </Headline>
+              <Body size="compact" tone="muted" className="mt-2.5">
+                {s.body}
+              </Body>
             </div>
-            <h3 className="font-serif text-[22px] leading-[1.15] mt-3 tracking-[-0.01em]">
-              {s.title}
-            </h3>
-            <p className="text-[13px] text-muted-foreground mt-2.5 leading-[1.6]">
-              {s.body}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </Container>
+    </Section>
   );
 }
