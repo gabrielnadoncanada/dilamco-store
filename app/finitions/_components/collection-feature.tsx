@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
-import { Heading } from "@/components/legacy/heading";
-import { Section } from "@/components/legacy/section";
+import { Headline, Body, ButtonGroup } from "@/components/ds";
 import type { Collection } from "./data";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +11,7 @@ interface Props {
 
 export function CollectionFeature({ collection: c, reverse }: Props) {
   return (
-    <Section className="grid grid-cols-[1.15fr_1fr] items-center gap-20 border-b border-border py-20 max-[1000px]:grid-cols-1 max-[1000px]:gap-12 max-[700px]:gap-7 max-[700px]:py-10">
+    <section className="grid grid-cols-[1.15fr_1fr] items-center gap-20 border-b border-border py-20 max-[1000px]:grid-cols-1 max-[1000px]:gap-12 max-[700px]:gap-7 max-[700px]:py-10">
       <div
         className={cn(
           "relative aspect-[4/5]",
@@ -34,26 +33,19 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
         <span className="font-mono text-[11px] tracking-[0.1em] text-primary">
           {c.code} · FINITION
         </span>
-        <Heading
-          as="h2"
-          variant="serif"
-          className="text-[clamp(48px,6vw,88px)] leading-[0.98] tracking-[-0.025em] text-foreground"
-        >
+        <Headline level="headline" as="h2">
           {c.nom}
-        </Heading>
+        </Headline>
         <ul className="-mt-2 list-none space-y-1 font-serif text-[22px] italic tracking-[-0.01em] text-primary">
           {c.taglines.map((line) => (
             <li key={line} className="flex gap-2.5">
-              <span className="shrink-0" aria-hidden>
-                •
-              </span>
               <span>{line}</span>
             </li>
           ))}
         </ul>
-        <p className="text-base leading-[1.65] text-soft-foreground">
+        <Body size="default" tone="soft" className="leading-[1.65]">
           {c.desc}
-        </p>
+        </Body>
 
         <div className="grid grid-cols-3 gap-4 border-y border-border py-5 max-[700px]:gap-2 [&_span]:mb-1 [&_span]:block [&_span]:font-mono [&_span]:text-[10px] [&_span]:uppercase [&_span]:tracking-[0.1em] [&_span]:text-muted-foreground [&_strong]:text-[13px] [&_strong]:font-medium [&_strong]:leading-[1.3] [&_strong]:text-foreground">
           {(
@@ -71,9 +63,9 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
         </div>
 
         {c.usage ? (
-          <p className="text-sm italic leading-[1.6] text-soft-foreground">
+          <Body size="sm" tone="soft" className="italic">
             {c.usage}
-          </p>
+          </Body>
         ) : null}
 
         <div className="flex items-baseline gap-4">
@@ -85,7 +77,7 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
           </span>
         </div>
 
-        <div className="mt-3 flex flex-wrap gap-3">
+        <ButtonGroup className="mt-3">
           <Button asChild>
             <Link href={`/catalogue?couleur=${encodeURIComponent(c.nom)}`}>
               {c.primaryCta ?? `Voir les ${c.nom.toLowerCase()}`}{" "}
@@ -97,8 +89,8 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
               {c.secondaryCta?.label ?? "Demander un échantillon"}
             </Link>
           </Button>
-        </div>
+        </ButtonGroup>
       </div>
-    </Section>
+    </section>
   );
 }

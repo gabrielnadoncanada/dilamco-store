@@ -1,6 +1,6 @@
 "use client";
 
-import { Swatch } from "@/components/legacy/swatch";
+import { Swatch } from "@/components/swatch";
 import {
   Drawer,
   DrawerClose,

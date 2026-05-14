@@ -4,8 +4,7 @@ import { useState } from "react";
 import { useCart } from "@/components/cart-provider";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Container } from "@/components/legacy/container";
-import { Heading } from "@/components/legacy/heading";
+import { Container, Headline } from "@/components/ds";
 import { findProduct, products as ALL_PRODUCTS } from "@/lib/products";
 import { productGalleryViews } from "@/lib/photos";
 import type { ColorName, Molding } from "@/lib/types";
@@ -32,9 +31,9 @@ export default function ProduitClient({ id }: { id: string }) {
   if (!product) {
     return (
       <Container className="py-20 text-center">
-        <Heading as="h2" variant="serif" className="text-[32px]">
+        <Headline level="title" as="h2">
           Module introuvable.
-        </Heading>
+        </Headline>
         <Button asChild variant="ghost" className="mt-6">
           <Link href="/catalogue">Retour au catalogue</Link>
         </Button>
@@ -49,7 +48,10 @@ export default function ProduitClient({ id }: { id: string }) {
   const views: GalleryView[] = productGalleryViews(product);
 
   return (
-    <div className="mx-auto max-w-[1440px] px-[clamp(20px,4vw,56px)] pb-[100px] pt-8 max-[700px]:px-[18px] max-[700px]:pb-14 max-[700px]:pt-4">
+    <Container
+      padded
+      className="pb-[100px] pt-8 max-[700px]:pb-14 max-[700px]:pt-4"
+    >
       <ProductBreadcrumb product={product} />
       <div className="grid grid-cols-[1.15fr_1fr] items-start gap-16 max-[1000px]:grid-cols-1 max-[1000px]:gap-10 max-[700px]:gap-7">
         <ProductGallery
@@ -72,6 +74,6 @@ export default function ProduitClient({ id }: { id: string }) {
         />
       </div>
       <ProductRelated products={related} />
-    </div>
+    </Container>
   );
 }

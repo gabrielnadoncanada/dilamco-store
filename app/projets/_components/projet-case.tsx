@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
-import { Eyebrow } from "@/components/legacy/eyebrow";
-import { Heading } from "@/components/legacy/heading";
+import { Eyebrow, Headline, ButtonGroup } from "@/components/ds";
 import type { Project } from "./data";
 
 export function ProjetCase({ project }: { project: Project }) {
@@ -19,14 +18,14 @@ export function ProjetCase({ project }: { project: Project }) {
 
       <div className="mb-14 grid grid-cols-[1fr_1.3fr] items-start gap-16 border-b border-border pb-14 max-[900px]:grid-cols-1 max-[900px]:gap-6 max-[900px]:pb-8">
         <div>
-          <Eyebrow accent>{project.ville}</Eyebrow>
-          <Heading
+          <Eyebrow>{project.ville}</Eyebrow>
+          <Headline
+            level="subhead"
             as="h2"
-            variant="serif"
-            className="mt-3 text-[clamp(36px,4.5vw,56px)] leading-[1.02] tracking-[-0.025em] text-foreground"
+            className="mt-3 text-[clamp(36px,4.5vw,56px)] leading-[1.02] tracking-[-0.025em]"
           >
             {project.titre}
-          </Heading>
+          </Headline>
         </div>
         <div className="grid grid-cols-3 gap-6 border-t border-foreground pt-6 max-[700px]:grid-cols-2 max-[700px]:gap-4 [&_span]:mb-1.5 [&_span]:block [&_span]:font-mono [&_span]:text-[10px] [&_span]:uppercase [&_span]:tracking-[0.1em] [&_span]:text-muted-foreground [&_strong]:font-serif [&_strong]:text-lg [&_strong]:font-normal [&_strong]:tracking-[-0.01em] [&_strong]:text-foreground">
           <div>
@@ -80,10 +79,16 @@ export function ProjetCase({ project }: { project: Project }) {
         />
       </div>
 
-      <div className="mb-[100px] flex flex-wrap gap-4 border-t border-border pt-8">
-        <Button asChild><Link href="/soumission">Démarrer un projet similaire <ButtonArrow /></Link></Button>
-        <Button asChild variant="ghost"><Link href="/catalogue">Voir les modules utilisés</Link></Button>
-      </div>
+      <ButtonGroup className="mb-[100px] border-t border-border pt-8" gap="lg">
+        <Button asChild>
+          <Link href="/soumission">
+            Démarrer un projet similaire <ButtonArrow />
+          </Link>
+        </Button>
+        <Button asChild variant="ghost">
+          <Link href="/catalogue">Voir les modules utilisés</Link>
+        </Button>
+      </ButtonGroup>
     </article>
   );
 }

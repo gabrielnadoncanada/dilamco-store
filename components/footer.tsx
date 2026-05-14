@@ -1,26 +1,26 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { Heading } from "./legacy/heading";
+import { Container, Eyebrow, Body } from "@/components/ds";
 
 export function Footer() {
   return (
     <footer className="bg-foreground px-[clamp(20px,4vw,56px)] pb-8 pt-20 text-background max-[700px]:px-[22px] max-[700px]:pb-6 max-[700px]:pt-14">
-      <div className="mx-auto max-w-[1440px]">
+      <Container>
         <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr] gap-14 border-b border-background/15 pb-14 max-[900px]:grid-cols-2 max-[700px]:grid-cols-1 max-[700px]:gap-8 max-[700px]:pb-8">
           <div>
             <Logo className="mb-6 h-[26px] text-background fill-background text-white" />
-            <p className="max-w-xs text-sm leading-[1.6] opacity-70">
+            <Body size="sm" className="max-w-xs opacity-70 text-white">
               Armoires de cuisine en stock, à prix accessibles. Parcourez le
               catalogue, voyez les prix et montez votre cuisine en ligne.
-            </p>
+            </Body>
           </div>
           <div>
-            <Heading
+            <Eyebrow
               as="h4"
-              className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60"
+              className="mb-[18px] tracking-[0.14em] text-background opacity-60"
             >
               Catalogue
-            </Heading>
+            </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
                 <Link href="/catalogue?famille=Armoire+murale">
@@ -41,12 +41,12 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <Heading
+            <Eyebrow
               as="h4"
-              className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60"
+              className="mb-[18px] tracking-[0.14em] text-background opacity-60"
             >
               Maison
-            </Heading>
+            </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
                 <Link href="/finitions">Finitions</Link>
@@ -57,12 +57,12 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <Heading
+            <Eyebrow
               as="h4"
-              className="mb-[18px] text-[11px] uppercase tracking-[0.14em] opacity-60"
+              className="mb-[18px] tracking-[0.14em] text-background opacity-60"
             >
               Contact
-            </Heading>
+            </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
                 9876 Boul. Industriel
@@ -82,7 +82,7 @@ export function Footer() {
           <span>© 2026 Dilamco inc. — Tous droits réservés</span>
           <span>RBQ 5712-2440-01</span>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

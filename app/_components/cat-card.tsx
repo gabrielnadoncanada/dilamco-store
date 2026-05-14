@@ -11,7 +11,7 @@ interface Props {
 export function CatCard({ featured, img, count, title, href }: Props) {
   return (
     <Link
-      className={`max-w-full group relative cursor-pointer overflow-hidden bg-muted transition-transform duration-[400ms] ease hover:-translate-y-[3px] ${
+      className={`max-w-full group relative cursor-pointer overflow-hidden bg-muted transition-transform duration-[400ms] ease  ${
         featured
           ? "min-[901px]:row-span-2 min-[901px]:[aspect-ratio:auto] min-[901px]:min-h-[600px] aspect-[4/5] max-[900px]:[grid-column:span_2] max-[900px]:[aspect-ratio:4/3] max-[900px]:min-h-[320px]  max-[700px]:min-h-[280px]"
           : "aspect-[4/5]"

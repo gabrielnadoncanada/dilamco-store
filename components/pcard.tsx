@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCart } from "./cart-provider";
 import { ModuleRender } from "./module-render";
-import { Swatch } from "./legacy/swatch";
+import { Swatch } from "./swatch";
 import { photoForProduct } from "@/lib/photos";
 import type { Product } from "@/lib/types";
 
@@ -15,7 +15,7 @@ export function PCard({ product }: { product: Product }) {
 
   return (
     <Link
-      className="group flex flex-col border border-border bg-card text-card-foreground no-underline transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-foreground"
+      className="group flex flex-col border border-border bg-card text-card-foreground no-underline transition-[border-color,transform] duration-200  hover:border-foreground"
       href={`/produit/${product.id}`}
     >
       <div className="relative aspect-square overflow-hidden border-b border-border bg-secondary">
@@ -24,7 +24,7 @@ export function PCard({ product }: { product: Product }) {
         </span>
         {photo && (
           <div
-            className="absolute inset-0 z-0 bg-cover bg-center transition-[transform,opacity] duration-500 ease-out group-hover:scale-[1.04]"
+            className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-[600ms] ease group-hover:scale-[1.04]"
             style={{ backgroundImage: `url(${photo})` }}
           />
         )}

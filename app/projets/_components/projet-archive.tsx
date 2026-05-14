@@ -1,11 +1,10 @@
-import { Eyebrow } from "@/components/legacy/eyebrow";
-import { Section } from "@/components/legacy/section";
+import { Eyebrow } from "@/components/ds";
 import { ARCHIVE } from "./data";
 
 export function ProjetArchive() {
   return (
-    <Section className="border-t border-foreground pt-14">
-      <Eyebrow accent>Archive · 2018 — 2024</Eyebrow>
+    <section className="border-t border-foreground pt-14">
+      <Eyebrow>Archive · 2018 — 2024</Eyebrow>
       <div className="mt-8 grid grid-cols-4 gap-px border border-border bg-border max-[800px]:grid-cols-2">
         {ARCHIVE.map((p, i) => (
           <div
@@ -24,6 +23,6 @@ export function ProjetArchive() {
           </div>
         ))}
       </div>
-    </Section>
+    </section>
   );
 }

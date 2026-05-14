@@ -1,8 +1,8 @@
 "use client";
 
 import { Button, ButtonArrow } from "@/components/ui/button";
-import { Heading } from "@/components/legacy/heading";
-import { Swatch } from "@/components/legacy/swatch";
+import { Headline, Body } from "@/components/ds";
+import { Swatch } from "@/components/swatch";
 import { ProductSpecs } from "./product-specs";
 import type { ColorName, Molding, Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -42,12 +42,13 @@ export function ProductInfo({
       <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-primary">
         {product.family} · {product.ceiling || "Plafond standard"}
       </span>
-      <Heading
+      <Headline
+        level="subhead"
         as="h1"
-        className="font-serif text-[clamp(36px,4.5vw,56px)] leading-[1.02] tracking-[-0.02em] text-foreground max-[700px]:!text-[28px] max-[700px]:!leading-[1.1]"
+        className="text-[clamp(36px,4.5vw,56px)] leading-[1.02] tracking-[-0.02em] max-[700px]:text-[28px] max-[700px]:leading-[1.1]"
       >
         {product.name}
-      </Heading>
+      </Headline>
       <div className="font-mono text-[11px] tracking-[0.04em] text-muted-foreground">
         SKU · {product.id}
         {product.corner && product.corner !== "Non"
@@ -68,11 +69,11 @@ export function ProductInfo({
         </span>
       </div>
 
-      <p className="m-0 text-[15px] leading-[1.65] text-soft-foreground max-[700px]:!text-sm">
+      <Body size="default" tone="soft" className="leading-[1.65] max-[700px]:text-sm">
         Caisson en contreplaqué, finition intérieure en placage de bouleau. Porte HDF avec
         moulure massive en bouleau. Quincaillerie Blum à fermeture amortie. Fini extérieur
         catalysé, assorti à la couleur sélectionnée.
-      </p>
+      </Body>
 
       <div className="flex flex-col gap-3">
         <div className="flex items-baseline justify-between">

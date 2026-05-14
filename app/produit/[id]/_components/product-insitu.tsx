@@ -1,6 +1,4 @@
-import { Eyebrow } from "@/components/legacy/eyebrow";
-import { Heading } from "@/components/legacy/heading";
-import { Section } from "@/components/legacy/section";
+import { Eyebrow, Headline } from "@/components/ds";
 
 const CAPTIONS = [
   "Cuisine complète, Outremont",
@@ -10,16 +8,16 @@ const CAPTIONS = [
 
 export function ProductInSitu({ photos }: { photos: string[] }) {
   return (
-    <Section className="mt-[90px] border-t border-border pt-14">
+    <section className="mt-[90px] border-t border-border pt-14">
       <div className="mb-8">
-        <Eyebrow accent>En situation</Eyebrow>
-        <Heading
+        <Eyebrow>En situation</Eyebrow>
+        <Headline
+          level="subhead"
           as="h2"
-          variant="serif"
-          className="mt-3 text-[clamp(28px,3.5vw,44px)] tracking-[-0.02em]"
+          className="mt-3 text-[clamp(28px,3.5vw,44px)]"
         >
           Le module, hors-catalogue.
-        </Heading>
+        </Headline>
       </div>
       <div className="grid grid-cols-[2fr_1fr_1fr] gap-4 max-[900px]:grid-cols-2 max-[700px]:grid-cols-1 max-[700px]:gap-3">
         {photos.map((src, i) => (
@@ -37,6 +35,6 @@ export function ProductInSitu({ photos }: { photos: string[] }) {
           </figure>
         ))}
       </div>
-    </Section>
+    </section>
   );
 }

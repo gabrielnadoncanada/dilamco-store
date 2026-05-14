@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { products as ALL_PRODUCTS } from "@/lib/products";
 import type { Product } from "@/lib/types";
+import { Container } from "@/components/ds";
 import { CatalogueHead } from "./_components/catalogue-head";
 import { CatalogueFilters } from "./_components/catalogue-filters";
 import { CatalogueGrid } from "./_components/catalogue-grid";
@@ -101,7 +102,10 @@ export default function CatalogueClient() {
     (filters.corner !== "all" ? 1 : 0);
 
   return (
-    <div className="mx-auto grid max-w-[1440px] grid-cols-[240px_1fr] grid-rows-[auto_1fr] gap-y-10 px-[clamp(20px,4vw,56px)] pb-[120px] pt-14 [column-gap:56px] max-[1100px]:grid-cols-1 max-[700px]:gap-y-6 max-[700px]:px-[18px] max-[700px]:pb-[60px] max-[700px]:pt-7">
+    <Container
+      padded
+      className="grid grid-cols-[240px_1fr] grid-rows-[auto_1fr] gap-y-10 pb-[120px] pt-14 [column-gap:56px] max-[1100px]:grid-cols-1 max-[700px]:gap-y-6 max-[700px]:pb-[60px] max-[700px]:pt-7"
+    >
       <CatalogueHead
         total={ALL_PRODUCTS.length}
         filteredCount={filtered.length}
@@ -122,6 +126,6 @@ export default function CatalogueClient() {
         onClose={() => setFiltersOpen(false)}
       />
       <CatalogueGrid filtered={filtered} onReset={reset} />
-    </div>
+    </Container>
   );
 }

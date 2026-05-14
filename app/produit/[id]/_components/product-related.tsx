@@ -1,7 +1,7 @@
 "use client";
 
 import { PCard } from "@/components/pcard";
-import { Heading } from "@/components/legacy/heading";
+import { Headline } from "@/components/ds";
 import {
   Carousel,
   CarouselContent,
@@ -16,13 +16,9 @@ export function ProductRelated({ products }: { products: Product[] }) {
 
   return (
     <div className="mt-[100px] border-t border-border pt-14">
-      <Heading
-        as="h2"
-        variant="serif"
-        className="mb-8 text-[32px] tracking-[-0.02em]"
-      >
+      <Headline level="title" as="h2" className="mb-8 text-[32px]">
         De la même famille
-      </Heading>
+      </Headline>
 
       <Carousel
         opts={{ align: "start", slidesToScroll: "auto", containScroll: "trimSnaps" }}

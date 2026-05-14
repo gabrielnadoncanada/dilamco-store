@@ -3,22 +3,21 @@
 import { useCart } from "@/components/cart-provider";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Eyebrow } from "@/components/legacy/eyebrow";
-import { Heading } from "@/components/legacy/heading";
+import { Eyebrow, Headline } from "@/components/ds";
 
 export function SoumissionSummary() {
   const cart = useCart();
 
   return (
     <aside className="sticky top-[120px] self-start border border-border bg-secondary p-8 max-[1000px]:static">
-      <Eyebrow accent>Votre projet</Eyebrow>
-      <Heading as="h3" className="mt-2 font-serif text-2xl tracking-[-0.01em] text-foreground">
+      <Eyebrow>Votre projet</Eyebrow>
+      <Headline level="title" as="h3" className="mt-2 text-2xl tracking-[-0.01em]">
         {cart.totalQty} module{cart.totalQty !== 1 ? "s" : ""} sélectionné
         {cart.totalQty !== 1 ? "s" : ""}
-      </Heading>
+      </Headline>
       {cart.items.length === 0 ? (
         <div className="py-6 text-[13px] leading-[1.6] text-muted-foreground">
-          Vous pouvez soumettre la demande sans avoir encore choisi de modules — un chef
+          Vous pouvez soumettre la demande sans avoir encore choisi de modules : un chef
           de projet vous accompagnera dans la sélection.
           <div className="mt-4">
             <Button asChild variant="ghost" size="small">

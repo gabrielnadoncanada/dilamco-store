@@ -1,8 +1,6 @@
-import { Section } from "@/components/legacy/section";
-
 export function SfQuoteBlock() {
   return (
-    <Section className="my-[90px] bg-primary px-10 py-20 text-center text-primary-foreground">
+    <section className="my-[90px] bg-primary px-10 py-20 text-center text-primary-foreground">
       <p className="font-serif text-[72px] leading-none text-highlight">“</p>
       <p className="mx-auto max-w-[1000px] font-serif text-[clamp(28px,4vw,52px)] leading-[1.15] tracking-[-0.025em] [&_em]:italic [&_em]:text-highlight">
         Nous ne vendons pas une marque ; nous vendons<br />
@@ -16,6 +14,6 @@ export function SfQuoteBlock() {
           Fondateur · 2003
         </span>
       </div>
-    </Section>
+    </section>
   );
 }

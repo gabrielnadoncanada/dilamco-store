@@ -1,7 +1,6 @@
 "use client";
 
-import { Eyebrow } from "@/components/legacy/eyebrow";
-import { Heading } from "@/components/legacy/heading";
+import { Eyebrow, Headline } from "@/components/ds";
 import type { SortKey } from "./types";
 
 interface Props {
@@ -24,13 +23,14 @@ export function CatalogueHead({
   return (
     <div className="col-span-full flex flex-wrap items-end justify-between gap-8 border-b border-border pb-7 max-[700px]:flex-col max-[700px]:items-start max-[700px]:gap-3">
       <div className="max-[700px]:w-full">
-        <Eyebrow accent>Catalogue technique</Eyebrow>
-        <Heading
+        <Eyebrow>Catalogue technique</Eyebrow>
+        <Headline
+          level="display"
           as="h1"
-          className="mt-2 font-serif text-[clamp(40px,5vw,68px)] leading-none tracking-[-0.02em] text-foreground max-[700px]:!text-[28px]"
+          className="mt-2 text-[clamp(40px,5vw,68px)] leading-none max-[700px]:text-[28px]"
         >
           Armoires de cuisine
-        </Heading>
+        </Headline>
       </div>
       <div className="flex flex-wrap items-center gap-3 max-[700px]:w-full max-[700px]:gap-2">
         <span className="font-mono text-xs tracking-[0.04em] text-muted-foreground max-[700px]:text-[11px]">
