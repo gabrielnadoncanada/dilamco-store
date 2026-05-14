@@ -24,7 +24,7 @@ const PILLARS = [
 export function Pillars() {
   return (
     <section className="px-[clamp(20px,4vw,56px)] py-[clamp(80px,10vw,140px)] max-[700px]:py-14 bg-background border-b border-border">
-      <div className="mx-auto mb-20 max-w-[1440px] max-[700px]:mb-10">
+      <div className="mx-auto mb-14 max-w-[1440px] max-[700px]:mb-10">
         <span className="text-[11px] tracking-[0.18em] uppercase font-medium text-primary">
           Soumission d&apos;armoires en ligne
         </span>

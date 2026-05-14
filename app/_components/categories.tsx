@@ -59,6 +59,12 @@ export function Categories() {
           href="/catalogue?famille=Armoire+au-dessus+du+r%C3%A9frig%C3%A9rateur"
         />
       </div>
+
+      <div className="mx-auto mt-10 flex justify-center">
+        <Button asChild>
+          <Link href="/soumission">Demander une soumission</Link>
+        </Button>
+      </div>
     </section>
   );
 }

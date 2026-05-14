@@ -5,7 +5,7 @@ const HERO_IMG = "/assets/hero_image.png";
 
 export function Hero() {
   return (
-    <section className="relative min-[901px]:min-h-[78vh] grid grid-cols-1 min-[901px]:grid-cols-[1.1fr_1fr] bg-secondary border-b border-border overflow-hidden">
+    <section className="relative min-[901px]:min-h-[78vh] grid grid-cols-1 min-[901px]:grid-cols-[1fr_1.1fr] bg-secondary border-b border-border overflow-hidden">
       <div className="px-[clamp(28px,5vw,80px)] py-[clamp(48px,7vw,110px)] max-[700px]:p-[40px_22px] flex flex-col justify-center gap-8 relative z-[2]">
         <h1 className="font-serif text-[clamp(48px,7vw,96px)] max-w-[900px] max-[700px]:!text-[clamp(36px,9vw,52px)] leading-[0.98] tracking-[-0.025em] text-foreground [&_em]:italic [&_em]:text-primary">
           Armoires de cuisine en stock, <em>abordables et durables.</em>
