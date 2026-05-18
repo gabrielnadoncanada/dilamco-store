@@ -7,3 +7,4 @@ export { SectionHeading } from "./section-heading";
 export { HairlineGrid, HairlineCell } from "./hairline-grid";
 export { Body } from "./body";
 export { ButtonGroup } from "./button-group";
+export { SplitMediaCta } from "./split-media-cta";

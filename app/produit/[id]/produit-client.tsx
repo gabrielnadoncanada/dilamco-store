@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCart } from "@/components/cart-provider";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Container, Headline } from "@/components/ds";
+import { Container, Headline, SplitMediaCta } from "@/components/ds";
 import { findProduct, products as ALL_PRODUCTS } from "@/lib/products";
 import { productGalleryViews } from "@/lib/photos";
 import type { ColorName, Molding } from "@/lib/types";
@@ -72,6 +72,32 @@ export default function ProduitClient({ id }: { id: string }) {
           qty={qty}
           setQty={setQty}
           onAdd={() => cart.addItem(product, { color, molding, qty })}
+        />
+      </div>
+      <div className="mt-[100px] flex flex-col gap-10 max-[700px]:mt-14 max-[700px]:gap-7">
+        <SplitMediaCta
+          imageSrc="/assets/cabinet.png"
+          imagePosition="left"
+          headline="Structure intérieure durable"
+          body="Chaque caisson est conçu pour offrir une base stable, rigide et durable à votre cuisine. L’intérieur propre, les tablettes ajustables et les assemblages précis donnent une impression de solidité dès l’ouverture des portes."
+        />
+        <SplitMediaCta
+          imageSrc="/assets/drawer.jpg"
+          imagePosition="right"
+          headline="Tiroirs en bouleau massif"
+          body="Les côtés, la façade et l’arrière de nos tiroirs sont fabriqués en bois massif de bouleau, un matériau reconnu pour sa robustesse, son grain fin et sa finition haut de gamme. "
+        />
+        <SplitMediaCta
+          imageSrc="/assets/dovetail.jpg"
+          imagePosition="left"
+          headline="Solidité mécanique et installation maîtrisée"
+          body="L’assemblage en queue d’aronde renforce la jonction des tiroirs sans dépendre uniquement de vis ou de fixations visibles. Cette précision d’assemblage aide à conserver des modules plus stables, mieux alignés et plus simples à intégrer."
+        />
+        <SplitMediaCta
+          imageSrc="/assets/warehouse.jpg"
+          imagePosition="right"
+          headline="Entrepôt local à Montréal"
+          body="Notre entrepôt local nous permet de garder un meilleur contrôle sur l’inventaire, la disponibilité des modules et la planification des projets. Cette présence physique réduit les imprévus, facilite la coordination et offre aux clients une expérience plus stable, prévisible et maîtrisée."
         />
       </div>
       <ProductRelated products={related} />

@@ -8,7 +8,7 @@ const headlineVariants = cva(
   {
     variants: {
       level: {
-        hero: "text-[clamp(48px,7vw,110px)] max-[700px]:!text-[clamp(36px,9vw,52px)] leading-[0.98] tracking-[-0.025em]",
+        hero: "text-[clamp(48px,5vw,110px)] max-[700px]:!text-[clamp(36px,9vw,52px)] leading-[0.98] tracking-[-0.025em]",
         display:
           "text-[clamp(40px,5.5vw,88px)] max-[700px]:!text-[36px] leading-[1] tracking-[-0.025em]",
         headline:
@@ -28,7 +28,8 @@ const headlineVariants = cva(
 type Tag = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface Props
-  extends Omit<ComponentProps<"h2">, "color">,
+  extends
+    Omit<ComponentProps<"h2">, "color">,
     VariantProps<typeof headlineVariants> {
   as?: Tag;
 }
