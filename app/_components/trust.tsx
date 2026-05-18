@@ -23,10 +23,9 @@ export function Trust() {
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-20">
           <div>
             <SectionHeading
+              surface="primary"
               eyebrow="L'offre derrière le produit"
               title="Une offre simple, basée sur du concret."
-              tone="on-primary"
-              titleClassName="text-background"
             />
             <Body
               size="default"
@@ -56,7 +55,11 @@ export function Trust() {
                 <div className="font-serif text-[64px] leading-none tracking-[-0.02em] text-highlight max-[700px]:text-[44px]">
                   {num}
                 </div>
-                <Body size="compact" tone="on-primary" className="mt-3 leading-[1.5]">
+                <Body
+                  size="compact"
+                  tone="on-primary"
+                  className="mt-3 leading-[1.5]"
+                >
                   {lbl}
                 </Body>
               </HairlineCell>

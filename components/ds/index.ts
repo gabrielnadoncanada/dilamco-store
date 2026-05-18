@@ -8,3 +8,4 @@ export { HairlineGrid, HairlineCell } from "./hairline-grid";
 export { Body } from "./body";
 export { ButtonGroup } from "./button-group";
 export { SplitMediaCta } from "./split-media-cta";
+export { MediaTabs, type MediaTabItem } from "./media-tabs";
