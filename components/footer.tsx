@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./logo";
 import { Container, Eyebrow, Body } from "@/components/ds";
+import { collectionsFilter, routes } from "@/lib/routes";
 
 export function Footer() {
   return (
@@ -24,20 +25,20 @@ export function Footer() {
             </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
-                <Link href="/catalogue?famille=Armoire+murale">
+                <Link href={collectionsFilter.family("Armoire murale")}>
                   Armoires murales
                 </Link>
               </li>
               <li>
-                <Link href="/catalogue?famille=Armoire+de+bas">
+                <Link href={collectionsFilter.family("Armoire de bas")}>
                   Armoires de bas
                 </Link>
               </li>
               <li>
-                <Link href="/catalogue?famille=Garde-manger">Garde-manger</Link>
+                <Link href={collectionsFilter.family("Garde-manger")}>Garde-manger</Link>
               </li>
               <li>
-                <Link href="/catalogue?coin=oui">Modules de coin</Link>
+                <Link href={collectionsFilter.corner}>Modules de coin</Link>
               </li>
             </ul>
           </div>
@@ -51,10 +52,10 @@ export function Footer() {
             </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
-                <Link href="/finitions">Finitions</Link>
+                <Link href={routes.finishes}>Finitions</Link>
               </li>
               <li>
-                <Link href="/soumission">Demander une soumission</Link>
+                <Link href={routes.quote}>Demander une soumission</Link>
               </li>
             </ul>
           </div>

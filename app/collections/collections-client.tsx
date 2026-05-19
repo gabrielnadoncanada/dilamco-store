@@ -1,35 +1,25 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
 import { products as ALL_PRODUCTS } from "@/lib/products";
 import type { Product } from "@/lib/types";
 import { Container } from "@/components/ds";
-import { CatalogueHead } from "./_components/catalogue-head";
-import { CatalogueFilters } from "./_components/catalogue-filters";
-import { CatalogueGrid } from "./_components/catalogue-grid";
-import { FAMILY_ORDER } from "./_components/types";
-import type { Filters, ToggleArr } from "./_components/types";
+import { CollectionsHead } from "./_components/collections-head";
+import { CollectionsFilters } from "./_components/collections-filters";
+import { CollectionsGrid } from "./_components/collections-grid";
+import {
+  FAMILY_ORDER,
+  useCollectionsFilters,
+  type CornerFilter,
+  type FilterArrayKey,
+  type Filters,
+  type SortKey,
+  type ToggleArr,
+} from "./_components/types";
 
-export default function CatalogueClient() {
-  const search = useSearchParams();
-  const familleParam = search.get("famille") || "";
-  const coinParam = search.get("coin") || "";
-
-  const [filters, setFilters] = useState<Filters>(() => ({
-    families: familleParam ? [familleParam] : [],
-    colors: [],
-    moldings: [],
-    ceilings: [],
-    corner: coinParam === "oui" ? "corner" : "all",
-    sort: "family",
-  }));
+export default function CollectionsClient() {
+  const [filters, setFilters] = useCollectionsFilters();
   const [filtersOpen, setFiltersOpen] = useState(false);
-
-  useEffect(() => {
-    if (familleParam) setFilters((f) => ({ ...f, families: [familleParam] }));
-    if (coinParam === "oui") setFilters((f) => ({ ...f, corner: "corner" }));
-  }, [familleParam, coinParam]);
 
   const filtered = useMemo<Product[]>(() => {
     return ALL_PRODUCTS.filter((p) => {
@@ -75,24 +65,15 @@ export default function CatalogueClient() {
     return m;
   }, []);
 
-  const toggleArr: ToggleArr = (key, value) =>
-    setFilters((f) => {
-      const arr = f[key] as string[];
-      const next = arr.includes(value as string)
-        ? arr.filter((v) => v !== value)
-        : [...arr, value];
-      return { ...f, [key]: next } as Filters;
-    });
+  const toggleArr: ToggleArr = (key, value) => {
+    const arr = filters[key] as string[];
+    const next = arr.includes(value as string)
+      ? arr.filter((v) => v !== value)
+      : [...arr, value as string];
+    setFilters({ [key]: next } as Partial<Pick<Filters, FilterArrayKey>>);
+  };
 
-  const reset = () =>
-    setFilters({
-      families: [],
-      colors: [],
-      moldings: [],
-      ceilings: [],
-      corner: "all",
-      sort: "family",
-    });
+  const reset = () => setFilters(null);
 
   const activeFilterCount =
     filters.families.length +
@@ -106,17 +87,17 @@ export default function CatalogueClient() {
       padded
       className="grid grid-cols-[240px_1fr] grid-rows-[auto_1fr] gap-y-10 pb-[120px] pt-14 [column-gap:56px] max-[1100px]:grid-cols-1 max-[700px]:gap-y-6 max-[700px]:pb-[60px] max-[700px]:pt-7"
     >
-      <CatalogueHead
+      <CollectionsHead
         total={ALL_PRODUCTS.length}
         filteredCount={filtered.length}
         sort={filters.sort}
-        onSortChange={(sort) => setFilters((f) => ({ ...f, sort }))}
+        onSortChange={(sort: SortKey) => setFilters({ sort })}
         activeFilterCount={activeFilterCount}
         onOpenFilters={() => setFiltersOpen(true)}
       />
-      <CatalogueFilters
-        filters={filters}
-        setCorner={(corner) => setFilters((f) => ({ ...f, corner }))}
+      <CollectionsFilters
+        filters={filters as Filters}
+        setCorner={(corner: CornerFilter) => setFilters({ corner })}
         toggleArr={toggleArr}
         familyCounts={familyCounts}
         activeFilterCount={activeFilterCount}
@@ -125,7 +106,7 @@ export default function CatalogueClient() {
         isOpen={filtersOpen}
         onClose={() => setFiltersOpen(false)}
       />
-      <CatalogueGrid filtered={filtered} onReset={reset} />
+      <CollectionsGrid filtered={filtered} onReset={reset} />
     </Container>
   );
 }

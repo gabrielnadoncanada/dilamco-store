@@ -12,11 +12,12 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { pathPrefixes, routes } from "@/lib/routes";
 
 const LINKS: Array<[string, string]> = [
-  ["/catalogue", "Catalogue"],
-  ["/finitions", "Finitions"],
-  ["/soumission", "Demander une soumission"],
+  [routes.collections, "Collections"],
+  [routes.finishes, "Finitions"],
+  [routes.quote, "Demander une soumission"],
 ];
 
 export function Topbar() {
@@ -30,19 +31,19 @@ export function Topbar() {
 
   const isActive = (path: string) =>
     pathname === path ||
-    (path === "/catalogue" && pathname.startsWith("/produit"));
+    (path === routes.collections && pathname.startsWith(pathPrefixes.product));
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border backdrop-blur-md">
       <Link
-        href="/soumission"
+        href={routes.quote}
         className="block bg-primary text-primary-foreground text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium py-1.5 md:py-2 px-[clamp(16px,4vw,56px)] max-[380px]:text-[9px] hover:underline underline-offset-[3px]"
       >
         Entrepôt à Montréal · 20+ ans d'expérience · Soumission en ligne
       </Link>
       <div className="flex items-center gap-3 md:gap-6 px-[18px] px-6 py-3.5 md:py-[22px] ">
         <Link
-          href="/"
+          href={routes.home}
           aria-label="Dilamco accueil"
           className="inline-flex items-center justify-center"
         >

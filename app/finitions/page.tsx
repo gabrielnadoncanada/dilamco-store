@@ -4,7 +4,7 @@ import { CollectionFeature } from "./_components/collection-feature";
 
 export const metadata = { title: "Finitions · Dilamco" };
 
-export default function CollectionsPage() {
+export default function FinitionsPage() {
   return (
     <Container padded className="max-[700px]:pb-[60px]">
       <header className="border-b border-border py-[60px] pb-20 max-[700px]:py-8">

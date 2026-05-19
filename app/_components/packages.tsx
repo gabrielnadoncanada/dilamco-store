@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MediaTabs } from "@/components/ds/media-tabs";
+import { routes } from "@/lib/routes";
 
 export default function Packages() {
   return (
@@ -22,8 +23,8 @@ export default function Packages() {
             "* Prix incluant 22 modules, 3 panneaux de finition, fillers, livraison à Montréal et installation. Comptoir vendu séparément.",
           actions: (
             <>
-              <Link href="/forfait/10x10">Voir le forfait →</Link>
-              <Link href="/configurateur">Personnaliser</Link>
+              <Link href={routes.package("10x10")}>Voir le forfait →</Link>
+              <Link href={routes.configurator}>Personnaliser</Link>
             </>
           ),
         },

@@ -11,6 +11,7 @@ import {
   DrawerTitle,
 } from "./ui/drawer";
 import { findProduct } from "@/lib/products";
+import { routes } from "@/lib/routes";
 import type { CartItem } from "@/lib/types";
 
 export function CartDrawer() {
@@ -56,9 +57,9 @@ export function CartDrawer() {
                 variant="ghost"
                 size="small"
                 className="mt-6"
-                onClick={() => goto("/catalogue")}
+                onClick={() => goto(routes.collections)}
               >
-                Parcourir le catalogue
+                Parcourir les collections
               </Button>
             </div>
           ) : (
@@ -83,7 +84,7 @@ export function CartDrawer() {
                 <span>${cart.subtotal.toLocaleString("fr-CA")}</span>
               </div>
             </div>
-            <Button block onClick={() => goto("/soumission")}>
+            <Button block onClick={() => goto(routes.quote)}>
               Demander la soumission <ButtonArrow />
             </Button>
             <p className="text-[11px] text-muted-foreground leading-[1.5] mt-4">

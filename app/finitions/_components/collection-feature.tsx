@@ -3,6 +3,7 @@ import { Button, ButtonArrow } from "@/components/ui/button";
 import { Headline, Body, ButtonGroup } from "@/components/ds";
 import type { Collection } from "./data";
 import { cn } from "@/lib/utils";
+import { collectionsFilter } from "@/lib/routes";
 
 interface Props {
   collection: Collection;
@@ -79,7 +80,7 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
 
         <ButtonGroup className="mt-3">
           <Button asChild>
-            <Link href={`/catalogue?couleur=${encodeURIComponent(c.nom)}`}>
+            <Link href={collectionsFilter.color(c.nom)}>
               {c.primaryCta ?? `Voir les ${c.nom.toLowerCase()}`}{" "}
               <ButtonArrow />
             </Link>

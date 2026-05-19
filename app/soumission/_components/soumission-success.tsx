@@ -4,6 +4,7 @@ import { useCart } from "@/components/cart-provider";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Headline, Body } from "@/components/ds";
+import { routes } from "@/lib/routes";
 
 export function SoumissionSuccess({ tel }: { tel: string }) {
   const cart = useCart();
@@ -20,7 +21,7 @@ export function SoumissionSuccess({ tel }: { tel: string }) {
       </Body>
       <div className="mt-10">
         <Button asChild onClick={() => cart.clear()}>
-          <Link href="/">Retour à l&apos;accueil</Link>
+          <Link href={routes.home}>Retour à l&apos;accueil</Link>
         </Button>
       </div>
     </div>

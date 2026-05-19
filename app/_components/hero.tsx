@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Headline, Body, ButtonGroup } from "@/components/ds";
+import { routes } from "@/lib/routes";
 
 const HERO_IMG = "/assets/hero_image.png";
 
@@ -30,12 +31,12 @@ export function Hero() {
         </div>
         <ButtonGroup>
           <Button asChild>
-            <Link href="/catalogue">
+            <Link href={routes.collections}>
               Créer ma cuisine <ButtonArrow />
             </Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/soumission">Demander une soumission</Link>
+            <Link href={routes.quote}>Demander une soumission</Link>
           </Button>
         </ButtonGroup>
       </div>

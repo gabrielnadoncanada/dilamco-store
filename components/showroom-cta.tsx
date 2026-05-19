@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { SplitMediaCta } from "@/components/ds";
+import { routes } from "@/lib/routes";
 
 export function ShowroomCta() {
   return (
@@ -37,7 +38,7 @@ export function ShowroomCta() {
         </div>
       </div>
       <Button asChild className="mt-8">
-        <Link href="/soumission">
+        <Link href={routes.quote}>
           Prendre rendez-vous <ButtonArrow />
         </Link>
       </Button>

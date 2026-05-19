@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Container, Headline, SplitMediaCta } from "@/components/ds";
 import { findProduct, products as ALL_PRODUCTS } from "@/lib/products";
 import { productGalleryViews } from "@/lib/photos";
+import { routes } from "@/lib/routes";
 import type { ColorName, Molding } from "@/lib/types";
 import { ProductBreadcrumb } from "./_components/product-breadcrumb";
 import {
@@ -36,7 +37,7 @@ export default function ProduitClient({ id }: { id: string }) {
           Module introuvable.
         </Headline>
         <Button asChild variant="ghost" className="mt-6">
-          <Link href="/catalogue">Retour au catalogue</Link>
+          <Link href={routes.collections}>Retour aux collections</Link>
         </Button>
       </Container>
     );

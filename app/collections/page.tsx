@@ -1,14 +1,14 @@
 import { Suspense } from "react";
-import CatalogueClient from "./catalogue-client";
+import CollectionsClient from "./collections-client";
 
 export const metadata = {
-  title: "Catalogue · Dilamco",
+  title: "Collections · Dilamco",
 };
 
-export default function CataloguePage() {
+export default function CollectionsPage() {
   return (
     <Suspense fallback={null}>
-      <CatalogueClient />
+      <CollectionsClient />
     </Suspense>
   );
 }

@@ -6,6 +6,7 @@ import {
   SectionHeading,
 } from "@/components/ds";
 import { CatCard } from "./cat-card";
+import { collectionsFilter, routes } from "@/lib/routes";
 
 const CAT_IMG_MURALE = "/assets/cat_wall.png";
 const CAT_IMG_BAS = "/assets/cat_base.png";
@@ -19,11 +20,11 @@ export function Categories() {
       <Container>
         <div className="mb-16 max-[700px]:mb-8 flex flex-wrap items-end justify-between gap-10 max-[700px]:gap-[18px]">
           <SectionHeading
-            eyebrow="Le catalogue"
+            eyebrow="Les collections"
             title="Parcourez nos armoires par catégorie."
           />
           <Button asChild variant="ghost">
-            <Link href="/catalogue">
+            <Link href={routes.collections}>
               Tout parcourir <ButtonArrow />
             </Link>
           </Button>
@@ -34,36 +35,36 @@ export function Categories() {
             img={CAT_IMG_MURALE}
             count={210}
             title="Armoires murales"
-            href="/catalogue?famille=Armoire+murale"
+            href={collectionsFilter.family("Armoire murale")}
           />
           <CatCard
             img={CAT_IMG_BAS}
             count={70}
             title="Armoires de bas"
-            href="/catalogue?famille=Armoire+de+bas"
+            href={collectionsFilter.family("Armoire de bas")}
           />
           <CatCard
             img={CAT_IMG_PANTRY}
             count={138}
             title="Garde-manger"
-            href="/catalogue?famille=Garde-manger"
+            href={collectionsFilter.family("Garde-manger")}
           />
           <CatCard
             img={CAT_IMG_COIN}
             count={277}
             title="Modules de coin"
-            href="/catalogue?coin=oui"
+            href={collectionsFilter.corner}
           />
           <CatCard
             img={CAT_IMG_FRIDGE}
             count={36}
             title="Au-dessus du frigo"
-            href="/catalogue?famille=Armoire+au-dessus+du+r%C3%A9frig%C3%A9rateur"
+            href={collectionsFilter.family("Armoire au-dessus du réfrigérateur")}
           />
         </div>
         <div className="mt-10 flex justify-center">
           <Button asChild>
-            <Link href="/soumission">Demander une soumission</Link>
+            <Link href={routes.quote}>Demander une soumission</Link>
           </Button>
         </div>
       </Container>

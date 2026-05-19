@@ -12,7 +12,7 @@ interface Props {
   onOpenFilters: () => void;
 }
 
-export function CatalogueHead({
+export function CollectionsHead({
   total,
   filteredCount,
   sort,

@@ -4,6 +4,7 @@ import { useCart } from "@/components/cart-provider";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Headline } from "@/components/ds";
+import { routes } from "@/lib/routes";
 
 export function SoumissionSummary() {
   const cart = useCart();
@@ -21,7 +22,7 @@ export function SoumissionSummary() {
           de projet vous accompagnera dans la sélection.
           <div className="mt-4">
             <Button asChild variant="ghost" size="small">
-              <Link href="/catalogue">Parcourir le catalogue</Link>
+              <Link href={routes.collections}>Parcourir les collections</Link>
             </Button>
           </div>
         </div>

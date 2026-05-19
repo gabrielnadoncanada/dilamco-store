@@ -8,6 +8,7 @@ import {
   HairlineCell,
   Body,
 } from "@/components/ds";
+import { routes } from "@/lib/routes";
 
 const STATS: Array<[string, string]> = [
   ["20+", "Années d'expérience"],
@@ -40,7 +41,7 @@ export function Trust() {
               variant="paper"
               className="mt-8 uppercase tracking-wider"
             >
-              <Link href="/catalogue">
+              <Link href={routes.collections}>
                 Créer ma cuisine <ButtonArrow />
               </Link>
             </Button>

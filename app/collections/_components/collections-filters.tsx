@@ -133,7 +133,7 @@ interface Props extends BodyProps {
   onClose: () => void;
 }
 
-export function CatalogueFilters({
+export function CollectionsFilters({
   filteredCount,
   isOpen,
   onClose,

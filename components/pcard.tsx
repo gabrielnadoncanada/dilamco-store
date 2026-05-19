@@ -5,6 +5,7 @@ import { useCart } from "./cart-provider";
 import { ModuleRender } from "./module-render";
 import { Swatch } from "./swatch";
 import { photoForProduct } from "@/lib/photos";
+import { routes } from "@/lib/routes";
 import type { Product } from "@/lib/types";
 
 export function PCard({ product }: { product: Product }) {
@@ -16,7 +17,7 @@ export function PCard({ product }: { product: Product }) {
   return (
     <Link
       className="group flex flex-col border border-border bg-card text-card-foreground no-underline transition-[border-color,transform] duration-200  hover:border-foreground"
-      href={`/produit/${product.id}`}
+      href={routes.product(product.id)}
     >
       <div className="relative aspect-square overflow-hidden border-b border-border bg-secondary">
         {photo && (

@@ -8,7 +8,7 @@ interface Props {
   onReset: () => void;
 }
 
-export function CatalogueGrid({ filtered, onReset }: Props) {
+export function CollectionsGrid({ filtered, onReset }: Props) {
   return (
     <div>
       <div className="grid grid-cols-3 gap-x-6 gap-y-8 min-[1101px]:group-data-[density=dense]/body:grid-cols-4 max-[1100px]:grid-cols-2 max-[700px]:!grid-cols-2 max-[700px]:gap-x-3 max-[700px]:gap-y-[18px] max-[380px]:!grid-cols-1">

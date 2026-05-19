@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Eyebrow, Headline, ButtonGroup } from "@/components/ds";
 import type { Project } from "./data";
+import { routes } from "@/lib/routes";
 
 export function ProjetCase({ project }: { project: Project }) {
   return (
@@ -77,12 +78,12 @@ export function ProjetCase({ project }: { project: Project }) {
 
       <ButtonGroup className="mb-[100px] border-t border-border pt-8" gap="lg">
         <Button asChild>
-          <Link href="/soumission">
+          <Link href={routes.quote}>
             Démarrer un projet similaire <ButtonArrow />
           </Link>
         </Button>
         <Button asChild variant="ghost">
-          <Link href="/catalogue">Voir les modules utilisés</Link>
+          <Link href={routes.collections}>Voir les modules utilisés</Link>
         </Button>
       </ButtonGroup>
     </article>
