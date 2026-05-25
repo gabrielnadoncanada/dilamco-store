@@ -1,112 +1,87 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { parseAsStringLiteral, useQueryState } from "nuqs";
 import { products as ALL_PRODUCTS } from "@/lib/products";
-import type { Product } from "@/lib/types";
-import { Container } from "@/components/ds";
-import { CollectionsHead } from "./_components/collections-head";
-import { CollectionsFilters } from "./_components/collections-filters";
-import { CollectionsGrid } from "./_components/collections-grid";
-import {
-  FAMILY_ORDER,
-  useCollectionsFilters,
-  type CornerFilter,
-  type FilterArrayKey,
-  type Filters,
-  type SortKey,
-  type ToggleArr,
-} from "./_components/types";
+import { Eyebrow, Headline } from "@/components/ds";
+import { PCard } from "@/components/pcard";
+import { CollectionsShell } from "./_components/collections-shell";
+import { FAMILY_ORDER, SORT_VALUES, type SortKey } from "./_components/types";
 
 export default function CollectionsClient() {
-  const [filters, setFilters] = useCollectionsFilters();
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [sort, setSort] = useQueryState(
+    "tri",
+    parseAsStringLiteral(SORT_VALUES).withDefault("family"),
+  );
 
-  const filtered = useMemo<Product[]>(() => {
-    return ALL_PRODUCTS.filter((p) => {
-      if (filters.families.length && !filters.families.includes(p.family))
-        return false;
-      if (
-        filters.colors.length &&
-        !p.colors.some((c) => filters.colors.includes(c))
-      )
-        return false;
-      if (
-        filters.moldings.length &&
-        !p.moldings.some((m) => filters.moldings.includes(m))
-      )
-        return false;
-      if (
-        filters.ceilings.length &&
-        p.ceiling &&
-        !filters.ceilings.includes(p.ceiling)
-      )
-        return false;
-      if (filters.corner === "corner" && (p.corner === "Non" || !p.corner))
-        return false;
-      if (filters.corner === "straight" && p.corner && p.corner !== "Non")
-        return false;
-      return true;
-    }).sort((a, b) => {
-      if (filters.sort === "price-asc") return a.price - b.price;
-      if (filters.sort === "price-desc") return b.price - a.price;
-      if (filters.sort === "width") return (a.w || 0) - (b.w || 0);
+  const sorted = useMemo(() => {
+    return [...ALL_PRODUCTS].sort((a, b) => {
+      if (sort === "price-asc") return a.price - b.price;
+      if (sort === "price-desc") return b.price - a.price;
+      if (sort === "width") return (a.w || 0) - (b.w || 0);
       const fa = FAMILY_ORDER.indexOf(a.family);
       const fb = FAMILY_ORDER.indexOf(b.family);
       if (fa !== fb) return fa - fb;
       return (a.w || 0) - (b.w || 0);
     });
-  }, [filters]);
-
-  const familyCounts = useMemo(() => {
-    const m: Record<string, number> = {};
-    ALL_PRODUCTS.forEach((p) => {
-      m[p.family] = (m[p.family] || 0) + 1;
-    });
-    return m;
-  }, []);
-
-  const toggleArr: ToggleArr = (key, value) => {
-    const arr = filters[key] as string[];
-    const next = arr.includes(value as string)
-      ? arr.filter((v) => v !== value)
-      : [...arr, value as string];
-    setFilters({ [key]: next } as Partial<Pick<Filters, FilterArrayKey>>);
-  };
-
-  const reset = () => setFilters(null);
-
-  const activeFilterCount =
-    filters.families.length +
-    filters.colors.length +
-    filters.moldings.length +
-    filters.ceilings.length +
-    (filters.corner !== "all" ? 1 : 0);
+  }, [sort]);
 
   return (
-    <Container
-      padded
-      className="grid grid-cols-[240px_1fr] grid-rows-[auto_1fr] gap-y-10 pb-[120px] pt-14 [column-gap:56px] max-[1100px]:grid-cols-1 max-[700px]:gap-y-6 max-[700px]:pb-[60px] max-[700px]:pt-7"
-    >
-      <CollectionsHead
+    <CollectionsShell>
+      <CollectionsHeader
         total={ALL_PRODUCTS.length}
-        filteredCount={filtered.length}
-        sort={filters.sort}
-        onSortChange={(sort: SortKey) => setFilters({ sort })}
-        activeFilterCount={activeFilterCount}
-        onOpenFilters={() => setFiltersOpen(true)}
+        shown={sorted.length}
+        sort={sort}
+        onSortChange={setSort}
       />
-      <CollectionsFilters
-        filters={filters as Filters}
-        setCorner={(corner: CornerFilter) => setFilters({ corner })}
-        toggleArr={toggleArr}
-        familyCounts={familyCounts}
-        activeFilterCount={activeFilterCount}
-        filteredCount={filtered.length}
-        onReset={reset}
-        isOpen={filtersOpen}
-        onClose={() => setFiltersOpen(false)}
-      />
-      <CollectionsGrid filtered={filtered} onReset={reset} />
-    </Container>
+      <div className="mt-10 grid grid-cols-3 gap-x-6 gap-y-8 max-[1100px]:grid-cols-2 max-[700px]:!grid-cols-2 max-[700px]:gap-x-3 max-[700px]:gap-y-[18px] max-[380px]:!grid-cols-1">
+        {sorted.slice(0, 60).map((p) => (
+          <PCard key={p.code} product={p} />
+        ))}
+      </div>
+      {sorted.length > 60 && (
+        <div className="mt-14 text-center text-[13px] text-muted-foreground">
+          Affichage 60 sur {sorted.length}. Naviguez par catégorie pour affiner.
+        </div>
+      )}
+    </CollectionsShell>
+  );
+}
+
+function CollectionsHeader({
+  total,
+  shown,
+  sort,
+  onSortChange,
+}: {
+  total: number;
+  shown: number;
+  sort: SortKey;
+  onSortChange: (s: SortKey) => void;
+}) {
+  return (
+    <div className="flex flex-wrap items-end justify-between gap-8 border-b border-border pb-7 max-[700px]:flex-col max-[700px]:items-start max-[700px]:gap-3">
+      <div className="max-[700px]:w-full">
+        <Eyebrow>Catalogue technique</Eyebrow>
+        <Headline level="headline" as="h1" className="mt-2">
+          Armoires de cuisine
+        </Headline>
+      </div>
+      <div className="flex flex-wrap items-center gap-3 max-[700px]:w-full max-[700px]:gap-2">
+        <span className="font-mono text-xs tracking-[0.04em] text-muted-foreground max-[700px]:text-[11px]">
+          {shown} module{shown !== 1 ? "s" : ""} sur {total}
+        </span>
+        <select
+          className="cursor-pointer border border-border-strong bg-transparent px-3.5 py-2.5 pr-8 text-xs tracking-[0.06em] text-foreground max-[700px]:min-w-0 max-[700px]:flex-1"
+          value={sort}
+          onChange={(e) => onSortChange(e.target.value as SortKey)}
+        >
+          <option value="family">Trier · Famille</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="width">Largeur</option>
+        </select>
+      </div>
+    </div>
   );
 }

@@ -34,7 +34,10 @@ export function ModuleRender({ product, color, molding }: Props) {
   const h = product.h || 30;
   const isCorner = (product.corner || "Non") !== "Non";
   const corner45 = product.corner === "Coin 45 degres";
-  const isPantry = family.includes("Garde-manger");
+  const isPantry =
+    family.includes("Garde-manger") ||
+    family.includes("utilitaire") ||
+    (product.category?.includes("pantry") ?? false);
   const moldingW = molding === "3 po" ? 0.16 : 0.07;
 
   const viewW = 200;

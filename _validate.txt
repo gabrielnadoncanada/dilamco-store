@@ -1,0 +1,8 @@
+Validated: 134/139
+Mismatches: 5
+
+WF1.5120 (Fillers) parsed={'w': 1.51, 'h': 20.0} | w: code→1.51 vs xlsx→1.5 ; h: code→20.0 vs xlsx→120.0
+OCM8 (Moldings) parsed={'h': 8.0, 'w': 96} | h: code→8.0 vs xlsx→0.75
+WP18X91.527 (Utility Cabinet) parsed={'w': 18.0, 'h': 91.527} | h: code→91.527 vs xlsx→91.5
+WP2491.5X27 (Utility Cabinet) parsed={'w': 2491.5, 'h': 27.0} | w: code→2491.5 vs xlsx→24.0 ; h: code→27.0 vs xlsx→91.5
+WP2791.5X27 (Utility Cabinet) parsed={'w': 2791.5, 'h': 27.0} | w: code→2791.5 vs xlsx→27.0 ; h: code→27.0 vs xlsx→91.5

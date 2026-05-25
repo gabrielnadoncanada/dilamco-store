@@ -7,15 +7,12 @@ export interface Bilingual {
   en: string | null;
 }
 
-export interface Subcategory {
-  name: Bilingual;
-  slug: Bilingual;
-}
-
 export interface Category {
+  slug: string;
+  slugFr: string;
+  parent: string | null;
   name: Bilingual;
-  slug: Bilingual;
-  subcategories: Subcategory[];
+  path: string[];
 }
 
 interface CatalogCategoriesFile {
@@ -27,17 +24,41 @@ const file = data as CatalogCategoriesFile;
 
 export const categories: Category[] = file.categories;
 
-export function findCategoryBySlug(
-  slug: string,
-  locale: Locale = "fr",
-): Category | undefined {
-  return categories.find((c) => c.slug[locale] === slug);
+const bySlug = new Map<string, Category>(categories.map((c) => [c.slug, c]));
+const childrenByParent = new Map<string, Category[]>();
+for (const cat of categories) {
+  const key = cat.parent ?? "__root__";
+  const list = childrenByParent.get(key) ?? [];
+  list.push(cat);
+  childrenByParent.set(key, list);
 }
 
-export function findSubcategoryBySlug(
-  category: Category,
-  slug: string,
-  locale: Locale = "fr",
-): Subcategory | undefined {
-  return category.subcategories.find((s) => s.slug[locale] === slug);
+export function findCategoryBySlug(slug: string): Category | undefined {
+  return bySlug.get(slug);
+}
+
+export function getTopLevelCategories(): Category[] {
+  return childrenByParent.get("__root__") ?? [];
+}
+
+export function getChildren(parentSlug: string): Category[] {
+  return childrenByParent.get(parentSlug) ?? [];
+}
+
+/** Inclut le slug fourni + tous ses descendants. Utile pour matcher les produits dans une famille entière. */
+export function getDescendantSlugs(slug: string): string[] {
+  const out = [slug];
+  const queue = [slug];
+  while (queue.length) {
+    const cur = queue.shift()!;
+    for (const child of getChildren(cur)) {
+      out.push(child.slug);
+      queue.push(child.slug);
+    }
+  }
+  return out;
+}
+
+export function categoryName(cat: Category, locale: Locale = "fr"): string {
+  return cat.name[locale] ?? cat.name.en ?? cat.slug;
 }

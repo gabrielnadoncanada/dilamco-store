@@ -1,26 +1,22 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Container, Eyebrow, Headline, Body } from "@/components/ds";
+import { Eyebrow, Headline } from "@/components/ds";
+import { PCard } from "@/components/pcard";
+import { CollectionsShell } from "../../_components/collections-shell";
 import {
   categories,
+  categoryName,
   findCategoryBySlug,
-  findSubcategoryBySlug,
-  type Locale,
 } from "@/lib/catalog-categories";
+import { hasVisibleProducts, productsInCategory } from "@/lib/products";
 import { routes } from "@/lib/routes";
-
-const LOCALE: Locale = "fr";
 
 export function generateStaticParams() {
   const params: Array<{ slug: string; sub: string }> = [];
-  for (const category of categories) {
-    const catSlug = category.slug[LOCALE];
-    if (!catSlug) continue;
-    for (const sub of category.subcategories) {
-      const subSlug = sub.slug[LOCALE];
-      if (!subSlug) continue;
-      params.push({ slug: catSlug, sub: subSlug });
-    }
+  for (const child of categories) {
+    if (!child.parent) continue;
+    if (!hasVisibleProducts(child.slug)) continue;
+    params.push({ slug: child.parent, sub: child.slug });
   }
   return params;
 }
@@ -31,14 +27,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string; sub: string }>;
 }) {
   const { slug, sub } = await params;
-  const category = findCategoryBySlug(slug, LOCALE);
-  if (!category) return { title: "Collection · Dilamco" };
-  const subcategory = findSubcategoryBySlug(category, sub, LOCALE);
-  if (!subcategory) return { title: "Collection · Dilamco" };
-  const catName = category.name[LOCALE] ?? category.name.en ?? "";
-  const subName = subcategory.name[LOCALE] ?? subcategory.name.en ?? "";
+  const parent = findCategoryBySlug(slug);
+  const subCat = findCategoryBySlug(sub);
+  if (!parent || !subCat || subCat.parent !== slug) {
+    return { title: "Collection · Dilamco" };
+  }
   return {
-    title: `${subName} · ${catName} · Dilamco`,
+    title: `${categoryName(subCat)} · ${categoryName(parent)} · Dilamco`,
   };
 }
 
@@ -48,34 +43,43 @@ export default async function CollectionSubcategoryPage({
   params: Promise<{ slug: string; sub: string }>;
 }) {
   const { slug, sub } = await params;
-  const category = findCategoryBySlug(slug, LOCALE);
-  if (!category) notFound();
-  const subcategory = findSubcategoryBySlug(category, sub, LOCALE);
-  if (!subcategory) notFound();
+  const parent = findCategoryBySlug(slug);
+  const subCat = findCategoryBySlug(sub);
+  if (!parent || !subCat || subCat.parent !== slug) notFound();
 
-  const catName = category.name[LOCALE] ?? category.name.en;
-  const subName = subcategory.name[LOCALE] ?? subcategory.name.en;
+  const parentName = categoryName(parent);
+  const subName = categoryName(subCat);
+  const items = productsInCategory(sub);
 
   return (
-    <Container padded className="pb-[120px] pt-14 max-[700px]:pt-7">
+    <CollectionsShell activeSlug={sub}>
       <div className="font-mono text-[11px] tracking-[0.04em] text-muted-foreground [&_a:hover]:text-primary">
         <Link href={routes.collections}>Collections</Link> /{" "}
-        <Link href={routes.collection(slug)}>{catName}</Link> /{" "}
+        <Link href={routes.collection(slug)}>{parentName}</Link> /{" "}
         <span className="text-foreground">{subName}</span>
       </div>
 
-      <header className="mt-4 border-b border-border pb-10">
-        <Eyebrow>
-          {catName}
-        </Eyebrow>
+      <header className="mt-4 border-b border-border pb-7">
+        <Eyebrow>{parentName}</Eyebrow>
         <Headline level="headline" as="h1" className="mt-2">
           {subName}
         </Headline>
+        <p className="mt-3 font-mono text-xs tracking-[0.04em] text-muted-foreground">
+          {items.length} module{items.length !== 1 ? "s" : ""}
+        </p>
       </header>
 
-      <Body tone="muted" className="mt-10">
-        Les modules de cette sous-catégorie seront affichés ici.
-      </Body>
-    </Container>
+      {items.length > 0 ? (
+        <div className="mt-10 grid grid-cols-3 gap-x-6 gap-y-8 max-[1100px]:grid-cols-2 max-[700px]:!grid-cols-2 max-[700px]:gap-x-3 max-[700px]:gap-y-[18px] max-[380px]:!grid-cols-1">
+          {items.map((p) => (
+            <PCard key={p.code} product={p} />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-10 px-5 py-14 text-center text-muted-foreground">
+          Aucun module dans cette sous-catégorie pour le moment.
+        </div>
+      )}
+    </CollectionsShell>
   );
 }
