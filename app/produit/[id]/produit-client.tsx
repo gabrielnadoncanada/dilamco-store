@@ -55,7 +55,7 @@ function QualityHighlights() {
         {QUALITY_POINTS.map((point) => (
           <div key={point.title} className="flex flex-col gap-3">
             <div
-              className="aspect-[4/3] w-full border border-border bg-secondary bg-cover bg-center"
+              className="aspect-[4/3] w-full border border-border bg-secondary bg-cover bg-center [filter:saturate(0.78)_sepia(0.06)]"
               style={{ backgroundImage: `url(${point.src})` }}
               role="img"
               aria-label={point.title}

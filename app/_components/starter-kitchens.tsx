@@ -12,6 +12,7 @@ import {
 } from "@/components/ds";
 import { findProduct } from "@/lib/products";
 import { formatPrice } from "@/lib/format";
+import { Price } from "@/components/price";
 import { routes } from "@/lib/routes";
 import type { Product } from "@/lib/types";
 
@@ -128,9 +129,7 @@ export function StarterKitchens() {
                   <span className="text-xs text-muted-foreground">
                     Modules seulement
                   </span>
-                  <span className="font-serif text-[28px] tracking-[-0.01em] text-foreground">
-                    {formatPrice(total)}
-                  </span>
+                  <Price amount={total} size="lg" />
                 </div>
                 <div className="mt-1 flex flex-wrap items-center gap-3">
                   <Button

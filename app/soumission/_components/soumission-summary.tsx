@@ -5,7 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Headline } from "@/components/ds";
 import { routes } from "@/lib/routes";
-import { formatPrice } from "@/lib/format";
+import { findProduct } from "@/lib/products";
+import { photoForProduct } from "@/lib/photos";
+import { Price } from "@/components/price";
 
 export function SoumissionSummary() {
   const cart = useCart();
@@ -33,10 +35,20 @@ export function SoumissionSummary() {
             {cart.items.map((it) => (
               <div
                 key={it.key}
-                className="grid grid-cols-[auto_1fr_auto] items-start gap-3 text-xs"
+                className="grid grid-cols-[40px_1fr_auto] items-start gap-3 text-xs"
               >
-                <span className="pt-0.5 font-mono text-[11px] text-muted-foreground">
-                  {String(it.qty).padStart(2, "0")}×
+                <span
+                  className="relative block aspect-square border border-border bg-card bg-cover bg-center"
+                  style={(() => {
+                    const product = findProduct(it.productId);
+                    return product
+                      ? { backgroundImage: `url(${photoForProduct(product, it.color)})` }
+                      : undefined;
+                  })()}
+                >
+                  <span className="absolute -right-1.5 -top-1.5 flex min-w-[18px] items-center justify-center rounded-full bg-foreground px-1 font-mono text-[10px] leading-[18px] text-background">
+                    {it.qty}
+                  </span>
                 </span>
                 <span>
                   <span className="font-serif text-sm leading-[1.2] text-foreground">
@@ -47,16 +59,14 @@ export function SoumissionSummary() {
                     {it.color} · Shaker {it.molding}
                   </span>
                 </span>
-                <span className="font-mono text-xs text-foreground">
-                  {formatPrice(it.price * it.qty)}
-                </span>
+                <Price amount={it.price * it.qty} size="sm" />
               </div>
             ))}
           </div>
           <div className="mt-5 flex flex-col gap-2.5 group-data-[show-prices=false]/body:hidden">
             <div className="flex justify-between text-[13px] text-soft-foreground">
               <span>Sous-total catalogue</span>
-              <span className="font-mono text-xs">{formatPrice(cart.subtotal)}</span>
+              <Price amount={cart.subtotal} size="sm" />
             </div>
             <div className="flex justify-between text-[13px] text-soft-foreground">
               <span>Panneaux + fillers (est.)</span>
@@ -68,7 +78,7 @@ export function SoumissionSummary() {
             </div>
             <div className="mt-2 flex justify-between border-t border-border pt-3.5 font-serif text-lg tracking-[-0.01em] text-foreground">
               <span>Estimation modules</span>
-              <span>{formatPrice(cart.subtotal)}</span>
+              <Price amount={cart.subtotal} size="md" />
             </div>
           </div>
           <p className="mt-4 text-[11px] leading-[1.5] text-muted-foreground">

@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useCart } from "./cart-provider";
-import { ModuleRender } from "./module-render";
 import { Button, ButtonArrow } from "./ui/button";
 import {
   Drawer,
@@ -11,9 +10,10 @@ import {
   DrawerTitle,
 } from "./ui/drawer";
 import { findProduct } from "@/lib/products";
+import { photoForProduct } from "@/lib/photos";
+import { Price } from "./price";
 import { routes } from "@/lib/routes";
 import type { CartItem } from "@/lib/types";
-import { formatPrice } from "@/lib/format";
 
 export function CartDrawer() {
   const cart = useCart();
@@ -76,13 +76,11 @@ export function CartDrawer() {
               </div>
               <div className="flex justify-between text-[13px] text-foreground/85 group-data-[show-prices=false]/body:hidden">
                 <span>Sous-total catalogue</span>
-                <span className="font-mono text-xs">
-                  {formatPrice(cart.subtotal)} CAD
-                </span>
+                <Price amount={cart.subtotal} size="sm" />
               </div>
               <div className="flex justify-between border-t border-border pt-3 font-serif text-lg text-foreground group-data-[show-prices=false]/body:hidden">
                 <span>Estimation</span>
-                <span>{formatPrice(cart.subtotal)}</span>
+                <Price amount={cart.subtotal} size="md" />
               </div>
             </div>
             <Button block onClick={() => goto(routes.quote)}>
@@ -104,11 +102,14 @@ function LineItem({ item }: { item: CartItem }) {
   const product = findProduct(item.productId);
   return (
     <div className="grid grid-cols-[70px_1fr_auto] gap-3 border-b border-border py-4 last:border-b-0 max-[700px]:grid-cols-[56px_1fr_auto] max-[700px]:gap-2.5 max-[700px]:py-3.5">
-      <div className="flex aspect-square items-center justify-center border border-border bg-secondary p-[14%] [&>*]:max-h-full [&>*]:max-w-full">
-        {product && (
-          <ModuleRender product={product} color={item.color} molding={item.molding} />
-        )}
-      </div>
+      <div
+        className="aspect-square border border-border bg-secondary bg-cover bg-center"
+        style={
+          product
+            ? { backgroundImage: `url(${photoForProduct(product, item.color)})` }
+            : undefined
+        }
+      />
       <div className="flex min-w-0 flex-col gap-1.5">
         <span className="font-serif text-base leading-[1.2] tracking-[-0.01em] text-foreground">
           {item.name}
@@ -138,9 +139,7 @@ function LineItem({ item }: { item: CartItem }) {
           </button>
         </div>
       </div>
-      <div className="font-mono text-xs text-foreground group-data-[show-prices=false]/body:hidden">
-        {formatPrice(item.price * item.qty)}
-      </div>
+      <Price amount={item.price * item.qty} size="sm" />
     </div>
   );
 }

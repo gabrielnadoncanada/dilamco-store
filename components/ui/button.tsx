@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, HTMLAttributes } from "react";
+import type { ComponentProps, HTMLAttributes } from "react";
 import { Slot } from "radix-ui";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -22,6 +22,8 @@ const buttonVariants = cva(
         default: "px-7 py-3.5 text-[13px]",
         small: "px-[18px] py-2.5 text-[11px]",
         xl: "px-8 py-[18px] text-[13px]",
+        icon: "size-9 p-0",
+        "icon-xs": "size-5 p-0 [&_svg]:size-3",
       },
       block: {
         true: "w-full",
@@ -37,7 +39,7 @@ const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends ComponentProps<"button">,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

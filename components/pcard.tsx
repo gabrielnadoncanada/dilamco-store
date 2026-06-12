@@ -8,23 +8,9 @@ import { photoForProduct } from "@/lib/photos";
 import { finishSibling, widthSiblings } from "@/lib/products";
 import { routes } from "@/lib/routes";
 import type { Product } from "@/lib/types";
-import { formatDim, formatPrice } from "@/lib/format";
-
-/** Prix façon IKEA : entier proéminent, décimales + symbole en petit. */
-function PriceTag({ amount }: { amount: number }) {
-  const formatted = formatPrice(amount); // « 1 234,56 $ »
-  const [int, rest] = formatted.split(",");
-  return (
-    <span className="font-mono text-foreground group-data-[show-prices=false]/body:hidden">
-      <span className="text-[22px] font-semibold tracking-[-0.01em] max-[700px]:text-[17px]">
-        {int}
-      </span>
-      <span className="text-[12px] font-medium max-[700px]:text-[11px]">
-        ,{rest}
-      </span>
-    </span>
-  );
-}
+import { formatDim } from "@/lib/format";
+import { Price } from "./price";
+import { AvailabilityDot } from "./availability-dot";
 
 export function PCard({ product }: { product: Product }) {
   const defaultColor = product.colors[0] || "Blanc Pur";
@@ -77,17 +63,17 @@ export function PCard({ product }: { product: Product }) {
         </Link>
 
         <div className="mt-1.5 flex items-center justify-between">
-          <PriceTag amount={product.price} />
+          <Price amount={product.price} size="md" />
           <Swatch color={defaultColor} title={defaultColor} size="lg" />
         </div>
 
         <ul className="mt-1 flex flex-col gap-1 text-[11px] leading-[1.4] text-soft-foreground max-[700px]:text-[10px]">
           <li className="flex items-center gap-1.5">
-            <span aria-hidden className="size-[7px] shrink-0 rounded-full bg-[#3f7a4e]" />
+            <AvailabilityDot />
             En stock — entrepôt à Montréal
           </li>
           <li className="flex items-center gap-1.5">
-            <span aria-hidden className="size-[7px] shrink-0 rounded-full bg-[#3f7a4e]" />
+            <AvailabilityDot />
             Livraison et installation disponibles
           </li>
         </ul>

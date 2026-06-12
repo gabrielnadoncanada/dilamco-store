@@ -12,6 +12,8 @@ import {
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Headline, Body } from "@/components/ds";
 import { photoForProduct } from "@/lib/photos";
+import { Price } from "@/components/price";
+import { AvailabilityDot } from "@/components/availability-dot";
 import { ProductSpecs } from "./product-specs";
 import {
   finishSibling,
@@ -23,21 +25,6 @@ import { routes } from "@/lib/routes";
 import type { ColorName, Molding, Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/format";
-
-/** Prix dominant de la fiche — même structure interne que les cartes (PriceTag). */
-function ProductPrice({ amount }: { amount: number }) {
-  const [int, rest] = formatPrice(amount).split(",");
-  return (
-    <span className="mt-3 font-mono text-foreground group-data-[show-prices=false]/body:hidden">
-      <span className="text-[32px] font-semibold leading-none tracking-[-0.01em] max-[700px]:text-[26px]">
-        {int}
-      </span>
-      <span className="text-[15px] font-medium max-[700px]:text-[13px]">
-        ,{rest}
-      </span>
-    </span>
-  );
-}
 
 /** En-tête de section du panneau d'achat : label medium + valeur en sourdine. */
 function SectionLabel({ label, value }: { label: string; value?: string }) {
@@ -127,7 +114,7 @@ export function ProductInfo({
         >
           {product.name}
         </Headline>
-        <ProductPrice amount={product.price} />
+        <Price amount={product.price} size="lg" className="mt-3" />
       </div>
 
       <FinishSelector product={product} />
@@ -147,8 +134,8 @@ export function ProductInfo({
               <button
                 key={m}
                 className={cn(
-                  "flex cursor-pointer flex-col items-start gap-1 border border-border-strong bg-card px-4 py-3.5 text-left transition-colors hover:border-foreground",
-                  molding === m && "border-primary bg-secondary",
+                  "flex cursor-pointer flex-col items-start gap-1 border border-border-strong bg-card px-4 py-3.5 text-left transition-colors hover:border-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                  molding === m && "border-2 border-foreground bg-secondary",
                 )}
                 onClick={() => setMolding(m)}
               >
