@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/cart-provider";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Headline } from "@/components/ds";
@@ -37,15 +38,19 @@ export function SoumissionSummary() {
                 key={it.key}
                 className="grid grid-cols-[40px_1fr_auto] items-start gap-3 text-xs"
               >
-                <span
-                  className="relative block aspect-square border border-border bg-card bg-cover bg-center"
-                  style={(() => {
+                <span className="relative block aspect-square border border-border bg-card">
+                  {(() => {
                     const product = findProduct(it.productId);
-                    return product
-                      ? { backgroundImage: `url(${photoForProduct(product, it.color)})` }
-                      : undefined;
+                    return product ? (
+                      <Image
+                        src={photoForProduct(product, it.color)}
+                        alt={it.name}
+                        fill
+                        sizes="40px"
+                        className="object-cover"
+                      />
+                    ) : null;
                   })()}
-                >
                   <span className="absolute -right-1.5 -top-1.5 flex min-w-[18px] items-center justify-center rounded-full bg-foreground px-1 font-mono text-[10px] leading-[18px] text-background">
                     {it.qty}
                   </span>

@@ -155,34 +155,42 @@ export function ProductInfo({
 
       <HowToGetIt />
 
-      <div className="flex items-stretch gap-3 pt-2 max-[700px]:sticky max-[700px]:bottom-0 max-[700px]:z-10 max-[700px]:-mx-[18px] max-[700px]:border-t max-[700px]:border-border max-[700px]:bg-background max-[700px]:px-[18px] max-[700px]:py-3.5">
-        <div className="inline-flex items-center border border-border-strong bg-card">
-          <button
-            className="h-full w-11 cursor-pointer bg-transparent text-lg text-foreground hover:bg-secondary"
-            onClick={() => setQty((q) => Math.max(1, q - 1))}
+      <div className="flex flex-col gap-1.5 pt-2 max-[700px]:sticky max-[700px]:bottom-0 max-[700px]:z-10 max-[700px]:-mx-[18px] max-[700px]:border-t max-[700px]:border-border max-[700px]:bg-background max-[700px]:px-[18px] max-[700px]:py-2.5">
+        <div className="flex items-stretch gap-3 max-[700px]:gap-2">
+          <div className="inline-flex items-center border border-border-strong bg-card">
+            <button
+              className="h-full w-11 cursor-pointer bg-transparent text-lg text-foreground hover:bg-secondary max-[700px]:w-9"
+              onClick={() => setQty((q) => Math.max(1, q - 1))}
+            >
+              −
+            </button>
+            <input
+              name="quantite"
+              aria-label="Quantité"
+              className="h-full w-11 border-x border-border bg-transparent text-center font-mono text-sm text-foreground outline-none max-[700px]:w-9"
+              value={qty}
+              onChange={(e) => {
+                const next = Math.max(1, parseInt(e.target.value, 10) || 1);
+                setQty(() => next);
+              }}
+            />
+            <button
+              className="h-full w-11 cursor-pointer bg-transparent text-lg text-foreground hover:bg-secondary max-[700px]:w-9"
+              onClick={() => setQty((q) => q + 1)}
+            >
+              +
+            </button>
+          </div>
+          <Button
+            className="flex-1 whitespace-nowrap text-[13px] font-semibold max-[700px]:text-[12px]"
+            onClick={onAdd}
           >
-            −
-          </button>
-          <input
-            name="quantite"
-            aria-label="Quantité"
-            className="h-full w-11 border-x border-border bg-transparent text-center font-mono text-sm text-foreground outline-none"
-            value={qty}
-            onChange={(e) => {
-              const next = Math.max(1, parseInt(e.target.value, 10) || 1);
-              setQty(() => next);
-            }}
-          />
-          <button
-            className="h-full w-11 cursor-pointer bg-transparent text-lg text-foreground hover:bg-secondary"
-            onClick={() => setQty((q) => q + 1)}
-          >
-            +
-          </button>
+            Ajouter — {formatPrice(product.price * qty)} <ButtonArrow />
+          </Button>
         </div>
-        <Button className="flex-1 text-[13px] font-semibold" onClick={onAdd}>
-          Ajouter au projet — {formatPrice(product.price * qty)} <ButtonArrow />
-        </Button>
+        <span className="text-center text-[10.5px] tracking-[0.02em] text-muted-foreground">
+          Sans engagement · Soumission ferme sous 48 h
+        </span>
       </div>
     </div>
   );

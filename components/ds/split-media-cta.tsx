@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Eyebrow } from "./eyebrow";
@@ -35,11 +36,18 @@ export function SplitMediaCta({
   const media = (
     <div
       className={cn(
-        "min-h-[560px] bg-cover bg-center max-[900px]:order-1 max-[700px]:min-h-[320px]",
+        "relative min-h-[560px] overflow-hidden max-[900px]:order-1 max-[700px]:min-h-[320px]",
         mediaClassName,
       )}
-      style={{ backgroundImage: `url(${imageSrc})` }}
-    />
+    >
+      <Image
+        src={imageSrc}
+        alt=""
+        fill
+        sizes="(max-width: 900px) 100vw, 55vw"
+        className="object-cover"
+      />
+    </div>
   );
 
   const content = (

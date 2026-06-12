@@ -31,9 +31,18 @@ export function PCard({ product }: { product: Product }) {
         <Link
           href={routes.product(product.id)}
           aria-label={product.shortName || product.name}
-          className="absolute inset-0 z-0 block bg-cover bg-center transition-transform duration-[600ms] ease group-hover:scale-[1.04]"
-          style={photo ? { backgroundImage: `url(${photo})` } : undefined}
-        />
+          className="absolute inset-0 z-0 block overflow-hidden"
+        >
+          {photo && (
+            <Image
+              src={photo}
+              alt={product.shortName || product.name}
+              fill
+              sizes="(max-width: 380px) 90vw, (max-width: 1100px) 45vw, (max-width: 1440px) 30vw, 22vw"
+              className="object-cover transition-transform duration-[600ms] ease group-hover:scale-[1.04]"
+            />
+          )}
+        </Link>
         <button
           aria-label={`Ajouter ${product.shortName || product.name} au projet`}
           onClick={() =>

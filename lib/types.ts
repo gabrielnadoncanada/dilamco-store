@@ -45,7 +45,7 @@ export interface Product {
   price: number;
   /** false si l'auteur Excel n'a pas marqué la ligne comme "certaine" avec prix. */
   visible: boolean;
-  /** Si défini et non vide, chemins pour la galerie produit ; sinon les placeholders locaux du catalogue (`wall_cabinet_*.png`). */
+  /** Si défini et non vide, chemins pour la galerie produit ; sinon les placeholders locaux du catalogue (`wall_cabinet_*.webp`). */
   gallery?: ProductGalleryEntry[];
 }
 

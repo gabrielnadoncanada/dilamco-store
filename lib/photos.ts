@@ -3,9 +3,9 @@ import type { Product, ColorName, ProductGalleryEntry } from "./types";
 const DEFAULT_GALLERY_LABELS = ["Atelier", "Ambiance", "Détail · Moulure"] as const;
 
 const FALLBACK_PRODUCT_GALLERY_SRCS = [
-  "/assets/products/wall_cabinet_3.png",
-  "/assets/products/wall_cabinet_1.png",
-  "/assets/products/wall_cabinet_2.png",
+  "/assets/products/wall_cabinet_3.webp",
+  "/assets/products/wall_cabinet_1.webp",
+  "/assets/products/wall_cabinet_2.webp",
 ] as const;
 
 function gallerySrc(entry: ProductGalleryEntry): string {

@@ -31,7 +31,7 @@ export function HelpButton() {
   }, [open]);
 
   return (
-    <div ref={panelRef} className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 max-[700px]:bottom-[76px]">
+    <div ref={panelRef} className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 max-[700px]:bottom-[104px] max-[700px]:right-3">
       {open && (
         <div className="w-[300px] border border-border bg-background p-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
           <p className="font-serif text-lg leading-[1.25] text-foreground">

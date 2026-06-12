@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Headline, Body, ButtonGroup } from "@/components/ds";
 import { routes } from "@/lib/routes";
 
-const HERO_IMG = "/assets/hero_image.png";
+const HERO_IMG = "/assets/hero_image.webp";
 
 export function Hero() {
   return (
@@ -40,10 +41,16 @@ export function Hero() {
           </Button>
         </ButtonGroup>
       </div>
-      <div className="max-[901px]:order-first relative bg-primary overflow-hidden max-[900px]:min-h-[320px] max-[700px]:min-h-[280px] before:content-[''] before:absolute before:inset-0 before:[background:radial-gradient(circle_at_30%_20%,rgba(200,184,144,0.18),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.05),transparent_60%)]">
-        <div
-          className="absolute inset-0 bg-cover bg-center [filter:contrast(0.96)_saturate(0.9)]"
-          style={{ backgroundImage: `url(${HERO_IMG})` }}
+      {/* Mobile : image plafonnée pour que la promesse + le CTA restent
+          atteignables dans le premier écran et demi (conversion). */}
+      <div className="max-[901px]:order-first relative bg-primary overflow-hidden max-[900px]:min-h-[320px] max-[900px]:max-h-[40vh] max-[700px]:min-h-[260px] before:content-[''] before:absolute before:inset-0 before:[background:radial-gradient(circle_at_30%_20%,rgba(200,184,144,0.18),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.05),transparent_60%)]">
+        <Image
+          src={HERO_IMG}
+          alt="Cuisine équipée d'armoires Dilamco"
+          fill
+          priority
+          sizes="(max-width: 900px) 100vw, 55vw"
+          className="object-cover [filter:contrast(0.96)_saturate(0.9)]"
         />
       </div>
     </section>

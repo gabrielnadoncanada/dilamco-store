@@ -12,7 +12,7 @@ export default function Packages() {
         {
           id: "10x10",
           label: "10×10",
-          imageSrc: "/assets/cat_kitchen.png",
+          imageSrc: "/assets/cat_kitchen.webp",
           badge: "Forfait Scandinave · Chêne blanc",
           callout: (
             <strong className="text-2xl">

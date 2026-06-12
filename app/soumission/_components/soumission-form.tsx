@@ -91,7 +91,12 @@ export function SoumissionForm({ form, setForm, onSubmit }: Props) {
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="tel" className={fieldLabel}>Téléphone</Label>
+            <Label htmlFor="tel" className={fieldLabel}>
+              Téléphone{" "}
+              <span className="normal-case tracking-normal text-muted-foreground">
+                — pour planifier la prise de mesures
+              </span>
+            </Label>
             <Input
               id="tel"
               required
@@ -190,7 +195,10 @@ export function SoumissionForm({ form, setForm, onSubmit }: Props) {
         <div className="grid grid-cols-1 gap-4 mt-5">
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="notes" className={fieldLabel}>
-              Notes complémentaires (contexte, contraintes, inspirations)
+              Notes complémentaires{" "}
+              <span className="normal-case tracking-normal text-muted-foreground">
+                — optionnel
+              </span>
             </Label>
             <Textarea
               id="notes"
@@ -203,9 +211,18 @@ export function SoumissionForm({ form, setForm, onSubmit }: Props) {
         </div>
       </section>
 
-      <Button type="submit" className="px-9 py-[18px] text-sm">
-        Envoyer la demande <ButtonArrow />
-      </Button>
+      <div className="flex flex-col gap-3">
+        <Button
+          type="submit"
+          className="px-9 py-[18px] text-sm font-semibold max-[700px]:w-full"
+        >
+          Recevoir ma soumission ferme sous 48 h <ButtonArrow />
+        </Button>
+        <p className="m-0 text-[12px] leading-[1.6] text-muted-foreground">
+          Sans engagement. Un chef de projet vous contacte sous 24 h — aucune
+          relance commerciale, vos coordonnées ne sont jamais partagées.
+        </p>
+      </div>
     </form>
   );
 }

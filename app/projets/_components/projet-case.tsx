@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Eyebrow, Headline, ButtonGroup } from "@/components/ds";
@@ -7,10 +8,14 @@ import { routes } from "@/lib/routes";
 export function ProjetCase({ project }: { project: Project }) {
   return (
     <article key={project.id}>
-      <div
-        className="relative mb-14 aspect-[16/8] border border-border bg-cover bg-center"
-        style={{ backgroundImage: `url(${project.hero})` }}
-      >
+      <div className="relative mb-14 aspect-[16/8] overflow-hidden border border-border">
+        <Image
+          src={project.hero}
+          alt={project.titre}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute left-6 top-6 flex gap-4 bg-background px-3.5 py-2 text-[11px] tracking-[0.08em]">
           <span className="font-mono text-foreground">CAS · {project.id.toUpperCase()}</span>
           <span className="font-mono text-foreground">{project.annee}</span>
@@ -62,18 +67,33 @@ export function ProjetCase({ project }: { project: Project }) {
       </div>
 
       <div className="mb-14 grid grid-cols-2 grid-rows-2 gap-4 max-[800px]:grid-cols-1 max-[800px]:grid-rows-none max-[800px]:gap-2.5">
-        <div
-          className="row-span-2 min-h-[560px] border border-border bg-cover bg-center max-[800px]:row-auto max-[800px]:min-h-0 max-[800px]:aspect-[4/3]"
-          style={{ backgroundImage: `url(${project.galerie[0]})` }}
-        />
-        <div
-          className="aspect-[4/3] border border-border bg-cover bg-center"
-          style={{ backgroundImage: `url(${project.galerie[1]})` }}
-        />
-        <div
-          className="aspect-[4/3] border border-border bg-cover bg-center"
-          style={{ backgroundImage: `url(${project.galerie[2]})` }}
-        />
+        <div className="relative row-span-2 min-h-[560px] overflow-hidden border border-border max-[800px]:row-auto max-[800px]:min-h-0 max-[800px]:aspect-[4/3]">
+          <Image
+            src={project.galerie[0]}
+            alt={`${project.titre} — vue 1`}
+            fill
+            sizes="(max-width: 800px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative aspect-[4/3] overflow-hidden border border-border">
+          <Image
+            src={project.galerie[1]}
+            alt={`${project.titre} — vue 2`}
+            fill
+            sizes="(max-width: 800px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative aspect-[4/3] overflow-hidden border border-border">
+          <Image
+            src={project.galerie[2]}
+            alt={`${project.titre} — vue 3`}
+            fill
+            sizes="(max-width: 800px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
       </div>
 
       <ButtonGroup className="mb-[100px] border-t border-border pt-8" gap="lg">

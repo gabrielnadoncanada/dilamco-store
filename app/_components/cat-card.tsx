@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
@@ -18,9 +19,16 @@ export function CatCard({ featured, img, count, title, href }: Props) {
       }`}
       href={href}
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-[600ms] ease group-hover:scale-[1.04]"
-        style={{ backgroundImage: `url(${img})` }}
+      <Image
+        src={img}
+        alt={title}
+        fill
+        sizes={
+          featured
+            ? "(max-width: 900px) 100vw, 50vw"
+            : "(max-width: 900px) 50vw, 25vw"
+        }
+        className="object-cover transition-transform duration-[600ms] ease group-hover:scale-[1.04]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,31,28,0.85)] via-[rgba(26,31,28,0.15)] to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-8 text-background">

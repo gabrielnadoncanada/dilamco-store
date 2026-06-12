@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "sync:catalog": "node scripts/sync-catalog.mjs"
+    "sync:catalog": "node scripts/sync-catalog.mjs",
+    "images:webp": "node scripts/convert-images-to-webp.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

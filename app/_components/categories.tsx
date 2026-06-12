@@ -8,11 +8,11 @@ import {
 import { CatCard } from "./cat-card";
 import { collectionsFilter, routes } from "@/lib/routes";
 
-const CAT_IMG_MURALE = "/assets/cat_wall.png";
-const CAT_IMG_BAS = "/assets/cat_base.png";
-const CAT_IMG_PANTRY = "/assets/cat_kitchen.png";
-const CAT_IMG_COIN = "/assets/cat_base_corner.png";
-const CAT_IMG_FRIDGE = "/assets/cat_above_fridge.png";
+const CAT_IMG_MURALE = "/assets/cat_wall.webp";
+const CAT_IMG_BAS = "/assets/cat_base.webp";
+const CAT_IMG_PANTRY = "/assets/cat_kitchen.webp";
+const CAT_IMG_COIN = "/assets/cat_base_corner.webp";
+const CAT_IMG_FRIDGE = "/assets/cat_above_fridge.webp";
 
 export function Categories() {
   return (

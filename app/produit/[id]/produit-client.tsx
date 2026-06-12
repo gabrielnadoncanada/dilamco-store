@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useCart } from "@/components/cart-provider";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container, Headline } from "@/components/ds";
@@ -20,22 +21,22 @@ import { ShowroomCta } from "@/components/showroom-cta";
 
 const QUALITY_POINTS = [
   {
-    src: "/assets/cabinet.png",
+    src: "/assets/cabinet.webp",
     title: "Structure intérieure durable",
     body: "Caisson stable et rigide, intérieur propre, tablettes ajustables, assemblages précis.",
   },
   {
-    src: "/assets/drawer.jpg",
+    src: "/assets/drawer.webp",
     title: "Tiroirs en bouleau massif",
     body: "Côtés, façade et arrière en bois massif de bouleau — robuste, grain fin, finition haut de gamme.",
   },
   {
-    src: "/assets/dovetail.jpg",
+    src: "/assets/dovetail.webp",
     title: "Assemblage en queue d'aronde",
     body: "Jonctions renforcées sans fixations visibles : des modules stables et mieux alignés.",
   },
   {
-    src: "/assets/warehouse.jpg",
+    src: "/assets/warehouse.webp",
     title: "Entrepôt local à Montréal",
     body: "Inventaire contrôlé sur place : disponibilité réelle et délais prévisibles.",
   },
@@ -54,12 +55,15 @@ function QualityHighlights() {
       <div className="mt-6 grid grid-cols-4 gap-6 max-[1000px]:grid-cols-2 max-[520px]:grid-cols-1">
         {QUALITY_POINTS.map((point) => (
           <div key={point.title} className="flex flex-col gap-3">
-            <div
-              className="aspect-[4/3] w-full border border-border bg-secondary bg-cover bg-center [filter:saturate(0.78)_sepia(0.06)]"
-              style={{ backgroundImage: `url(${point.src})` }}
-              role="img"
-              aria-label={point.title}
-            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden border border-border bg-secondary">
+              <Image
+                src={point.src}
+                alt={point.title}
+                fill
+                sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 25vw"
+                className="object-cover [filter:saturate(0.78)_sepia(0.06)]"
+              />
+            </div>
             <h3 className="text-[14px] font-medium leading-[1.3] text-foreground">
               {point.title}
             </h3>

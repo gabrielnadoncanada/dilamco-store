@@ -2,6 +2,7 @@
 
 import "photoswipe/style.css";
 
+import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 
@@ -103,9 +104,12 @@ export function ProductGallery({
               )}
             >
               {v.type === "photo" && v.src ? (
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${v.src})` }}
+                <Image
+                  src={v.src}
+                  alt={v.label}
+                  fill
+                  sizes="76px"
+                  className="object-cover"
                 />
               ) : (
                 <ModuleRender
@@ -188,9 +192,12 @@ function GallerySlide({
         aria-label={`Agrandir ${view.label}`}
         className="relative block aspect-square w-full overflow-hidden border border-border bg-secondary cursor-zoom-in max-[700px]:aspect-[4/3]"
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-[1.02]"
-          style={{ backgroundImage: `url(${view.src})` }}
+        <Image
+          src={view.src}
+          alt={view.label}
+          fill
+          sizes="(max-width: 1000px) 100vw, 50vw"
+          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
         />
       </a>
     );

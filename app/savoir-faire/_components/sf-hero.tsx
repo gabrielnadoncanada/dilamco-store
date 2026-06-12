@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Eyebrow, Headline, Body } from "@/components/ds";
 
 export function SfHero() {
@@ -18,13 +19,14 @@ export function SfHero() {
           structurellement.
         </Body>
       </div>
-      <div
-        className="relative min-h-[560px] border border-border bg-secondary bg-cover bg-center max-[700px]:min-h-[320px]"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1400&q=80)",
-        }}
-      >
+      <div className="relative min-h-[560px] overflow-hidden border border-border bg-secondary max-[700px]:min-h-[320px]">
+        <Image
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1400&q=80"
+          alt="Entrepôt Dilamco à Montréal"
+          fill
+          sizes="(max-width: 900px) 100vw, 55vw"
+          className="object-cover"
+        />
         <span className="absolute bottom-5 left-5 bg-background px-3.5 py-2 font-mono text-[11px] tracking-[0.08em] text-foreground">
           Entrepôt Dilamco · Montréal · 3 200 m²
         </span>

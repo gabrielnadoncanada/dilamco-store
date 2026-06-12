@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button, ButtonArrow } from "@/components/ui/button";
 import { Headline, Body, ButtonGroup } from "@/components/ds";
@@ -19,10 +20,15 @@ export function CollectionFeature({ collection: c, reverse }: Props) {
           reverse && "order-2 max-[1000px]:order-1",
         )}
       >
-        <div
-          className="absolute inset-0 border border-border bg-cover bg-center"
-          style={{ backgroundImage: `url(${c.ambient})` }}
-        />
+        <div className="absolute inset-0 overflow-hidden border border-border">
+          <Image
+            src={c.ambient}
+            alt={`Finition ${c.nom}`}
+            fill
+            sizes="(max-width: 1000px) 100vw, 55vw"
+            className="object-cover"
+          />
+        </div>
       </div>
 
       <div

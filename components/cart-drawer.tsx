@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "./cart-provider";
 import { Button, ButtonArrow } from "./ui/button";
@@ -87,8 +88,9 @@ export function CartDrawer() {
               Demander la soumission <ButtonArrow />
             </Button>
             <p className="text-[11px] text-muted-foreground leading-[1.5] mt-4">
-              Le prix final inclut panneaux de finition, fillers, livraison et installation.
-              Soumission ferme sous 48h après validation des dimensions.
+              Sans engagement. Le prix final inclut panneaux de finition,
+              fillers, livraison et installation — soumission ferme sous 48 h
+              après validation des dimensions.
             </p>
           </div>
         )}
@@ -102,14 +104,17 @@ function LineItem({ item }: { item: CartItem }) {
   const product = findProduct(item.productId);
   return (
     <div className="grid grid-cols-[70px_1fr_auto] gap-3 border-b border-border py-4 last:border-b-0 max-[700px]:grid-cols-[56px_1fr_auto] max-[700px]:gap-2.5 max-[700px]:py-3.5">
-      <div
-        className="aspect-square border border-border bg-secondary bg-cover bg-center"
-        style={
-          product
-            ? { backgroundImage: `url(${photoForProduct(product, item.color)})` }
-            : undefined
-        }
-      />
+      <div className="relative aspect-square overflow-hidden border border-border bg-secondary">
+        {product && (
+          <Image
+            src={photoForProduct(product, item.color)}
+            alt={item.name}
+            fill
+            sizes="70px"
+            className="object-cover"
+          />
+        )}
+      </div>
       <div className="flex min-w-0 flex-col gap-1.5">
         <span className="font-serif text-base leading-[1.2] tracking-[-0.01em] text-foreground">
           {item.name}

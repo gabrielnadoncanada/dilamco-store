@@ -46,7 +46,7 @@ export const COLLECTIONS: Collection[] = [
       href: "/savoir-faire",
     },
     ambient:
-      "/assets/finitions_blanc.png",
+      "/assets/finitions_blanc.webp",
     detail:
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
     bgColor: "#f5f1e8",
@@ -79,7 +79,7 @@ export const COLLECTIONS: Collection[] = [
       href: "/savoir-faire",
     },
     ambient:
-      "/assets/finitions_chene.png",
+      "/assets/finitions_chene.webp",
     detail:
       "https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=1200&q=80",
     bgColor: "#c9a56e",
@@ -109,7 +109,7 @@ export const COLLECTIONS: Collection[] = [
       href: "/savoir-faire",
     },
     ambient:
-      "/assets/finitions_bleu.png",
+      "/assets/finitions_bleu.webp",
     detail:
       "https://images.unsplash.com/photo-1556910589-129022a4b1c4?auto=format&fit=crop&w=1200&q=80",
     bgColor: "#1f3245",
