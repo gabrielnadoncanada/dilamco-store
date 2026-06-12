@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import {
   parseAsInteger,
   parseAsString,
@@ -99,7 +99,20 @@ const SORT_LABELS: Array<[string, string]> = [
  * Colonne de gauche façon IKEA : groupes repliés (Trier, Catégories,
  * Finition, Largeur) avec résumé de la sélection dans l'en-tête.
  */
-export function SidebarFilters({
+/** nuqs (useSearchParams) exige un Suspense boundary pour le prerender statique. */
+export function SidebarFilters(props: {
+  scope?: CatalogScope;
+  activeSlug?: string;
+  categories?: React.ReactNode;
+}) {
+  return (
+    <Suspense>
+      <SidebarFiltersInner {...props} />
+    </Suspense>
+  );
+}
+
+function SidebarFiltersInner({
   scope,
   activeSlug,
   categories,

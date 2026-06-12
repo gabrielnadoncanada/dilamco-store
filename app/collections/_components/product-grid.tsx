@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import {
   parseAsInteger,
   parseAsString,
@@ -25,7 +25,16 @@ interface Props {
   groupByFamily?: boolean;
 }
 
-export function ProductGrid({ scope, groupByFamily = false }: Props) {
+/** nuqs (useSearchParams) exige un Suspense boundary pour le prerender statique. */
+export function ProductGrid(props: Props) {
+  return (
+    <Suspense>
+      <ProductGridInner {...props} />
+    </Suspense>
+  );
+}
+
+function ProductGridInner({ scope, groupByFamily = false }: Props) {
   const [sort] = useQueryState(
     "tri",
     parseAsStringLiteral(SORT_VALUES).withDefault("family"),
