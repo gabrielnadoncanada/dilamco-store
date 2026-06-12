@@ -24,7 +24,7 @@ export function Container({
     {
       className: cn(
         "mx-auto w-full max-w-[1440px]",
-        padded && "px-[clamp(20px,4vw,56px)] max-[700px]:px-[18px]",
+        padded && "px-[clamp(20px,1rem,56px)] max-[700px]:px-[18px]",
         className,
       ),
       style,

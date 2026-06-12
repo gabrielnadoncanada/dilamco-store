@@ -22,6 +22,10 @@ export interface Product {
   /** Code produit canonique (Yihai), source: catalog-products.json. */
   code: string;
   name: string;
+  /** Nom court FR (ex. « Coin mort (42") »), si renseigné dans catalog.xlsx. */
+  shortName?: string;
+  /** SKU public (external_code + suffixe finition), si renseigné dans catalog.xlsx. */
+  sku?: string;
   /** Famille FR dérivée du top-parent de `category` via catalog-categories.json. */
   family: Family;
   /** Slug catégorie complet (ex. "base-cabinet-standard"). */

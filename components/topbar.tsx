@@ -17,6 +17,8 @@ import { pathPrefixes, routes } from "@/lib/routes";
 const LINKS: Array<[string, string]> = [
   [routes.collections, "Collections"],
   [routes.finishes, "Finitions"],
+  [routes.craftsmanship, "Savoir-faire"],
+  [routes.projects, "Projets"],
   [routes.quote, "Demander une soumission"],
 ];
 
@@ -35,12 +37,20 @@ export function Topbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border backdrop-blur-md">
-      <Link
-        href={routes.quote}
-        className="block bg-primary text-primary-foreground text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium py-1.5 md:py-2 px-[clamp(16px,4vw,56px)] max-[380px]:text-[9px] hover:underline underline-offset-[3px]"
-      >
-        Entrepôt à Montréal · 20+ ans d'expérience · Soumission en ligne
-      </Link>
+      <div className="relative bg-primary text-primary-foreground py-1.5 md:py-2 px-[clamp(16px,4vw,56px)]">
+        <Link
+          href={routes.quote}
+          className="block text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center font-medium max-[380px]:text-[9px] hover:underline underline-offset-[3px]"
+        >
+          Entrepôt à Montréal · 20+ ans d'expérience · Soumission en ligne
+        </Link>
+        <a
+          href="tel:+15142225300"
+          className="absolute right-[clamp(16px,4vw,56px)] top-1/2 hidden -translate-y-1/2 font-mono text-[11px] tracking-[0.06em] hover:underline md:block"
+        >
+          514-222-5300
+        </a>
+      </div>
       <div className="flex items-center gap-3 md:gap-6 px-[18px] px-6 py-3.5 md:py-[22px] ">
         <Link
           href={routes.home}

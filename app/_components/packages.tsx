@@ -12,7 +12,7 @@ export default function Packages() {
         {
           id: "10x10",
           label: "10×10",
-          imageSrc: "/assets/finitions_blanc.png",
+          imageSrc: "/assets/cat_kitchen.png",
           badge: "Forfait Scandinave · Chêne blanc",
           callout: (
             <strong className="text-2xl">
@@ -23,8 +23,8 @@ export default function Packages() {
             "* Prix incluant 22 modules, 3 panneaux de finition, fillers, livraison à Montréal et installation. Comptoir vendu séparément.",
           actions: (
             <>
-              <Link href={routes.package("10x10")}>Voir le forfait →</Link>
-              <Link href={routes.configurator}>Personnaliser</Link>
+              <Link href={routes.quote}>Obtenir ce forfait →</Link>
+              <Link href={routes.collections}>Voir les modules</Link>
             </>
           ),
         },

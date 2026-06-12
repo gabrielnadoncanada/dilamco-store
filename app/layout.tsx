@@ -6,6 +6,7 @@ import { Topbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
 import { DilamcoTweaks } from "@/components/dilamco-tweaks";
+import { HelpButton } from "@/components/help-button";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <main className="flex-1">{children}</main>
               <Footer />
               <CartDrawer />
+              <HelpButton />
               <DilamcoTweaks />
             </div>
           </CartProvider>

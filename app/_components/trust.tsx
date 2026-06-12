@@ -8,11 +8,12 @@ import {
   HairlineCell,
   Body,
 } from "@/components/ds";
+import { products } from "@/lib/products";
 import { routes } from "@/lib/routes";
 
 const STATS: Array<[string, string]> = [
   ["20+", "Années d'expérience"],
-  ["217", "Modules pour votre projet, sur mesure disponible"],
+  [String(products.length), "Modules en stock, prix affichés en ligne"],
   ["48h", "Délai garanti pour une soumission ferme"],
   ["10 ans", "Garantie complète sur les modules"],
 ];

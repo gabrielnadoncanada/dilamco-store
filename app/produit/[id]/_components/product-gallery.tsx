@@ -82,49 +82,11 @@ export function ProductGallery({
 
   return (
     <Fragment>
-      <div className="sticky top-[120px] flex flex-col gap-4 max-[1000px]:static max-[1000px]:top-auto">
-        <div className="group/photos relative">
-          <div id={galleryID} className="pswp-gallery">
-            <Carousel
-              setApi={setApi}
-              opts={{ loop: false, align: "start" }}
-              className="w-full"
-            >
-              <CarouselContent className="ml-0">
-                {views.map((v, i) => (
-                  <CarouselItem key={i} className="pl-0">
-                    <GallerySlide
-                      view={v}
-                      product={product}
-                      color={color}
-                      molding={molding}
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="hidden opacity-0 transition-opacity duration-200 group-hover/photos:opacity-100 md:block">
-                <CarouselPrevious />
-                <CarouselNext />
-              </div>
-            </Carousel>
-          </div>
-
-          <div className="pointer-events-none absolute bottom-3.5 right-3.5 z-10 bg-background/90 px-2 py-1 font-mono text-[10px] tracking-[0.08em] text-foreground ring-1 ring-border md:hidden">
-            {view + 1} / {views.length}
-          </div>
-        </div>
-
-        <div className="relative h-[3px] w-full overflow-hidden bg-secondary md:hidden">
-          <div
-            className="absolute inset-y-0 left-0 bg-foreground transition-transform duration-300"
-            style={{
-              width: `${100 / views.length}%`,
-              transform: `translateX(${view * 100}%)`,
-            }}
-          />
-        </div>
-
-        <div className="grid grid-cols-3 gap-3 max-[700px]:grid-cols-4">
+      <div className="flex items-start gap-4 max-[1000px]:flex-col">
+        {/* Vignettes en colonne verticale à DROITE de l'image (l'image reste
+            collée au contenu, les vignettes vers la colonne d'achat) ;
+            sous l'image, en rangée, sur mobile. */}
+        <div className="order-2 flex w-[76px] shrink-0 flex-col gap-3 max-[1000px]:w-full max-[1000px]:flex-row max-[1000px]:flex-wrap">
           {views.map((v, i) => (
             <button
               key={i}
@@ -136,8 +98,8 @@ export function ProductGallery({
               aria-label={`Voir ${v.label}`}
               aria-current={view === i}
               className={cn(
-                "relative flex aspect-square cursor-pointer items-center justify-center overflow-hidden border border-border bg-secondary p-[14%] transition-colors hover:border-soft-foreground [&>*]:max-h-full [&>*]:max-w-full",
-                view === i && "border-2 border-primary",
+                "relative flex aspect-square w-full cursor-pointer items-center justify-center overflow-hidden border border-border bg-secondary p-[12%] transition-colors hover:border-soft-foreground max-[1000px]:w-[64px] [&>*]:max-h-full [&>*]:max-w-full",
+                view === i && "border-2 border-foreground",
               )}
             >
               {v.type === "photo" && v.src ? (
@@ -154,6 +116,49 @@ export function ProductGallery({
               )}
             </button>
           ))}
+        </div>
+
+        <div className="order-1 flex min-w-0 flex-1 flex-col gap-3 max-[1000px]:w-full">
+          <div className="group/photos relative">
+            <div id={galleryID} className="pswp-gallery">
+              <Carousel
+                setApi={setApi}
+                opts={{ loop: false, align: "start" }}
+                className="w-full"
+              >
+                <CarouselContent className="ml-0">
+                  {views.map((v, i) => (
+                    <CarouselItem key={i} className="pl-0">
+                      <GallerySlide
+                        view={v}
+                        product={product}
+                        color={color}
+                        molding={molding}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="hidden opacity-0 transition-opacity duration-200 group-hover/photos:opacity-100 md:block">
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </div>
+              </Carousel>
+            </div>
+
+            <div className="pointer-events-none absolute bottom-3.5 right-3.5 z-10 bg-background/90 px-2 py-1 font-mono text-[10px] tracking-[0.08em] text-foreground ring-1 ring-border md:hidden">
+              {view + 1} / {views.length}
+            </div>
+          </div>
+
+          <div className="relative h-[3px] w-full overflow-hidden bg-secondary md:hidden">
+            <div
+              className="absolute inset-y-0 left-0 bg-foreground transition-transform duration-300"
+              style={{
+                width: `${100 / views.length}%`,
+                transform: `translateX(${view * 100}%)`,
+              }}
+            />
+          </div>
         </div>
       </div>
     </Fragment>

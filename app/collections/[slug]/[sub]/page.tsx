@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Eyebrow, Headline } from "@/components/ds";
-import { PCard } from "@/components/pcard";
+import { CategorySidebar } from "@/components/category-sidebar";
 import { CollectionsShell } from "../../_components/collections-shell";
+import { ProductGrid } from "../../_components/product-grid";
+import { SidebarFilters } from "../../_components/sidebar-filters";
 import {
   categories,
   categoryName,
@@ -49,10 +51,21 @@ export default async function CollectionSubcategoryPage({
 
   const parentName = categoryName(parent);
   const subName = categoryName(subCat);
-  const items = productsInCategory(sub);
+  const total = productsInCategory(sub).length;
+  const scope = { slug: sub };
 
   return (
-    <CollectionsShell activeSlug={sub}>
+    <CollectionsShell
+      activeSlug={sub}
+      scope={scope}
+      filters={
+        <SidebarFilters
+          scope={scope}
+          activeSlug={sub}
+          categories={<CategorySidebar activeSlug={sub} />}
+        />
+      }
+    >
       <div className="font-mono text-[11px] tracking-[0.04em] text-muted-foreground [&_a:hover]:text-primary">
         <Link href={routes.collections}>Collections</Link> /{" "}
         <Link href={routes.collection(slug)}>{parentName}</Link> /{" "}
@@ -65,21 +78,11 @@ export default async function CollectionSubcategoryPage({
           {subName}
         </Headline>
         <p className="mt-3 font-mono text-xs tracking-[0.04em] text-muted-foreground">
-          {items.length} module{items.length !== 1 ? "s" : ""}
+          {total} module{total !== 1 ? "s" : ""}
         </p>
       </header>
 
-      {items.length > 0 ? (
-        <div className="mt-10 grid grid-cols-3 gap-x-6 gap-y-8 max-[1100px]:grid-cols-2 max-[700px]:!grid-cols-2 max-[700px]:gap-x-3 max-[700px]:gap-y-[18px] max-[380px]:!grid-cols-1">
-          {items.map((p) => (
-            <PCard key={p.code} product={p} />
-          ))}
-        </div>
-      ) : (
-        <div className="mt-10 px-5 py-14 text-center text-muted-foreground">
-          Aucun module dans cette sous-catégorie pour le moment.
-        </div>
-      )}
+      <ProductGrid scope={scope} />
     </CollectionsShell>
   );
 }

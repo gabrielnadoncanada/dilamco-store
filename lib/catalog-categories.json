@@ -1,42 +1,29 @@
 {
-  "source": "UPSTAIR KITCHEN.xlsx (sheet \"price bc\")",
+  "source": "catalog.xlsx (feuille Categories)",
   "categories": [
     {
       "slug": "base-cabinet",
       "parent": null,
       "name": {
-        "fr": "Armoire de bas",
-        "en": "Base Cabinet"
+        "fr": "Armoire du bas",
+        "en": null
       },
-      "slugFr": "armoire-de-bas",
+      "slugFr": "armoire-du-bas",
       "path": [
         "base-cabinet"
       ]
     },
     {
-      "slug": "base-cabinet-blind-corner",
+      "slug": "base-cabinet-corner",
       "parent": "base-cabinet",
       "name": {
-        "fr": "Coin aveugle",
-        "en": "Blind Corner"
+        "fr": "Coin",
+        "en": null
       },
-      "slugFr": "armoire-de-bas-coin-aveugle",
+      "slugFr": "armoire-du-bas-coin",
       "path": [
         "base-cabinet",
-        "base-cabinet-blind-corner"
-      ]
-    },
-    {
-      "slug": "base-cabinet-corner-90deg",
-      "parent": "base-cabinet",
-      "name": {
-        "fr": "Coin (90°)",
-        "en": "Corner (90deg)"
-      },
-      "slugFr": "armoire-de-bas-coin-90",
-      "path": [
-        "base-cabinet",
-        "base-cabinet-corner-90deg"
+        "base-cabinet-corner"
       ]
     },
     {
@@ -44,9 +31,9 @@
       "parent": "base-cabinet",
       "name": {
         "fr": "Tiroir",
-        "en": "Drawer"
+        "en": null
       },
-      "slugFr": "armoire-de-bas-tiroir",
+      "slugFr": "armoire-du-bas-tiroir",
       "path": [
         "base-cabinet",
         "base-cabinet-drawer"
@@ -56,10 +43,10 @@
       "slug": "base-cabinet-farmhouse-sink",
       "parent": "base-cabinet",
       "name": {
-        "fr": "Évier ferme",
-        "en": "Farmhouse Sink"
+        "fr": "Évier farmhouse",
+        "en": null
       },
-      "slugFr": "armoire-de-bas-evier-ferme",
+      "slugFr": "armoire-du-bas-evier-farmhouse",
       "path": [
         "base-cabinet",
         "base-cabinet-farmhouse-sink"
@@ -70,12 +57,25 @@
       "parent": "base-cabinet",
       "name": {
         "fr": "Range-épices coulissant",
-        "en": "Spice Rack - Pull-Out"
+        "en": null
       },
-      "slugFr": "armoire-de-bas-range-epices-coulissant",
+      "slugFr": "armoire-du-bas-range-epices-coulissant",
       "path": [
         "base-cabinet",
         "base-cabinet-spice-rack-pull-out"
+      ]
+    },
+    {
+      "slug": "base-cabinet-garbage-pull-out",
+      "parent": "base-cabinet",
+      "name": {
+        "fr": "Tiroir à déchets",
+        "en": null
+      },
+      "slugFr": "armoire-du-bas-tiroir-a-dechets",
+      "path": [
+        "base-cabinet",
+        "base-cabinet-garbage-pull-out"
       ]
     },
     {
@@ -83,9 +83,9 @@
       "parent": "base-cabinet",
       "name": {
         "fr": "Standard",
-        "en": "Standard"
+        "en": null
       },
-      "slugFr": "armoire-de-bas-standard",
+      "slugFr": "armoire-du-bas-standard",
       "path": [
         "base-cabinet",
         "base-cabinet-standard"
@@ -96,9 +96,9 @@
       "parent": "base-cabinet",
       "name": {
         "fr": "Standard coulissant",
-        "en": "Standard - Pull-Out"
+        "en": null
       },
-      "slugFr": "armoire-de-bas-standard-coulissant",
+      "slugFr": "armoire-du-bas-standard-coulissant",
       "path": [
         "base-cabinet",
         "base-cabinet-standard-pull-out"
@@ -109,7 +109,7 @@
       "parent": null,
       "name": {
         "fr": "Armoire micro-ondes de bas",
-        "en": "Base Microwave Cabinet"
+        "en": null
       },
       "slugFr": "armoire-micro-ondes-de-bas",
       "path": [
@@ -121,7 +121,7 @@
       "parent": null,
       "name": {
         "fr": "Armoire de salle de bain",
-        "en": "Bathroom - Base Cabinet"
+        "en": null
       },
       "slugFr": "armoire-de-salle-de-bain",
       "path": [
@@ -133,7 +133,7 @@
       "parent": "bathroom-base-cabinet",
       "name": {
         "fr": "Tiroir",
-        "en": "Drawer"
+        "en": null
       },
       "slugFr": "armoire-de-salle-de-bain-tiroir",
       "path": [
@@ -146,7 +146,7 @@
       "parent": "bathroom-base-cabinet",
       "name": {
         "fr": "Évier",
-        "en": "Sink"
+        "en": null
       },
       "slugFr": "armoire-de-salle-de-bain-evier",
       "path": [
@@ -159,7 +159,7 @@
       "parent": null,
       "name": {
         "fr": "Armoire murale",
-        "en": "Wall Cabinet"
+        "en": null
       },
       "slugFr": "armoire-murale",
       "path": [
@@ -171,7 +171,7 @@
       "parent": "wall-cabinet",
       "name": {
         "fr": "Coin (45°)",
-        "en": "Corner (45deg)"
+        "en": null
       },
       "slugFr": "armoire-murale-coin-45",
       "path": [
@@ -184,7 +184,7 @@
       "parent": "wall-cabinet",
       "name": {
         "fr": "Standard",
-        "en": "Standard"
+        "en": null
       },
       "slugFr": "armoire-murale-standard",
       "path": [
@@ -197,7 +197,7 @@
       "parent": null,
       "name": {
         "fr": "Coin aveugle mural",
-        "en": "Wall Blind Corner"
+        "en": null
       },
       "slugFr": "coin-aveugle-mural",
       "path": [
@@ -209,7 +209,7 @@
       "parent": null,
       "name": {
         "fr": "Coin aveugle mural haut",
-        "en": "Wall Blind Corner Tall"
+        "en": null
       },
       "slugFr": "coin-aveugle-mural-haut",
       "path": [
@@ -221,7 +221,7 @@
       "parent": null,
       "name": {
         "fr": "Coin aveugle gauche",
-        "en": "Wall Blind Left"
+        "en": null
       },
       "slugFr": "coin-aveugle-gauche",
       "path": [
@@ -233,7 +233,7 @@
       "parent": null,
       "name": {
         "fr": "Armoire utilitaire",
-        "en": "Utility Cabinet"
+        "en": null
       },
       "slugFr": "armoire-utilitaire",
       "path": [
@@ -245,7 +245,7 @@
       "parent": "utility-cabinet",
       "name": {
         "fr": "Four",
-        "en": "Oven"
+        "en": null
       },
       "slugFr": "armoire-utilitaire-four",
       "path": [
@@ -258,7 +258,7 @@
       "parent": "utility-cabinet",
       "name": {
         "fr": "Garde-manger",
-        "en": "Pantry"
+        "en": null
       },
       "slugFr": "armoire-utilitaire-garde-manger",
       "path": [
@@ -271,7 +271,7 @@
       "parent": null,
       "name": {
         "fr": "Fausse porte",
-        "en": "Dummy Door"
+        "en": null
       },
       "slugFr": "fausse-porte",
       "path": [
@@ -283,7 +283,7 @@
       "parent": "dummy-door",
       "name": {
         "fr": "Bout de bas",
-        "en": "Base End"
+        "en": null
       },
       "slugFr": "fausse-porte-bout-de-bas",
       "path": [
@@ -296,7 +296,7 @@
       "parent": null,
       "name": {
         "fr": "Fausse porte murale",
-        "en": "Wall Dummy Door"
+        "en": null
       },
       "slugFr": "fausse-porte-murale",
       "path": [
@@ -308,7 +308,7 @@
       "parent": null,
       "name": {
         "fr": "Fausse porte murale/garde-manger",
-        "en": "Wall/Pantry Dummy Door"
+        "en": null
       },
       "slugFr": "fausse-porte-murale-garde-manger",
       "path": [
@@ -320,7 +320,7 @@
       "parent": null,
       "name": {
         "fr": "Panneau d'extrémité mural",
-        "en": "Wall End Panel"
+        "en": null
       },
       "slugFr": "panneau-d-extremite-mural",
       "path": [
@@ -332,7 +332,7 @@
       "parent": null,
       "name": {
         "fr": "Panneau arrière d'îlot",
-        "en": "Island Back Panel"
+        "en": null
       },
       "slugFr": "panneau-arriere-d-ilot",
       "path": [
@@ -344,7 +344,7 @@
       "parent": null,
       "name": {
         "fr": "Panneau d'habillage d'îlot",
-        "en": "Island Skin Panel"
+        "en": null
       },
       "slugFr": "panneau-d-habillage-d-ilot",
       "path": [
@@ -356,7 +356,7 @@
       "parent": null,
       "name": {
         "fr": "Panneau",
-        "en": "Panel"
+        "en": null
       },
       "slugFr": "panneau",
       "path": [
@@ -368,7 +368,7 @@
       "parent": "panel",
       "name": {
         "fr": "Panneau de retour lave-vaisselle",
-        "en": "Dishwasher Return Panel"
+        "en": null
       },
       "slugFr": "panneau-panneau-de-retour-lave-vaisselle",
       "path": [
@@ -381,7 +381,7 @@
       "parent": "panel",
       "name": {
         "fr": "Panneau de retour réfrigérateur",
-        "en": "Refrigerator Return Panel"
+        "en": null
       },
       "slugFr": "panneau-panneau-de-retour-refrigerateur",
       "path": [
@@ -390,78 +390,66 @@
       ]
     },
     {
-      "slug": "moldings",
-      "parent": null,
-      "name": {
-        "fr": "Moulures",
-        "en": "Moldings"
-      },
-      "slugFr": "moulures",
-      "path": [
-        "moldings"
-      ]
-    },
-    {
       "slug": "moldings-base-molding",
-      "parent": "moldings",
+      "parent": "fillers-panels-moldings",
       "name": {
         "fr": "Moulure de base",
-        "en": "Base molding"
+        "en": null
       },
-      "slugFr": "moulures-moulure-de-base",
+      "slugFr": "fillers-panneaux-moulures-moulure-de-base",
       "path": [
-        "moldings",
+        "fillers-panels-moldings",
         "moldings-base-molding"
       ]
     },
     {
       "slug": "moldings-outside-corner-molding",
-      "parent": "moldings",
+      "parent": "fillers-panels-moldings",
       "name": {
         "fr": "Moulure de coin extérieur",
-        "en": "Outside Corner Molding"
+        "en": null
       },
-      "slugFr": "moulures-moulure-de-coin-exterieur",
+      "slugFr": "fillers-panneaux-moulures-moulure-de-coin-exterieur",
       "path": [
-        "moldings",
+        "fillers-panels-moldings",
         "moldings-outside-corner-molding"
       ]
     },
     {
       "slug": "moldings-scribe-molding",
-      "parent": "moldings",
+      "parent": "fillers-panels-moldings",
       "name": {
         "fr": "Moulure scribe",
-        "en": "Scribe molding"
+        "en": null
       },
-      "slugFr": "moulures-moulure-scribe",
+      "slugFr": "fillers-panneaux-moulures-moulure-scribe",
       "path": [
-        "moldings",
+        "fillers-panels-moldings",
         "moldings-scribe-molding"
       ]
     },
     {
-      "slug": "fillers",
+      "slug": "fillers-panels-moldings",
       "parent": null,
       "name": {
-        "fr": "Remplissages",
-        "en": "Fillers"
+        "fr": "Fillers, panneaux & moulures",
+        "en": null
       },
-      "slugFr": "remplissages",
+      "slugFr": "fillers-panneaux-moulures",
       "path": [
-        "fillers"
+        "fillers-panels-moldings"
       ]
     },
     {
       "slug": "fillers-base-wall-tall-filler",
-      "parent": "fillers",
+      "parent": "fillers-panels-moldings",
       "name": {
-        "fr": "Remplissage bas/mural/haut",
-        "en": "Base/Wall/Tall Filler"
+        "fr": "Fillers bas/mural/haut",
+        "en": null
       },
-      "slugFr": "remplissages-remplissage-bas-mural-haut",
+      "slugFr": "fillers-panneaux-moulures-fillers-bas-mural-haut",
       "path": [
-        "fillers",
+        "fillers-panels-moldings",
         "fillers-base-wall-tall-filler"
       ]
     },
@@ -469,24 +457,24 @@
       "slug": "fillers-filler-type-tbd",
       "parent": "fillers",
       "name": {
-        "fr": "Remplissage (type à confirmer)",
-        "en": "Filler (type TBD)"
+        "fr": "xxxxx",
+        "en": null
       },
-      "slugFr": "remplissages-remplissage-type-a-confirmer",
+      "slugFr": "xxxxx",
       "path": [
-        "fillers",
         "fillers-filler-type-tbd"
       ]
     },
     {
       "slug": "toe-kick",
-      "parent": null,
+      "parent": "fillers-panels-moldings",
       "name": {
         "fr": "Plinthe",
-        "en": "Toe Kick"
+        "en": null
       },
-      "slugFr": "plinthe",
+      "slugFr": "fillers-panneaux-moulures-plinthe",
       "path": [
+        "fillers-panels-moldings",
         "toe-kick"
       ]
     },
@@ -495,7 +483,7 @@
       "parent": null,
       "name": {
         "fr": "Côté dessous tiroir",
-        "en": "Drawer Bottom Side"
+        "en": null
       },
       "slugFr": "cote-dessous-tiroir",
       "path": [
@@ -507,7 +495,7 @@
       "parent": null,
       "name": {
         "fr": "Accessoires",
-        "en": "Accessories"
+        "en": null
       },
       "slugFr": "accessoires",
       "path": [
@@ -519,7 +507,7 @@
       "parent": "accessories",
       "name": {
         "fr": "Poubelle plastique",
-        "en": "Plastic Garbage Bin"
+        "en": null
       },
       "slugFr": "accessoires-poubelle-plastique",
       "path": [
@@ -532,11 +520,36 @@
       "parent": null,
       "name": {
         "fr": "Charnière style américain",
-        "en": "American Style Hinge"
+        "en": null
       },
       "slugFr": "charniere-style-americain",
       "path": [
         "american-style-hinge"
+      ]
+    },
+    {
+      "slug": "fillers-uncategorized",
+      "parent": null,
+      "name": {
+        "fr": "fillers-uncategorized",
+        "en": null
+      },
+      "slugFr": "fillers-uncategorized",
+      "path": [
+        "fillers-uncategorized"
+      ]
+    },
+    {
+      "slug": "wall-cabinet-microwave",
+      "parent": "wall-cabinet",
+      "name": {
+        "fr": "wall-cabinet-microwave",
+        "en": null
+      },
+      "slugFr": "armoire-murale-wall-cabinet-microwave",
+      "path": [
+        "wall-cabinet",
+        "wall-cabinet-microwave"
       ]
     }
   ]

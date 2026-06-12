@@ -59,6 +59,16 @@ export function getDescendantSlugs(slug: string): string[] {
   return out;
 }
 
+/** Corrections d'affichage pour les trous de catalog.xlsx (nom = slug brut). */
+const NAME_OVERRIDES: Record<string, string> = {
+  "wall-cabinet-microwave": "Micro-ondes",
+};
+
 export function categoryName(cat: Category, locale: Locale = "fr"): string {
-  return cat.name[locale] ?? cat.name.en ?? cat.slug;
+  const name = cat.name[locale] ?? cat.name.en ?? cat.slug;
+  // Un nom identique au slug est un trou de données, pas un nom.
+  if (name === cat.slug) {
+    return NAME_OVERRIDES[cat.slug] ?? name;
+  }
+  return name;
 }

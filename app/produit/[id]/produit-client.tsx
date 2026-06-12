@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCart } from "@/components/cart-provider";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Container, Headline, SplitMediaCta } from "@/components/ds";
+import { Container, Headline } from "@/components/ds";
 import { findProduct, products as ALL_PRODUCTS } from "@/lib/products";
 import { productGalleryViews } from "@/lib/photos";
 import { routes } from "@/lib/routes";
@@ -14,14 +14,69 @@ import {
   ProductGallery,
   type GalleryView,
 } from "./_components/product-gallery";
-import { ProductInfo } from "./_components/product-info";
+import { ProductDetails, ProductInfo } from "./_components/product-info";
 import { ProductRelated } from "./_components/product-related";
 import { ShowroomCta } from "@/components/showroom-cta";
+
+const QUALITY_POINTS = [
+  {
+    src: "/assets/cabinet.png",
+    title: "Structure intérieure durable",
+    body: "Caisson stable et rigide, intérieur propre, tablettes ajustables, assemblages précis.",
+  },
+  {
+    src: "/assets/drawer.jpg",
+    title: "Tiroirs en bouleau massif",
+    body: "Côtés, façade et arrière en bois massif de bouleau — robuste, grain fin, finition haut de gamme.",
+  },
+  {
+    src: "/assets/dovetail.jpg",
+    title: "Assemblage en queue d'aronde",
+    body: "Jonctions renforcées sans fixations visibles : des modules stables et mieux alignés.",
+  },
+  {
+    src: "/assets/warehouse.jpg",
+    title: "Entrepôt local à Montréal",
+    body: "Inventaire contrôlé sur place : disponibilité réelle et délais prévisibles.",
+  },
+] as const;
+
+/**
+ * Bande « construction et qualité » : l'information des anciens blocs
+ * éditoriaux pleine largeur, à l'échelle utilitaire de la fiche.
+ */
+function QualityHighlights() {
+  return (
+    <section className="mt-20 border-t border-border pt-10 max-[700px]:mt-12 max-[700px]:pt-7">
+      <h2 className="font-serif text-[22px] tracking-[-0.01em] text-foreground">
+        Construction et qualité
+      </h2>
+      <div className="mt-6 grid grid-cols-4 gap-6 max-[1000px]:grid-cols-2 max-[520px]:grid-cols-1">
+        {QUALITY_POINTS.map((point) => (
+          <div key={point.title} className="flex flex-col gap-3">
+            <div
+              className="aspect-[4/3] w-full border border-border bg-secondary bg-cover bg-center"
+              style={{ backgroundImage: `url(${point.src})` }}
+              role="img"
+              aria-label={point.title}
+            />
+            <h3 className="text-[14px] font-medium leading-[1.3] text-foreground">
+              {point.title}
+            </h3>
+            <p className="m-0 text-[12px] leading-[1.55] text-soft-foreground">
+              {point.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function ProduitClient({ id }: { id: string }) {
   const product = findProduct(id);
   const cart = useCart();
-  const [color, setColor] = useState<ColorName>(
+  const [color] = useState<ColorName>(
     (product?.colors[0] as ColorName) || "Blanc Pur",
   );
   const [molding, setMolding] = useState<Molding>(
@@ -56,51 +111,35 @@ export default function ProduitClient({ id }: { id: string }) {
     >
       <ProductBreadcrumb product={product} />
       <div className="grid grid-cols-[1.15fr_1fr] items-start gap-16 max-[1000px]:grid-cols-1 max-[1000px]:gap-10 max-[700px]:gap-7">
-        <ProductGallery
-          product={product}
-          color={color}
-          molding={molding}
-          views={views}
-          view={view}
-          onSelectView={setView}
-        />
-        <ProductInfo
-          product={product}
-          color={color}
-          setColor={setColor}
-          molding={molding}
-          setMolding={setMolding}
-          qty={qty}
-          setQty={setQty}
-          onAdd={() => cart.addItem(product, { color, molding, qty })}
-        />
+        <div className="flex min-w-0 flex-col gap-8 max-[700px]:gap-6">
+          <ProductGallery
+            product={product}
+            color={color}
+            molding={molding}
+            views={views}
+            view={view}
+            onSelectView={setView}
+          />
+          <div className="max-[1000px]:hidden">
+            <ProductDetails product={product} />
+          </div>
+        </div>
+        {/* Colonne d'achat collante (pattern IKEA) ; la galerie défile librement. */}
+        <div className="sticky top-[110px] max-[1000px]:static">
+          <ProductInfo
+            product={product}
+            molding={molding}
+            setMolding={setMolding}
+            qty={qty}
+            setQty={setQty}
+            onAdd={() => cart.addItem(product, { color, molding, qty })}
+          />
+        </div>
       </div>
-      <div className="mt-[100px] flex flex-col gap-10 max-[700px]:mt-14 max-[700px]:gap-7">
-        <SplitMediaCta
-          imageSrc="/assets/cabinet.png"
-          imagePosition="left"
-          headline="Structure intérieure durable"
-          body="Chaque caisson est conçu pour offrir une base stable, rigide et durable à votre cuisine. L’intérieur propre, les tablettes ajustables et les assemblages précis donnent une impression de solidité dès l’ouverture des portes."
-        />
-        <SplitMediaCta
-          imageSrc="/assets/drawer.jpg"
-          imagePosition="right"
-          headline="Tiroirs en bouleau massif"
-          body="Les côtés, la façade et l’arrière de nos tiroirs sont fabriqués en bois massif de bouleau, un matériau reconnu pour sa robustesse, son grain fin et sa finition haut de gamme. "
-        />
-        <SplitMediaCta
-          imageSrc="/assets/dovetail.jpg"
-          imagePosition="left"
-          headline="Solidité mécanique et installation maîtrisée"
-          body="L’assemblage en queue d’aronde renforce la jonction des tiroirs sans dépendre uniquement de vis ou de fixations visibles. Cette précision d’assemblage aide à conserver des modules plus stables, mieux alignés et plus simples à intégrer."
-        />
-        <SplitMediaCta
-          imageSrc="/assets/warehouse.jpg"
-          imagePosition="right"
-          headline="Entrepôt local à Montréal"
-          body="Notre entrepôt local nous permet de garder un meilleur contrôle sur l’inventaire, la disponibilité des modules et la planification des projets. Cette présence physique réduit les imprévus, facilite la coordination et offre aux clients une expérience plus stable, prévisible et maîtrisée."
-        />
+      <div className="mt-8 hidden max-[1000px]:block">
+        <ProductDetails product={product} />
       </div>
+      <QualityHighlights />
       <ProductRelated products={related} />
       <div className="mt-[100px] max-[700px]:mt-14">
         <ShowroomCta />

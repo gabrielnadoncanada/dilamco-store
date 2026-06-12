@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./logo";
 import { Container, Eyebrow, Body } from "@/components/ds";
-import { collectionsFilter, routes } from "@/lib/routes";
+import { routes } from "@/lib/routes";
 
 export function Footer() {
   return (
@@ -16,38 +16,34 @@ export function Footer() {
             </Body>
           </div>
           <div>
-            <Eyebrow
-              as="h4"
-              tone="on-primary"
-              className="mb-[18px]"
-            >
+            <Eyebrow as="h4" tone="on-primary" className="mb-[18px]">
               Catalogue
             </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
               <li>
-                <Link href={collectionsFilter.family("Armoire murale")}>
+                <Link href={routes.collection("wall-cabinet")}>
                   Armoires murales
                 </Link>
               </li>
               <li>
-                <Link href={collectionsFilter.family("Armoire de bas")}>
-                  Armoires de bas
+                <Link href={routes.collection("base-cabinet")}>
+                  Armoires du bas
                 </Link>
               </li>
               <li>
-                <Link href={collectionsFilter.family("Garde-manger")}>Garde-manger</Link>
+                <Link href={routes.collection("utility-cabinet")}>
+                  Armoires utilitaires
+                </Link>
               </li>
               <li>
-                <Link href={collectionsFilter.corner}>Modules de coin</Link>
+                <Link href={routes.collection("fillers-panels-moldings")}>
+                  Fillers, panneaux &amp; moulures
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <Eyebrow
-              as="h4"
-              tone="on-primary"
-              className="mb-[18px]"
-            >
+            <Eyebrow as="h4" tone="on-primary" className="mb-[18px]">
               Maison
             </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">
@@ -55,16 +51,18 @@ export function Footer() {
                 <Link href={routes.finishes}>Finitions</Link>
               </li>
               <li>
+                <Link href={routes.craftsmanship}>Notre savoir-faire</Link>
+              </li>
+              <li>
+                <Link href={routes.projects}>Projets réalisés</Link>
+              </li>
+              <li>
                 <Link href={routes.quote}>Demander une soumission</Link>
               </li>
             </ul>
           </div>
           <div>
-            <Eyebrow
-              as="h4"
-              tone="on-primary"
-              className="mb-[18px]"
-            >
+            <Eyebrow as="h4" tone="on-primary" className="mb-[18px]">
               Contact
             </Eyebrow>
             <ul className="flex flex-col gap-2.5 text-sm [&_a]:opacity-85 [&_a:hover]:text-highlight [&_a:hover]:opacity-100">

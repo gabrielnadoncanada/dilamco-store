@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Eyebrow, Headline } from "@/components/ds";
-import { PCard } from "@/components/pcard";
+import { CategorySidebar } from "@/components/category-sidebar";
 import { CollectionsShell } from "../_components/collections-shell";
+import { ProductGrid } from "../_components/product-grid";
+import { SidebarFilters } from "../_components/sidebar-filters";
 import {
   categories,
   categoryName,
@@ -11,6 +13,7 @@ import {
 } from "@/lib/catalog-categories";
 import { hasVisibleProducts, productsInCategory } from "@/lib/products";
 import { routes } from "@/lib/routes";
+import { pluralTitle } from "../_components/types";
 
 export function generateStaticParams() {
   return categories
@@ -39,46 +42,42 @@ export default async function CollectionCategoryPage({
   if (!category) notFound();
 
   const name = categoryName(category);
+  const title = pluralTitle(name);
   const children = getChildren(slug).filter((c) => hasVisibleProducts(c.slug));
-  const allProducts = productsInCategory(slug, { deep: true });
+  const total = productsInCategory(slug, { deep: true }).length;
+  const scope = { slug, deep: true };
 
   return (
-    <CollectionsShell activeSlug={slug}>
+    <CollectionsShell
+      activeSlug={slug}
+      scope={scope}
+      filters={
+        <SidebarFilters
+          scope={scope}
+          activeSlug={slug}
+          categories={<CategorySidebar activeSlug={slug} />}
+        />
+      }
+    >
       <div className="font-mono text-[11px] tracking-[0.04em] text-muted-foreground [&_a:hover]:text-primary">
         <Link href={routes.collections}>Collections</Link> /{" "}
-        <span className="text-foreground">{name}</span>
+        <span className="text-foreground">{title}</span>
       </div>
 
       <header className="mt-4 border-b border-border pb-7">
         <Eyebrow>Collection</Eyebrow>
         <Headline level="headline" as="h1" className="mt-2">
-          {name}
+          {title}
         </Headline>
         <p className="mt-3 font-mono text-xs tracking-[0.04em] text-muted-foreground">
-          {allProducts.length} module{allProducts.length !== 1 ? "s" : ""}
+          {total} module{total !== 1 ? "s" : ""}
           {children.length > 0
             ? ` · ${children.length} sous-catégorie${children.length !== 1 ? "s" : ""}`
             : ""}
         </p>
       </header>
 
-      {allProducts.length > 0 ? (
-        <div className="mt-10 grid grid-cols-3 gap-x-6 gap-y-8 max-[1100px]:grid-cols-2 max-[700px]:!grid-cols-2 max-[700px]:gap-x-3 max-[700px]:gap-y-[18px] max-[380px]:!grid-cols-1">
-          {allProducts.slice(0, 60).map((p) => (
-            <PCard key={p.code} product={p} />
-          ))}
-        </div>
-      ) : (
-        <div className="mt-10 px-5 py-14 text-center text-muted-foreground">
-          Aucun module dans cette collection pour le moment.
-        </div>
-      )}
-      {allProducts.length > 60 && (
-        <div className="mt-10 text-center text-[13px] text-muted-foreground">
-          Affichage 60 sur {allProducts.length}. Naviguez vers une sous-catégorie
-          pour affiner.
-        </div>
-      )}
+      <ProductGrid scope={scope} />
     </CollectionsShell>
   );
 }

@@ -6,3 +6,8 @@ out
 *.log
 .DS_Store
 .vscode
+
+# Fichiers de verrouillage Excel/LibreOffice
+~$*
+.~lock.*#
+live-kitchen-maker

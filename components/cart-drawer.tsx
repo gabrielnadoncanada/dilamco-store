@@ -13,6 +13,7 @@ import {
 import { findProduct } from "@/lib/products";
 import { routes } from "@/lib/routes";
 import type { CartItem } from "@/lib/types";
+import { formatPrice } from "@/lib/format";
 
 export function CartDrawer() {
   const cart = useCart();
@@ -76,12 +77,12 @@ export function CartDrawer() {
               <div className="flex justify-between text-[13px] text-foreground/85 group-data-[show-prices=false]/body:hidden">
                 <span>Sous-total catalogue</span>
                 <span className="font-mono text-xs">
-                  ${cart.subtotal.toLocaleString("fr-CA")} CAD
+                  {formatPrice(cart.subtotal)} CAD
                 </span>
               </div>
               <div className="flex justify-between border-t border-border pt-3 font-serif text-lg text-foreground group-data-[show-prices=false]/body:hidden">
                 <span>Estimation</span>
-                <span>${cart.subtotal.toLocaleString("fr-CA")}</span>
+                <span>{formatPrice(cart.subtotal)}</span>
               </div>
             </div>
             <Button block onClick={() => goto(routes.quote)}>
@@ -138,7 +139,7 @@ function LineItem({ item }: { item: CartItem }) {
         </div>
       </div>
       <div className="font-mono text-xs text-foreground group-data-[show-prices=false]/body:hidden">
-        ${(item.price * item.qty).toLocaleString("fr-CA")}
+        {formatPrice(item.price * item.qty)}
       </div>
     </div>
   );

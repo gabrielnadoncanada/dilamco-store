@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Headline } from "@/components/ds";
 import { routes } from "@/lib/routes";
+import { formatPrice } from "@/lib/format";
 
 export function SoumissionSummary() {
   const cart = useCart();
@@ -47,7 +48,7 @@ export function SoumissionSummary() {
                   </span>
                 </span>
                 <span className="font-mono text-xs text-foreground">
-                  ${(it.price * it.qty).toLocaleString("fr-CA")}
+                  {formatPrice(it.price * it.qty)}
                 </span>
               </div>
             ))}
@@ -55,7 +56,7 @@ export function SoumissionSummary() {
           <div className="mt-5 flex flex-col gap-2.5 group-data-[show-prices=false]/body:hidden">
             <div className="flex justify-between text-[13px] text-soft-foreground">
               <span>Sous-total catalogue</span>
-              <span className="font-mono text-xs">${cart.subtotal.toLocaleString("fr-CA")}</span>
+              <span className="font-mono text-xs">{formatPrice(cart.subtotal)}</span>
             </div>
             <div className="flex justify-between text-[13px] text-soft-foreground">
               <span>Panneaux + fillers (est.)</span>
@@ -67,7 +68,7 @@ export function SoumissionSummary() {
             </div>
             <div className="mt-2 flex justify-between border-t border-border pt-3.5 font-serif text-lg tracking-[-0.01em] text-foreground">
               <span>Estimation modules</span>
-              <span>${cart.subtotal.toLocaleString("fr-CA")}</span>
+              <span>{formatPrice(cart.subtotal)}</span>
             </div>
           </div>
           <p className="mt-4 text-[11px] leading-[1.5] text-muted-foreground">
