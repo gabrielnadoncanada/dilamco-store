@@ -43,7 +43,7 @@ export const COLLECTIONS: Collection[] = [
     primaryCta: "Voir les Blanc Pur",
     secondaryCta: {
       label: "Voir la salle de montre",
-      href: "/savoir-faire",
+      href: "/soumission",
     },
     ambient:
       "/assets/finitions_blanc.webp",
@@ -76,7 +76,7 @@ export const COLLECTIONS: Collection[] = [
     primaryCta: "Voir le Chêne blanc",
     secondaryCta: {
       label: "Voir la salle de montre",
-      href: "/savoir-faire",
+      href: "/soumission",
     },
     ambient:
       "/assets/finitions_chene.webp",
@@ -106,7 +106,7 @@ export const COLLECTIONS: Collection[] = [
     primaryCta: "Voir le Bleu marin",
     secondaryCta: {
       label: "Voir la salle de montre",
-      href: "/savoir-faire",
+      href: "/soumission",
     },
     ambient:
       "/assets/finitions_bleu.webp",

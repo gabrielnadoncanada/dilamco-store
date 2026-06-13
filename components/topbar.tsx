@@ -7,20 +7,31 @@ import { Logo } from "./logo";
 import { useCart } from "./cart-provider";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import {
+  categoryName,
+  getTopLevelCategories,
+} from "@/lib/catalog-categories";
+import { hasVisibleProducts, productsInCategory } from "@/lib/products";
 import { pathPrefixes, routes } from "@/lib/routes";
 
 const LINKS: Array<[string, string]> = [
   [routes.collections, "Collections"],
   [routes.finishes, "Finitions"],
-  [routes.craftsmanship, "Savoir-faire"],
-  [routes.projects, "Projets"],
   [routes.quote, "Demander une soumission"],
 ];
+
+/** Catégories principales du menu mobile : accès direct au catalogue. */
+const MENU_CATEGORIES = getTopLevelCategories()
+  .filter((c) => hasVisibleProducts(c.slug))
+  .map((c) => ({
+    href: routes.collection(c.slug),
+    label: categoryName(c),
+    count: productsInCategory(c.slug, { deep: true }).length,
+  }));
 
 export function Topbar() {
   const pathname = usePathname();
@@ -88,7 +99,7 @@ export function Topbar() {
           </button>
         </div>
 
-        <Drawer direction="left" open={menuOpen} onOpenChange={setMenuOpen}>
+        <Drawer direction="bottom" open={menuOpen} onOpenChange={setMenuOpen}>
           <DrawerTrigger asChild>
             <button
               className="flex md:hidden w-10 h-10 flex-col justify-center items-center gap-[5px] bg-transparent border-0 cursor-pointer p-0 -ml-2"
@@ -100,38 +111,57 @@ export function Topbar() {
             </button>
           </DrawerTrigger>
           <DrawerContent
-            className="bg-background w-[min(360px,88vw)] sm:max-w-none border-r-0 p-0"
+            className="bg-background p-0"
             aria-describedby={undefined}
           >
             <DrawerTitle className="sr-only">Menu</DrawerTitle>
-            <div className="flex justify-between items-center px-6 py-[22px] border-b border-border">
-              <Logo className="h-[22px]" />
-              <DrawerClose
-                aria-label="Fermer"
-                className="bg-transparent border-0 cursor-pointer text-[32px] leading-none text-foreground w-9 h-9 flex items-center justify-center"
-              >
-                ×
-              </DrawerClose>
-            </div>
-            <nav className="flex-1 py-3 flex flex-col overflow-y-auto">
-              {LINKS.map(([href, label]) => (
+            <nav className="overflow-y-auto px-5 pb-4 pt-2">
+              <span className="block px-1 pb-1.5 pt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                Catalogue
+              </span>
+              {MENU_CATEGORIES.map(({ href, label, count }) => (
                 <Link
                   key={href}
                   href={href}
-                  className={`flex justify-between items-center px-6 py-[18px] font-serif text-[22px] tracking-[-0.01em] border-b border-border ${
-                    isActive(href) ? "text-primary" : "text-foreground"
+                  className={`flex items-baseline justify-between gap-3 border-b border-border px-1 py-3 font-serif text-[19px] tracking-[-0.01em] ${
+                    pathname.startsWith(href) ? "text-primary" : "text-foreground"
                   }`}
                 >
                   {label}
-                  <span className="font-mono text-sm opacity-40">→</span>
+                  <span className="font-mono text-[11px] text-muted-foreground">
+                    {count}
+                  </span>
                 </Link>
               ))}
+              <Link
+                href={routes.collections}
+                className="flex items-center justify-between gap-3 border-b border-border px-1 py-3 text-[13px] tracking-[0.04em] text-soft-foreground"
+              >
+                Toutes les collections
+                <span className="font-mono text-sm opacity-40">→</span>
+              </Link>
+              <Link
+                href={routes.finishes}
+                className={`flex items-center justify-between gap-3 border-b border-border px-1 py-3 text-[13px] tracking-[0.04em] ${
+                  isActive(routes.finishes) ? "text-primary" : "text-soft-foreground"
+                }`}
+              >
+                Finitions
+                <span className="font-mono text-sm opacity-40">→</span>
+              </Link>
+              <Link
+                href={routes.quote}
+                className={`flex items-center justify-between gap-3 px-1 py-3 text-[13px] tracking-[0.04em] ${
+                  isActive(routes.quote) ? "text-primary" : "text-soft-foreground"
+                }`}
+              >
+                Demander une soumission
+                <span className="font-mono text-sm opacity-40">→</span>
+              </Link>
             </nav>
-            <div className="p-6 border-t border-border flex flex-col gap-2.5 text-[11px] tracking-[0.06em] uppercase text-muted-foreground">
-              <span className="font-mono">
-                Showroom · 275 Beaubien O · Montréal
-              </span>
-              <a href="tel:5142225300" className="font-mono text-primary">
+            <div className="flex items-baseline justify-between gap-3 border-t border-border px-6 py-4 font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">
+              <span>Showroom · 275 Beaubien O</span>
+              <a href="tel:5142225300" className="text-primary">
                 514 222 5300
               </a>
             </div>

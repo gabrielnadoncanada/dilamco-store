@@ -51,12 +51,6 @@ export function Footer() {
                 <Link href={routes.finishes}>Finitions</Link>
               </li>
               <li>
-                <Link href={routes.craftsmanship}>Notre savoir-faire</Link>
-              </li>
-              <li>
-                <Link href={routes.projects}>Projets réalisés</Link>
-              </li>
-              <li>
                 <Link href={routes.quote}>Demander une soumission</Link>
               </li>
             </ul>

@@ -6,8 +6,6 @@ export const routes = {
     `/collections/${slug}/${sub}`,
   finishes: "/finitions",
   quote: "/soumission",
-  projects: "/projets",
-  craftsmanship: "/savoir-faire",
   configurator: "/configurateur",
   package: (slug: string) => `/forfait/${slug}`,
   product: (id: string) => `/produit/${encodeURIComponent(id)}`,

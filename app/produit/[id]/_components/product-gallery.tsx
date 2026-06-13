@@ -197,7 +197,7 @@ function GallerySlide({
           alt={view.label}
           fill
           sizes="(max-width: 1000px) 100vw, 50vw"
-          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+          className="object-contain transition-transform duration-500 hover:scale-[1.02]"
         />
       </a>
     );

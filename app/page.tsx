@@ -5,7 +5,6 @@ import { Process } from "./_components/process";
 import { StarterKitchens } from "./_components/starter-kitchens";
 import { Testimonial } from "./_components/testimonial";
 import { Trust } from "./_components/trust";
-import Packages from "./_components/packages";
 
 export default function HomePage() {
   return (
@@ -15,7 +14,6 @@ export default function HomePage() {
       <Categories />
       <StarterKitchens />
       <Process />
-      <Packages />
       <Testimonial />
       <Trust />
     </>

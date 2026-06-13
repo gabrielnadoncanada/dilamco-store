@@ -35,7 +35,7 @@ export function CartDrawer() {
         className="bg-background w-[min(440px,100vw)] sm:max-w-none border-l-0 p-0 flex flex-col"
         aria-describedby={undefined}
       >
-        <div className="px-7 py-6 flex justify-between items-center border-b border-border">
+        <div className="px-7 py-5 flex justify-between items-center border-b border-border max-[700px]:px-5 max-[700px]:py-4">
           <DrawerTitle className="font-serif text-xl tracking-[-0.01em] text-foreground font-normal">
             Mon projet · {cart.totalQty} module{cart.totalQty !== 1 ? "s" : ""}
           </DrawerTitle>
@@ -46,7 +46,7 @@ export function CartDrawer() {
             ×
           </DrawerClose>
         </div>
-        <div className="flex-1 overflow-y-auto px-7 py-2">
+        <div className="flex-1 overflow-y-auto px-7 py-2 max-[700px]:px-5">
           {cart.items.length === 0 ? (
             <div className="py-[60px] text-center">
               <span className="font-serif text-[22px] tracking-[-0.01em] text-foreground block">
@@ -69,28 +69,22 @@ export function CartDrawer() {
           )}
         </div>
         {cart.items.length > 0 && (
-          <div className="px-7 py-6 border-t border-border bg-secondary">
-            <div className="flex flex-col gap-2.5 mb-5">
-              <div className="flex justify-between text-[13px] text-foreground/85 group-data-[show-prices=false]/body:hidden">
-                <span>Modules</span>
-                <span className="font-mono text-xs">{cart.totalQty}</span>
-              </div>
-              <div className="flex justify-between text-[13px] text-foreground/85 group-data-[show-prices=false]/body:hidden">
-                <span>Sous-total catalogue</span>
-                <Price amount={cart.subtotal} size="sm" />
-              </div>
-              <div className="flex justify-between border-t border-border pt-3 font-serif text-lg text-foreground group-data-[show-prices=false]/body:hidden">
-                <span>Estimation</span>
-                <Price amount={cart.subtotal} size="md" />
-              </div>
+          <div className="px-7 py-5 border-t border-border bg-secondary max-[700px]:px-5 max-[700px]:py-4">
+            <div className="mb-4 flex items-baseline justify-between group-data-[show-prices=false]/body:hidden">
+              <span className="font-serif text-lg text-foreground">
+                Estimation
+                <span className="ml-2 font-sans text-xs text-muted-foreground">
+                  · {cart.totalQty} module{cart.totalQty !== 1 ? "s" : ""}
+                </span>
+              </span>
+              <Price amount={cart.subtotal} size="md" />
             </div>
             <Button block onClick={() => goto(routes.quote)}>
               Demander la soumission <ButtonArrow />
             </Button>
-            <p className="text-[11px] text-muted-foreground leading-[1.5] mt-4">
-              Sans engagement. Le prix final inclut panneaux de finition,
-              fillers, livraison et installation — soumission ferme sous 48 h
-              après validation des dimensions.
+            <p className="mt-3 text-center text-[11px] leading-[1.5] text-muted-foreground">
+              Sans engagement · livraison et installation incluses au prix
+              final · soumission ferme sous 48 h
             </p>
           </div>
         )}
@@ -116,7 +110,7 @@ function LineItem({ item }: { item: CartItem }) {
         )}
       </div>
       <div className="flex min-w-0 flex-col gap-1.5">
-        <span className="font-serif text-base leading-[1.2] tracking-[-0.01em] text-foreground">
+        <span className="line-clamp-2 font-serif text-base leading-[1.2] tracking-[-0.01em] text-foreground">
           {item.name}
         </span>
         <span className="text-xs leading-[1.4] text-muted-foreground">
